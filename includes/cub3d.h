@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/05 12:07:14 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/05 12:11:24 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef enum e_field {
 } t_field;
 
 typedef struct s_map {
-	size_t	size_x;
-	size_t	size_y;
-	t_field	map[MAX_MAP_Y_HEIGHT][MAX_MAP_X_WIDTH]  //
+	size_t	amount_y_rows;
+	size_t	amount_x_rows[MAX_MAP_Y_HEIGHT];
+	t_field	map[MAX_MAP_Y_HEIGHT][MAX_MAP_X_WIDTH]
 }	t_map;
