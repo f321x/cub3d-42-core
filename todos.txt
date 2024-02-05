@@ -13,4 +13,9 @@ orientation
 The map must be closed/surrounded by walls, if not the program must return
 an error.
 
-- Drawing
+- Calculating the image (Raycasting)
+
+- Drawing the image
+
+
+
