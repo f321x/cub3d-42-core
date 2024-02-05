@@ -1,21 +1,12 @@
-- Key Handlers
-The W, A, S, and D keys must allow you to move the point of view through
-the maze.
-
-The left and right arrow keys of the keyboard must allow you to look left and
-right in the maze
-
+- Key Handlers, window resizing, hooks ...
 
 - Map Parsing
-The map must be composed of only 6 possible characters: 0 for an empty space,
-1 for a wall, and N,S,E or W for the player’s start position and spawning
-orientation
-The map must be closed/surrounded by walls, if not the program must return
-an error.
 
 - Calculating the image (Raycasting)
+-> how and if to split further?
 
-- Drawing the image
+- Drawing the image (pixel/or other result of calculation to window)
+
 
 
 
