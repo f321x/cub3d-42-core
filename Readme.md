@@ -1,4 +1,4 @@
-##Goals (from en.subject.pdf)
+Goals (from en.subject.pdf)
 
 This project’s objectives are similar to all this first year’s objectives: Rigor, use of C, use
 of basic algorithms, information research etc.
