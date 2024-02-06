@@ -6,23 +6,34 @@
 /*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:16:25 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/06 16:27:09 by fbock            ###   ########.fr       */
+/*   Updated: 2024/02/06 16:31:19 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// void	init_hooks(t_window_frame *gui)
-// {
-// 	mlx_resize_hook(gui->window, resize_function, gui);
-// 	mlx_scroll_hook(gui->window, scrolling_handler, gui);
-// 	mlx_cursor_hook(gui->window, mouse_position_handler, gui);
-// 	mlx_key_hook(gui->window, key_handler, gui);
-// }
-
+/*
+** Function gets called by the resize hook when the window is resized.
+** Will genereate a new frame with the new size which is passed as
+** arg by the hook.
+** Cleans the old frame and stores the new in the gui struct.
+*/
 void	resize_function(int32_t width, int32_t height, void *param)
 {
+	t_window_frame	*gui;
 
+	gui = (t_window_frame *)param;
+	gui->buffer = mlx_new_image(gui->window, width, height);
+	if (!gui->buffer)
+		cleanup(gui);
+
+	// generate_next_cub3d_frame(gui, gui->buffer);  tbd
+
+	if ((mlx_image_to_window(gui->window, gui->buffer, 0, 0)) < 0)
+		cleanup(gui);
+	mlx_delete_image(gui->window, gui->frame);
+	gui->frame = gui->buffer;
+	gui->buffer = NULL;
 }
 
 void	scrolling_handler(double xdelta, double ydelta, void *param)

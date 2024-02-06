@@ -6,7 +6,7 @@
 #    By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/06 15:54:13 by fbock             #+#    #+#              #
-#    Updated: 2024/02/06 16:05:28 by fbock            ###   ########.fr        #
+#    Updated: 2024/02/06 16:30:46 by fbock            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ $(shell mkdir -p $(OBJDIR) $(OBJDIR)/map_parsing $(OBJDIR)/mlx_drawing $(OBJDIR)
 
 all: libmlx $(NAME)
 
+# we need to fix relinking of this function
 libmlx:
 	@if [ ! -d "$(LIBMLX)" ]; then \
 		mkdir -p libs && \
