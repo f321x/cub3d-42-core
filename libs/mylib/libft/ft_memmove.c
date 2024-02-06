@@ -1,23 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 11:38:07 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/06 14:14:26 by ***REMOVED***         ###   ########.fr       */
+/*   Created: 2023/03/27 11:52:30 by ***REMOVED***          #+#    #+#             */
+/*   Updated: 2024/02/01 16:32:58 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	t_conf_file	config_file;
+	char	*p_dst;
+	char	*p_src;
+	size_t	i;
 
-	if (!parse_config_file(argc, argv, &config_file))
-		return (config_file.error);
-	free_config_file_members(&config_file);
-	return (0);
+	p_dst = (char *)dst;
+	p_src = (char *)src;
+	i = 0;
+	if (!dst && !src && len)
+		return (NULL);
+	while (i < len)
+	{
+		if (src < dst)
+		{
+			p_dst[len - 1 - i] = p_src[len - 1 - i];
+			i++;
+		}
+		else
+		{
+			p_dst[i] = p_src[i];
+			i++;
+		}
+	}
+	return (p_dst);
 }

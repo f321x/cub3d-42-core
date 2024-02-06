@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   count_num_of_digits.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 11:38:07 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/06 14:14:26 by ***REMOVED***         ###   ########.fr       */
+/*   Created: 2023/04/18 10:42:26 by ***REMOVED***          #+#    #+#             */
+/*   Updated: 2023/04/21 12:11:32 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
-
-int	main(int argc, char **argv)
+int	count_num_of_digits(long int n)
 {
-	t_conf_file	config_file;
+	long int		quotient;
+	long int		digits_num;
 
-	if (!parse_config_file(argc, argv, &config_file))
-		return (config_file.error);
-	free_config_file_members(&config_file);
-	return (0);
+	if (n == -2147483648)
+		return (10);
+	quotient = n;
+	digits_num = 0;
+	if (n == 0)
+		return (1);
+	if (n < 0)
+		quotient = -n;
+	while (quotient > 0)
+	{
+		quotient /= 10;
+		digits_num++;
+	}
+	return (digits_num);
 }
