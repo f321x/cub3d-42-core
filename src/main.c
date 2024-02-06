@@ -6,9 +6,16 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:07 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/05 11:40:13 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/06 16:13:52 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+int main()
+{
+	t_window_frame gui;
+
+	init_gui(&gui);
+	init_hooks(&gui);
+}
