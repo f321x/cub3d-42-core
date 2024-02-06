@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/06 15:53:09 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/06 16:16:52 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,3 +48,10 @@ typedef struct s_window_frame {
 	double			mouse_x;
 	double			mouse_y;
 }	t_window_frame;
+
+// mlx_handlers/handlers_main.c
+void	init_hooks(t_window_frame *gui);
+void	init_gui(t_window_frame *gui);
+void	cleanup(t_window_frame *gui);
+
+// mlx_handlers/input_hooks.c
