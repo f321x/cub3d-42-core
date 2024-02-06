@@ -3,12 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:07 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/05 11:40:13 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/06 14:14:26 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "parsing.h"
 
+int	main(int argc, char **argv)
+{
+	t_conf_file	config_file;
+
+	if (!parse_config_file(argc, argv, &config_file))
+		return (config_file.error);
+	free_config_file_members(&config_file);
+	return (0);
+}
