@@ -6,7 +6,7 @@
 /*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/06 16:16:52 by fbock            ###   ########.fr       */
+/*   Updated: 2024/02/06 16:31:48 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,3 +55,7 @@ void	init_gui(t_window_frame *gui);
 void	cleanup(t_window_frame *gui);
 
 // mlx_handlers/input_hooks.c
+void	resize_function(int32_t width, int32_t height, void *param);
+void	scrolling_handler(double xdelta, double ydelta, void *param);
+void	mouse_position_handler(double xpos, double ypos, void *param);
+void	key_handler(mlx_key_data_t keydata, void *param);
