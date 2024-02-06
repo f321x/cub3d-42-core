@@ -6,13 +6,13 @@
 /*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:41:39 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/06 15:52:40 by fbock            ###   ########.fr       */
+/*   Updated: 2024/02/06 16:15:54 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void init_hooks(t_window_frame *gui)
+void	init_hooks(t_window_frame *gui)
 {
 	mlx_resize_hook(gui->window, resize_function, gui);
 	mlx_scroll_hook(gui->window, scrolling_handler, gui);
@@ -20,7 +20,7 @@ void init_hooks(t_window_frame *gui)
 	mlx_key_hook(gui->window, key_handler, gui);
 }
 
-static void	init_gui(t_window_frame *gui)
+void	init_gui(t_window_frame *gui)
 {
 	gui->window = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d | fbock & fahmadia", true);
 	if (!(gui->window))
@@ -31,8 +31,6 @@ static void	init_gui(t_window_frame *gui)
 		mlx_terminate(gui->window);
 		cleanup(gui);
 	}
-	gui->scroll_factor = 1.0;
-	gui->iterations = ITERATIONS;
 }
 
 void	cleanup(t_window_frame *gui)
