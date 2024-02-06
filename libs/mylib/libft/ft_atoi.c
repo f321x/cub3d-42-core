@@ -1,23 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 11:38:07 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/06 14:14:26 by fahmadia         ###   ########.fr       */
+/*   Created: 2023/04/01 12:30:08 by fahmadia          #+#    #+#             */
+/*   Updated: 2024/02/01 16:32:52 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_atoi(const char *str)
 {
-	t_conf_file	config_file;
+	int	num;
+	int	sign;
 
-	if (!parse_config_file(argc, argv, &config_file))
-		return (config_file.error);
-	free_config_file_members(&config_file);
-	return (0);
+	num = 0;
+	sign = 1;
+	while (*str == '\t' || *str == '\n' || *str == '\v'
+		|| *str == '\r' || *str == '\f' || *str == ' ')
+		str++;
+	if (*str == '+' || *str == '-')
+	{
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
+	while (ft_isdigit(*str))
+	{
+		num = num * 10 + (*str - '0');
+		str++;
+	}
+	if (sign == -1)
+		num *= -1;
+	return (num);
 }

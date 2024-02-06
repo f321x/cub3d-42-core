@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 11:38:07 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/06 14:14:26 by fahmadia         ###   ########.fr       */
+/*   Created: 2023/03/27 12:16:04 by fahmadia          #+#    #+#             */
+/*   Updated: 2024/02/01 16:33:19 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	t_conf_file	config_file;
+	size_t	i;
 
-	if (!parse_config_file(argc, argv, &config_file))
-		return (config_file.error);
-	free_config_file_members(&config_file);
-	return (0);
+	i = 0;
+	if (dstsize > 0)
+	{
+		while (i < dstsize - 1 && src[i])
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+	}
+	return (ft_strlen(src));
 }

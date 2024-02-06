@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 11:38:07 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/06 14:14:26 by fahmadia         ###   ########.fr       */
+/*   Created: 2023/04/11 20:35:25 by fahmadia          #+#    #+#             */
+/*   Updated: 2023/04/11 21:30:38 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	t_conf_file	config_file;
-
-	if (!parse_config_file(argc, argv, &config_file))
-		return (config_file.error);
-	free_config_file_members(&config_file);
-	return (0);
+	del(lst -> content);
+	free(lst);
 }

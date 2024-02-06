@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 11:38:07 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/06 14:14:26 by fahmadia         ###   ########.fr       */
+/*   Created: 2023/03/26 10:20:08 by fahmadia          #+#    #+#             */
+/*   Updated: 2023/04/14 11:34:37 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_bzero(void *s, size_t n)
 {
-	t_conf_file	config_file;
+	char	*p;
+	size_t	i;
 
-	if (!parse_config_file(argc, argv, &config_file))
-		return (config_file.error);
-	free_config_file_members(&config_file);
-	return (0);
+	p = (char *)s;
+	i = 0;
+	while (i < n)
+	{
+		*(p + i) = '\0';
+		i++;
+	}
 }

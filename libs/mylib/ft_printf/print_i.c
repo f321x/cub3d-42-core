@@ -1,23 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print_i.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 11:38:07 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/06 14:14:26 by fahmadia         ###   ########.fr       */
+/*   Created: 2023/04/17 16:35:25 by fahmadia          #+#    #+#             */
+/*   Updated: 2024/02/01 16:31:37 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "ft_printf.h"
 
-int	main(int argc, char **argv)
+int	print_i(char format_specifier, int *i, va_list args)
 {
-	t_conf_file	config_file;
+	int					a;
+	int					count;
+	unsigned long int	b;
 
-	if (!parse_config_file(argc, argv, &config_file))
-		return (config_file.error);
-	free_config_file_members(&config_file);
-	return (0);
+	count = 0;
+	b = 0;
+	a = va_arg(args, int);
+	if (format_specifier == 'u' && a < 0)
+	{
+		b = to_power(2, 32) + a;
+		putnbr_long_int(b, 1);
+		*i += 2;
+		return (10);
+	}
+	ft_putnbr_fd(a, 1);
+	*i += 2;
+	count = count_num_of_digits((long)a);
+	if (a < 0)
+		count++;
+	return (count);
 }

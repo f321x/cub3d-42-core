@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 11:38:07 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/06 14:14:26 by fahmadia         ###   ########.fr       */
+/*   Created: 2023/03/31 19:11:11 by fahmadia          #+#    #+#             */
+/*   Updated: 2023/04/14 11:37:03 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	t_conf_file	config_file;
+	char	*p;
+	char	*q;
+	size_t	i;
 
-	if (!parse_config_file(argc, argv, &config_file))
-		return (config_file.error);
-	free_config_file_members(&config_file);
+	p = (char *)s1;
+	q = (char *)s2;
+	i = 0;
+	while (i < n)
+	{
+		if (p[i] == q[i])
+		{
+			i++;
+			continue ;
+		}
+		return ((int)((unsigned char)p[i] - (unsigned char)q[i]));
+	}
 	return (0);
 }

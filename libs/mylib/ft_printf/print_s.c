@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print_s.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 11:38:07 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/06 14:14:26 by fahmadia         ###   ########.fr       */
+/*   Created: 2023/04/17 16:57:02 by fahmadia          #+#    #+#             */
+/*   Updated: 2024/02/01 16:32:02 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "ft_printf.h"
 
-int	main(int argc, char **argv)
+int	print_s(int *i, va_list args)
 {
-	t_conf_file	config_file;
+	char	*s;
+	size_t	s_length;
 
-	if (!parse_config_file(argc, argv, &config_file))
-		return (config_file.error);
-	free_config_file_members(&config_file);
-	return (0);
+	s = va_arg(args, char *);
+	if (s == NULL)
+	{
+		ft_putstr_fd("(null)", 1);
+		*i += 2;
+		return (6);
+	}
+	s_length = ft_strlen(s);
+	ft_putstr_fd(s, 1);
+	*i += 2;
+	return (s_length);
 }
