@@ -6,11 +6,27 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:38:51 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/06 10:48:42 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/07 09:29:30 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+
+bool	is_only_three_values(char *color_info)
+{
+	int	i;
+
+	i = 0;
+	while (*color_info && i < 3)
+	{
+		if (*color_info == ',')
+			i++;
+		color_info++;
+	}
+	if (i > 2)
+		return (false);
+	return (true);
+}
 
 int	get_size(char	**p)
 {
@@ -53,6 +69,8 @@ bool	parse_color(t_conf_file *config_file, char *color_info)
 	char	**rgb;
 	int		size;
 
+	if (!is_only_three_values(color_info))
+		return (false);
 	rgb = ft_split(color_info, ',');
 	if (!rgb)
 		return (false);
