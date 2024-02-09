@@ -6,7 +6,7 @@
 /*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:07 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/09 14:33:59 by fbock            ###   ########.fr       */
+/*   Updated: 2024/02/09 15:04:47 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	end_program(t_conf_file *conf_file, t_window_frame *gui)
 {
-	mlx_terminate(gui.window);
-	free_config_file_members(&config_file);
+	mlx_terminate(gui->window);
+	free_config_file_members(conf_file);
 }
 
 int	main(int argc, char **argv)

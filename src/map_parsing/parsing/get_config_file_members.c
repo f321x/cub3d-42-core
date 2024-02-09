@@ -6,11 +6,11 @@
 /*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:21:45 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/09 14:08:13 by fbock            ###   ########.fr       */
+/*   Updated: 2024/02/09 15:07:18 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h
+#include "cub3d.h"
 
 char	**map_id_to_info_str_address(t_conf_file *config_file, t_id id)
 {
