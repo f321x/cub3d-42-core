@@ -6,14 +6,14 @@
 #    By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 14:27:39 by fahmadia          #+#    #+#              #
-#    Updated: 2024/02/09 15:25:13 by fbock            ###   ########.fr        #
+#    Updated: 2024/02/09 15:27:27 by fbock            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= cub3d
 
 CC 		:= cc
-CFLAGS 	:= -Wall -Wextra -Werror
+# CFLAGS 	:= -Wall -Wextra -Werror
 DFLAGS 	:= -g3 -fsanitize=address
 DNAME 	:= cub3d_debug
 
