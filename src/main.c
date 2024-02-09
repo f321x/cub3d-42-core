@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:07 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/09 15:27:02 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/09 15:28:49 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	end_program(t_conf_file *conf_file, t_window_frame *gui)
 {
 	mlx_terminate(gui->window);
-	// free_config_file_members(conf_file);
+	free_config_file_members(conf_file);
 }
 
 int	main(int argc, char **argv)
@@ -27,8 +27,8 @@ int	main(int argc, char **argv)
 	init_gui(&gui);
 	init_hooks(&gui);
 
-	// if (!parse_config_file(argc, argv, &config_file))
-	// 	return (config_file.error);
+	if (!parse_config_file(argc, argv, &config_file))
+		return (config_file.error);
 
 	mlx_image_to_window(gui.window, gui.frame, 0, 0);
 	mlx_loop(gui.window);
