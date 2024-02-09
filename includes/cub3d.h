@@ -6,7 +6,7 @@
 /*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/09 14:03:57 by fbock            ###   ########.fr       */
+/*   Updated: 2024/02/09 14:40:22 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <errno.h>
 # include "MLX42.h"
 # include "libft.h"
-# include "get_next_line_bonus.h"
+# include "get_next_line.h"
 # include "parsing.h"
 
 // Initial window size
