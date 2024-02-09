@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:35:08 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/06 13:03:16 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:00:20 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#pragma once
 
 # include <stdio.h>
 # include <stdbool.h>
@@ -72,29 +71,47 @@ typedef struct s_config_file
 	t_err			error;
 }	t_conf_file;
 
+// parsing_main.c
 bool	parse_ids_and_map(t_conf_file *config_file);
+bool	parse_config_file(int argc, char **argv, t_conf_file *config_file);
+
+// print_error_message.c
 void	print_err_msg(char *message1, char *message2, char *message3);
+
+// free.c
 void	free_config_file_members(t_conf_file *const config_file);
 void	free_double_pointer(char **p);
-bool	atoint(const char *str, int *color);
-void	free_config_file_members(t_conf_file *const config_file);
 void	free_pointer(char **ptr);
+
+// atoi.c
+bool	atoint(const char *str, int *color);
+
+// get_config_file_members.c
 char	**map_id_to_info_str_address(t_conf_file *config_file, t_id type_id);
 t_rgb	*map_type_id_to_rgb_address(t_conf_file *config_file, t_id type_id);
 bool	*map_type_id_to_bool_address(t_conf_file *config_file, t_id type_id);
 char	*map_type_id_to_string(t_id type_id);
+
+// parse_colors.c
 bool	is_color_valid(t_conf_file *config_file, t_line *results);
+
+// type_id_info.c
 char	*get_info(t_line *results);
+void	store_type_id_info(t_conf_file *config_file, t_line *results);
+void	store_colors(t_conf_file *config_file, int *colors);
+
+// trim.c
 char	*skip_wsp(char *line);
 char	*trime_new_line_char(char *line);
 char	*move_to_first_wsp(t_line *results);
 char	*trim_final_new_line_char(char *info);
-void	store_type_id_info(t_conf_file *config_file, t_line *results);
-void	store_colors(t_conf_file *config_file, int *colors);
 char	*trim_begin(t_line results);
-bool	parse_type_ids(t_conf_file *config_file);
-bool	open_config_file(t_conf_file *config_file);
-bool	id_is_valid(t_conf_file *config_file, char *first_three_chars);
-bool	parse_config_file(int argc, char **argv, t_conf_file *config_file);
 
-#endif
+// parse_type_ids_1.c
+bool	parse_type_ids(t_conf_file *config_file);
+
+// parse_type_ids_2.c
+bool	id_is_valid(t_conf_file *config_file, char *first_three_chars);
+
+// open_config_file.c
+bool	open_config_file(t_conf_file *config_file);

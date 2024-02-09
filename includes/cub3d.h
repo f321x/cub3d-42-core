@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/06 16:31:48 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/09 13:54:10 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
+#include "parsing.h"
 # include "MLX42.h"
 
 // Initial window size
