@@ -6,7 +6,7 @@
 #    By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 14:27:39 by ***REMOVED***          #+#    #+#              #
-#    Updated: 2024/02/09 15:21:43 by ***REMOVED***            ###   ########.fr        #
+#    Updated: 2024/02/09 15:25:13 by ***REMOVED***            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,26 @@ re: fclean all
 
 .PHONY: all, clean, fclean, re, debug
 
+# ________________________________________________________________
 
+# SRCS = main.c\
+# 	parsing_main.c\
+# 	parse_type_ids_1.c\
+# 	parse_type_ids_2.c\
+# 	print_error_message.c\
+# 	free.c\
+# 	atoi.c\
+# 	get_config_file_members.c\
+# 	parse_colors.c\
+# 	trim.c\
+# 	type_id_info.c\
+# 	open_config_file.c\
+
+# VPATH = ./src\
+# 	./src/map_parsing\
+# 	./src/map_parsing/free_memory\
+# 	./src/map_parsing/helper\
+# 	./src/map_parsing/parsing
 
 # OBJS_PATH = ./objs
 # OBJS = $(addprefix $(OBJS_PATH)/, $(SRCS:.c=.o))
@@ -126,5 +145,7 @@ re: fclean all
 # .PHONEY: all clean fclean re
 
 # -include $(DEPENDENCIES)
+
+
 
 
