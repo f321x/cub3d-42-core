@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_type_ids_1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 11:32:21 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/06 13:51:19 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:08:18 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "cub3d.h"
 
 bool	all_id_types_present(t_conf_file *conf_file)
 {
