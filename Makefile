@@ -6,7 +6,7 @@
 #    By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 14:27:39 by ***REMOVED***          #+#    #+#              #
-#    Updated: 2024/02/09 15:10:27 by ***REMOVED***            ###   ########.fr        #
+#    Updated: 2024/02/09 15:21:43 by ***REMOVED***            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,8 @@ SRCDIR		:= src
 OBJDIR		:= objs
 
 LIBMLX	:= ./libs/MLX42
-LIB 	:= -L ./libs/libft_combined -lmylib -L $(LIBMLX)/build -ldl -lglfw -pthread -lm
-HEADERS := -I./includes -I ./libs/libft_combined/includes -I $(LIBMLX)/include/MLX42
+LIB 	:= -L ./libs/libft_combined -lmylib -L $(LIBMLX)/build -ldl -lglfw -pthread -lm -lmlx42
+HEADERS := -I ./includes -I ./libs/libft_combined/includes -I $(LIBMLX)/include/MLX42
 
 SRCS 	:= $(SRCDIR)/main.c\
 	$(SRCDIR)/mlx_drawing/drawing_main.c\
