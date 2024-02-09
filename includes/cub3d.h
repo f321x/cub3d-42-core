@@ -6,7 +6,7 @@
 /*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/06 16:31:48 by fbock            ###   ########.fr       */
+/*   Updated: 2024/02/09 13:54:10 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
+#include "parsing.h"
 # include "MLX42.h"
 
 // Initial window size
