@@ -6,7 +6,7 @@
 #    By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 14:27:39 by fahmadia          #+#    #+#              #
-#    Updated: 2024/02/09 14:38:32 by fbock            ###   ########.fr        #
+#    Updated: 2024/02/09 14:52:27 by fbock            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,10 @@ DNAME 	:= cub3d_debug
 
 SRCDIR		:= src
 OBJDIR		:= objs
-# TESTDIR		:= test
+
 LIBMLX	:= ./libs/MLX42
-LIB 		:= libs/libft/libft.a -lreadline $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
-LIB_DEBUG 	:= libs/libft/libft_debug.a -lreadline
-HEADERS = -I./includes -I ./libs/libft/includes -I $(LIBMLX)/include/MLX42
+LIB 	:= libs/libft_combined/libmylib.a -lmylib $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
+HEADERS := -I./includes -I ./libs/libft_combined/includes -I $(LIBMLX)/include/MLX42
 
 SRCS 	:= $(SRCDIR)/main.c
 
