@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_main.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:50:34 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/06 14:15:39 by fahmadia         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:07:36 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "cub3d.h"
 
 void	init_config_file(t_conf_file *config_file, char *config_file_name)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_error_message.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:41:29 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/06 10:43:25 by fahmadia         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:08:11 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "cub3d.h"
 
 void	print_err_msg(char *message1, char *message2, char *message3)
 {

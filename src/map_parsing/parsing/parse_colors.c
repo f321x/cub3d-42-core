@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:38:51 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/06 10:48:42 by fahmadia         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:08:17 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "cub3d.h"
 
 int	get_size(char	**p)
 {

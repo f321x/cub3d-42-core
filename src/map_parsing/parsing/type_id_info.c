@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   type_id_info.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:47:05 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/06 11:03:12 by fahmadia         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:08:20 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "cub3d.h"
 
 char	*get_info(t_line *results)
 {

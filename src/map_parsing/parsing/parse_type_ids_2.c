@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_type_ids_2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 10:00:05 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/06 11:02:26 by fahmadia         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:08:18 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "cub3d.h"
 
 bool	is_type_id_unique(t_conf_file *conf_file, bool *id_exists, char *id)
 {

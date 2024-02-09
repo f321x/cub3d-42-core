@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_type_ids_1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 11:32:21 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/06 13:51:19 by fahmadia         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:08:18 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "cub3d.h"
 
 bool	all_id_types_present(t_conf_file *conf_file)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   trim.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:43:05 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/06 10:59:50 by fahmadia         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:08:19 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "cub3d.h"
 
 char	*skip_wsp(char *line)
 {
