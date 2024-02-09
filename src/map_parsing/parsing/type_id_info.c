@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   type_id_info.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:47:05 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/06 11:03:12 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:08:20 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "cub3d.h"
 
 char	*get_info(t_line *results)
 {

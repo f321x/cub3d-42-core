@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   open_config_file.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:54:04 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/06 11:01:38 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:08:16 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "cub3d.h"
 
 bool	open_config_file(t_conf_file *config_file)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   trim.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:43:05 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/06 10:59:50 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:08:19 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "cub3d.h"
 
 char	*skip_wsp(char *line)
 {
