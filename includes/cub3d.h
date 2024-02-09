@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/09 14:40:22 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/09 15:04:25 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef enum e_field {
 typedef struct s_map {
 	size_t	amount_y_rows;		// amount of actual used y rows
 	size_t	amount_x_rows[MAX_MAP_Y_HEIGHT];  // stores the x length of the current y row
-	t_field	map[MAX_MAP_Y_HEIGHT][MAX_MAP_X_WIDTH]  // contains the kind of map element (enum) at Y/X
+	t_field	map[MAX_MAP_Y_HEIGHT][MAX_MAP_X_WIDTH];  // contains the kind of map element (enum) at Y/X
 }	t_map;
 
 typedef struct s_window_frame {

@@ -6,7 +6,7 @@
 #    By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 14:27:39 by ***REMOVED***          #+#    #+#              #
-#    Updated: 2024/02/09 14:52:27 by ***REMOVED***            ###   ########.fr        #
+#    Updated: 2024/02/09 15:10:27 by ***REMOVED***            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,14 +21,28 @@ SRCDIR		:= src
 OBJDIR		:= objs
 
 LIBMLX	:= ./libs/MLX42
-LIB 	:= libs/libft_combined/libmylib.a -lmylib $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
+LIB 	:= -L ./libs/libft_combined -lmylib -L $(LIBMLX)/build -ldl -lglfw -pthread -lm
 HEADERS := -I./includes -I ./libs/libft_combined/includes -I $(LIBMLX)/include/MLX42
 
-SRCS 	:= $(SRCDIR)/main.c
+SRCS 	:= $(SRCDIR)/main.c\
+	$(SRCDIR)/mlx_drawing/drawing_main.c\
+	$(SRCDIR)/mlx_handlers/handlers_main.c\
+	$(SRCDIR)/mlx_handlers/input_hooks.c\
+	$(SRCDIR)/map_parsing/parsing_main.c\
+	$(SRCDIR)/map_parsing/parsing/parse_type_ids_1.c\
+	$(SRCDIR)/map_parsing/parsing/parse_type_ids_2.c\
+	$(SRCDIR)/map_parsing/helper/print_error_message.c\
+	$(SRCDIR)/map_parsing/free_memory/free.c\
+	$(SRCDIR)/map_parsing/helper/atoi.c\
+	$(SRCDIR)/map_parsing/parsing/get_config_file_members.c\
+	$(SRCDIR)/map_parsing/parsing/parse_colors.c\
+	$(SRCDIR)/map_parsing/parsing/trim.c\
+	$(SRCDIR)/map_parsing/parsing/type_id_info.c\
+	$(SRCDIR)/map_parsing/parsing/open_config_file.c\
 
 OBJS	:= $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SRCS))
 DOBJS   := $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.d.o,$(SRCS))
-$(shell mkdir -p $(OBJDIR) $(OBJDIR)/map_parsing $(OBJDIR)/mlx_drawing $(OBJDIR)/mlx_handlers $(OBJDIR)/raycasting)
+$(shell mkdir -p $(OBJDIR) $(OBJDIR)/map_parsing $(OBJDIR)/mlx_drawing $(OBJDIR)/mlx_handlers $(OBJDIR)/raycasting $(OBJDIR)/map_parsing/parsing $(OBJDIR)/map_parsing/helper $(OBJDIR)/map_parsing/free_memory)
 
 all: libmlx $(NAME)
 
@@ -48,45 +62,29 @@ $(OBJDIR)/%.d.o: $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) $(DFLAGS) $(HEADERS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	make -C libs/libft
+	make -C libs/libft_combined
 	$(CC) $(CFLAGS) $(LIB) $(HEADERS) $(OBJS) -o $(NAME)
 
 debug: $(DOBJS)
-	make -C libs/libft debug
+	make -C libs/libft_combined
+	# make -C libs/libft debug
 	$(CC) $(CFLAGS) $(DFLAGS) $(LIB_DEBUG) $(HEADERS) $(DOBJS) -o $(DNAME)
 
 clean:
 	rm -rf $(LIBMLX)/build
-	make -C libs/libft clean
+	make -C libs/libft_combined clean
 	rm -rf $(OBJDIR)
 
 fclean: clean
 	rm -rf $(LIBMLX)
-	make -C libs/libft fclean
+	make -C libs/libft_combined fclean
 	rm -rf $(NAME) $(DNAME)
 
 re: fclean all
 
 .PHONY: all, clean, fclean, re, debug
 
-# SRCS = main.c\
-# 	parsing_main.c\
-# 	parse_type_ids_1.c\
-# 	parse_type_ids_2.c\
-# 	print_error_message.c\
-# 	free.c\
-# 	atoi.c\
-# 	get_config_file_members.c\
-# 	parse_colors.c\
-# 	trim.c\
-# 	type_id_info.c\
-# 	open_config_file.c\
 
-# VPATH = ./src\
-# 	./src/map_parsing\
-# 	./src/map_parsing/free_memory\
-# 	./src/map_parsing/helper\
-# 	./src/map_parsing/parsing
 
 # OBJS_PATH = ./objs
 # OBJS = $(addprefix $(OBJS_PATH)/, $(SRCS:.c=.o))

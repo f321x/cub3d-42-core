@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:16:25 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/06 16:31:19 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/09 15:10:51 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ void	resize_function(int32_t width, int32_t height, void *param)
 
 void	scrolling_handler(double xdelta, double ydelta, void *param)
 {
+	xdelta = 0;
+	ydelta = 0;
+	param = NULL;
 	return ;
 }
 
