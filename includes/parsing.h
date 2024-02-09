@@ -6,19 +6,11 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:35:08 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/09 14:00:20 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/09 14:03:06 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-
-# include <stdio.h>
-# include <stdbool.h>
-# include <fcntl.h>
-# include <string.h>
-# include <errno.h>
-# include "libft.h"
-# include "get_next_line.h"
 
 typedef enum e_type_id
 {
