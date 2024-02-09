@@ -6,19 +6,11 @@
 /*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:35:08 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/09 14:00:20 by fbock            ###   ########.fr       */
+/*   Updated: 2024/02/09 14:03:06 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-
-# include <stdio.h>
-# include <stdbool.h>
-# include <fcntl.h>
-# include <string.h>
-# include <errno.h>
-# include "libft.h"
-# include "get_next_line.h"
 
 typedef enum e_type_id
 {
