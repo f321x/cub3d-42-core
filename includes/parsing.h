@@ -6,20 +6,20 @@
 /*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:35:08 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/06 13:03:16 by fahmadia         ###   ########.fr       */
+/*   Updated: 2024/02/09 16:48:43 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
-# include <stdio.h>
 # include <stdbool.h>
 # include <fcntl.h>
 # include <string.h>
 # include <errno.h>
 # include "libft.h"
 # include "get_next_line.h"
+# include "cub3d.h"
 
 typedef enum e_type_id
 {
@@ -39,6 +39,8 @@ typedef enum e_error
 	WRONG_CONFIG_FILE_TYPE_ID,
 	INAVLID_CONFIG_FILE_EXTENSION,
 	NOT_ALL_TYPE_IDS_FOUND,
+	INVALID_MAP_CHAR,
+	MAP_TOO_BIG,
 }	t_err;
 
 typedef struct s_rgb
@@ -70,6 +72,7 @@ typedef struct s_config_file
 	t_rgb			c_color;
 	t_id			current_id;
 	t_err			error;
+	t_map			*map;
 }	t_conf_file;
 
 bool	parse_ids_and_map(t_conf_file *config_file);
@@ -96,5 +99,14 @@ bool	parse_type_ids(t_conf_file *config_file);
 bool	open_config_file(t_conf_file *config_file);
 bool	id_is_valid(t_conf_file *config_file, char *first_three_chars);
 bool	parse_config_file(int argc, char **argv, t_conf_file *config_file);
+
+bool	copy_map(t_conf_file *conf_file, t_line *result);
+bool	parse_map(t_conf_file *conf_file);
+
+
+
+
+void	print_test(t_conf_file config_file);
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 10:00:05 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/06 11:02:26 by fahmadia         ###   ########.fr       */
+/*   Updated: 2024/02/10 07:59:45 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,11 @@ bool	id_is_valid(t_conf_file *config_file, char *first_three_chars)
 		return (true);
 	if (valid_id(config_file, first_three_chars, F, 1))
 		return (true);
-	config_file->error = WRONG_CONFIG_FILE_TYPE_ID;
 	if (!config_file->duplicate_id)
+	{
 		print_err_msg("Invalid type id", ": ", first_three_chars);
+		config_file->error = WRONG_CONFIG_FILE_TYPE_ID;
+
+	}
 	return (false);
 }
