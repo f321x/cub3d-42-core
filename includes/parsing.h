@@ -6,7 +6,7 @@
 /*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:35:08 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/09 16:48:43 by fahmadia         ###   ########.fr       */
+/*   Updated: 2024/02/10 10:16:25 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef enum e_error
 	NOT_ALL_TYPE_IDS_FOUND,
 	INVALID_MAP_CHAR,
 	MAP_TOO_BIG,
+	NO_PLAYER,
+	MULTI_PLAYER,
 }	t_err;
 
 typedef struct s_rgb
