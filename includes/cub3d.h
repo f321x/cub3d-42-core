@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/10 10:08:57 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/10 16:32:22 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef enum e_field {
 	NEW_LINE = 7,
 	NONE = 8, 
 	INIT = 9,
+	TEST = 10,
 } t_field;
 
 typedef struct s_map {
@@ -36,6 +37,8 @@ typedef struct s_map {
 	size_t	columns_per_row[MAX_ROW_NUM];
 	size_t	max_columns_num;
 	t_field	map_plan[MAX_ROW_NUM][MAX_COLUMN_NUM];
+	t_field	map_copy[MAX_ROW_NUM][MAX_COLUMN_NUM];
 	size_t	player_coord[2];
 	bool	is_player;
+	bool	is_map_valid;
 }	t_map;
