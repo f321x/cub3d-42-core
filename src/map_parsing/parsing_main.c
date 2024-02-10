@@ -6,7 +6,7 @@
 /*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:50:34 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/09 18:44:36 by fahmadia         ###   ########.fr       */
+/*   Updated: 2024/02/10 12:26:21 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	print_test(t_conf_file config_file)
 {
 	printf("rows = %lu\n", config_file.map->rows_num);
 	printf("max_columns_num = %lu\n", config_file.map->max_columns_num);
-	// print_map_number_of_columns_per_row(config_file);
+	print_map_number_of_columns_per_row(config_file);
 	// printf("config_file.NO_info = %s\n", config_file.no_info);
 	// printf("config_file.SO_info = %s\n", config_file.so_info);
 	// printf("config_file.EA_info = %s\n", config_file.ea_info);

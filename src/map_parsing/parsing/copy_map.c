@@ -6,7 +6,7 @@
 /*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 09:44:54 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/10 09:21:13 by fahmadia         ###   ########.fr       */
+/*   Updated: 2024/02/10 15:51:53 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,8 +148,7 @@ void	get_column_nums(t_conf_file *conf_file)
 		column = 0;
 		while (column < MAX_COLUMN_NUM)
 		{
-			if (conf_file->map->map_plan[row][column] == INIT
-				|| conf_file->map->map_plan[row][column] == NEW_LINE)
+			if (conf_file->map->map_plan[row][column] == INIT)
 			{
 				conf_file->map->columns_per_row[row] = column;
 				break ;
