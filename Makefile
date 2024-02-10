@@ -6,7 +6,7 @@
 #    By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 14:27:39 by ***REMOVED***          #+#    #+#              #
-#    Updated: 2024/02/06 12:54:46 by ***REMOVED***         ###   ########.fr        #
+#    Updated: 2024/02/09 15:56:38 by ***REMOVED***         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,8 @@ SRCS = main.c\
 	trim.c\
 	type_id_info.c\
 	open_config_file.c\
+	copy_map.c\
+	parse_map.c
 
 VPATH = ./src\
 	./src/map_parsing\

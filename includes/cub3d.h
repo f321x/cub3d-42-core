@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/05 12:12:51 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/10 07:53:07 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,25 @@
 #include <stdlib.h>
 
 // check when parsing if map is too big, throw error.
-#define MAX_MAP_X_WIDTH 	1000
-#define MAX_MAP_Y_HEIGHT	1000
+#define MAX_COLUMN_NUM	100
+#define MAX_ROW_NUM		3
 
 typedef enum e_field {
-	EMPTY,
-	WALL,
-	NORTH,
-	SOUTH,
-	EAST,
-	WEST,
-	NONE  // initialize array with none
+	EMPTY = 0,
+	WALL = 1,
+	NORTH = 2,
+	SOUTH = 3,
+	EAST = 4,
+	WEST = 5,
+	WSP = 6,
+	NEW_LINE = 7,
+	NONE = 8, 
+	INIT = 9,
 } t_field;
 
 typedef struct s_map {
-	size_t	amount_y_rows;		// amount of actual used y rows
-	size_t	amount_x_rows[MAX_MAP_Y_HEIGHT];  // stores the x length of the current y row
-	t_field	map[MAX_MAP_Y_HEIGHT][MAX_MAP_X_WIDTH]  // contains the kind of map element (enum) at Y/X
+	size_t	rows_num;
+	size_t	columns_per_row[MAX_ROW_NUM];
+	size_t	max_columns_num;
+	t_field	map_plan[MAX_ROW_NUM][MAX_COLUMN_NUM];
 }	t_map;

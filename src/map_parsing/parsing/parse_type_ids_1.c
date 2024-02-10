@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 11:32:21 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/06 13:51:19 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/10 07:47:08 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,7 @@ bool	all_id_types_present(t_conf_file *conf_file)
 		return (true);
 	}
 	else
-	{
-		conf_file->error = NOT_ALL_TYPE_IDS_FOUND;
-		print_err_msg("One or more type identifiers are missing", "", "");
 		return (false);
-	}
 }
 
 bool	is_empty_line(const t_conf_file *const config_file, t_line *results)
@@ -69,11 +65,24 @@ bool	parse_cur_line(t_conf_file *conf_file, char *trim_line, t_line *results)
 	{
 		free_pointer(&(results->remainder));
 		free_pointer(&(results->current_line));
-		free_config_file_members(conf_file);
+		// free_config_file_members(conf_file);
 		close(conf_file->fd);
 		return (false);
 	}
 	return (true);
+}
+
+bool	store_map(t_conf_file *config_file, t_line *results)
+{
+	if (all_id_types_present(config_file) && !copy_map(config_file, results))
+	{
+		free_pointer(&(results->remainder));
+		free_pointer(&(results->current_line));
+		// free_config_file_members(config_file);
+		close(config_file->fd);
+		return (false);
+	}
+	return (true);	
 }
 
 bool	parse_type_ids(t_conf_file *config_file)
@@ -91,9 +100,15 @@ bool	parse_type_ids(t_conf_file *config_file)
 		store_type_id_info(config_file, &results);
 		free_pointer(&(results.current_line));
 		results = get_next_line(config_file->fd);
+		if (!store_map(config_file, &results))
+			return (false);
 	}
 	free_pointer(&(results.remainder));
 	if (!all_id_types_present(config_file))
+	{
+		config_file->error = NOT_ALL_TYPE_IDS_FOUND;
+		print_err_msg("One or more type identifiers are missing", "", "");
 		return (false);
+	}
 	return (true);
 }
