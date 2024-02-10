@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:35:08 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/10 10:16:25 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/10 16:09:38 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef enum e_error
 	MAP_TOO_BIG,
 	NO_PLAYER,
 	MULTI_PLAYER,
+	MAP_NOT_SURROUNDED_BY_WALLS,
 }	t_err;
 
 typedef struct s_rgb
@@ -107,7 +108,7 @@ bool	parse_map(t_conf_file *conf_file);
 
 
 
-
+void	print_map_plan(t_conf_file const *conf_file, t_field map[MAX_ROW_NUM][MAX_COLUMN_NUM]);
 void	print_test(t_conf_file config_file);
 
 
