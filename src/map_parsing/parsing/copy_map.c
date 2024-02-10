@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 09:44:54 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/10 07:56:29 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/10 09:21:13 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,17 @@ t_field	setField(char current_char)
 	return field;
 }
 
+bool	is_map_size_correct(t_conf_file *conf_file, int row, char *current_line)
+{
+	if (row >= MAX_ROW_NUM || ft_strlen(current_line) > MAX_COLUMN_NUM)
+	{
+		print_err_msg("Map is too big", "", "");
+		conf_file->error = MAP_TOO_BIG;
+		return (false);
+	}
+	return (true);
+}
+
 bool	copy_char_by_char(t_conf_file *conf_file, char *current_line)
 {
 	int			i;
@@ -44,12 +55,8 @@ bool	copy_char_by_char(t_conf_file *conf_file, char *current_line)
 	t_field		field;
 
 	i = 0;
-	if (row >= MAX_ROW_NUM)
-	{
-		print_err_msg("Map is too big", "", "");
-		conf_file->error = MAP_TOO_BIG;
+	if (!is_map_size_correct(conf_file, row, current_line))
 		return (false);
-	}
 	while (current_line[i])
 	{
 		// if (current_line[i] == '\n')
@@ -57,12 +64,7 @@ bool	copy_char_by_char(t_conf_file *conf_file, char *current_line)
 		// 	conf_file->map->map_plan[row][i] = NEW_LINE;
 		// 	break ;
 		// }
-		if (ft_strlen(current_line) > MAX_COLUMN_NUM)
-		{
-			print_err_msg("Map is too big", "", "");
-			conf_file->error = MAP_TOO_BIG;
-			return (false);
-		}
+		
 		field = setField(current_line[i]);
 		conf_file->map->map_plan[row][i] = field;
 		if (current_line[i] == '\n')
@@ -103,25 +105,6 @@ void	init_map_plan(t_field (*map_plan)[MAX_COLUMN_NUM])
 			(*map_plan)[i] = INIT;
 		i++;
 	}
-}
-
-void	print_map_plan(t_conf_file *conf_file)
-{
-	size_t	i;
-	size_t	j;
-	i = 0;
-	while (i < conf_file->map->rows_num)
-	{
-		j = 0;
-		while (j < conf_file->map->columns_per_row[i])
-		{
-			printf("%d", conf_file->map->map_plan[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
-	return ;
 }
 
 bool	is_row_empty(t_field *row)
@@ -217,6 +200,6 @@ bool	copy_map(t_conf_file *conf_file, t_line *results)
 	}
 	conf_file->map->rows_num = get_row_num(conf_file);
 	conf_file->map->max_columns_num = get_max_column_num(conf_file);
-	print_map_plan(conf_file);
+	
 	return (true);
 }
