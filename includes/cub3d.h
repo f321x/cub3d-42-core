@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/10 07:53:07 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/10 10:08:57 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 #include <stdlib.h>
 
 // check when parsing if map is too big, throw error.
-#define MAX_COLUMN_NUM	100
-#define MAX_ROW_NUM		3
+#define MAX_COLUMN_NUM	1000
+#define MAX_ROW_NUM		1000
 
 typedef enum e_field {
 	EMPTY = 0,
@@ -36,4 +36,6 @@ typedef struct s_map {
 	size_t	columns_per_row[MAX_ROW_NUM];
 	size_t	max_columns_num;
 	t_field	map_plan[MAX_ROW_NUM][MAX_COLUMN_NUM];
+	size_t	player_coord[2];
+	bool	is_player;
 }	t_map;
