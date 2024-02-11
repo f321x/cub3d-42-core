@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   atoi.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:55:48 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/06 10:36:23 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:08:11 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "cub3d.h"
 
 bool	skip_wsp_and_check_digit(char const c, int *digit_counter, bool *is_wsp)
 {
