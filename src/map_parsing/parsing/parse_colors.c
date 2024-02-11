@@ -6,11 +6,11 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:38:51 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/07 09:29:30 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/11 14:54:31 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "cub3d.h"
 
 bool	is_only_three_values(char *color_info)
 {

@@ -6,11 +6,11 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 15:55:38 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/11 12:56:25 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/11 15:42:18 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "cub3d.h"
 
 bool	is_char_valid(t_conf_file *conf_file, size_t i, size_t j)
 {

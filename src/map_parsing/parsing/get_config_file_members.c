@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_config_file_members.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:21:45 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/06 11:06:31 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/09 15:07:18 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "cub3d.h"
 
 char	**map_id_to_info_str_address(t_conf_file *config_file, t_id id)
 {

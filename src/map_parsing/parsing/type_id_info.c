@@ -6,11 +6,11 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:47:05 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/11 13:25:57 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/11 14:54:50 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "cub3d.h"
 
 char	*get_info(t_line *results)
 {
