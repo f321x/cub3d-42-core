@@ -6,11 +6,11 @@
 /*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 15:39:10 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/07 10:25:47 by fahmadia         ###   ########.fr       */
+/*   Updated: 2024/02/11 14:54:20 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "cub3d.h"
 
 void	free_pointer(char **ptr)
 {

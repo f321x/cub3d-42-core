@@ -6,11 +6,11 @@
 /*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:43:05 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/11 13:28:24 by fahmadia         ###   ########.fr       */
+/*   Updated: 2024/02/11 14:54:45 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "cub3d.h"
 
 char	*skip_wsp(char *line)
 {

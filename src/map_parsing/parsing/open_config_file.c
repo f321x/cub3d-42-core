@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   open_config_file.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:54:04 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/06 11:01:38 by fahmadia         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:08:16 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "cub3d.h"
 
 bool	open_config_file(t_conf_file *config_file)
 {

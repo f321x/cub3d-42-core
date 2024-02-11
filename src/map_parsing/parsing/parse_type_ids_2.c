@@ -6,11 +6,11 @@
 /*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 10:00:05 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/10 09:02:31 by fahmadia         ###   ########.fr       */
+/*   Updated: 2024/02/11 14:54:40 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "cub3d.h"
 
 bool	is_type_id_unique(t_conf_file *conf_file, bool *id_exists, char *id)
 {

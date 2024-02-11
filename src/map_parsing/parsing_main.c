@@ -6,11 +6,11 @@
 /*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:50:34 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/11 13:33:31 by fahmadia         ###   ########.fr       */
+/*   Updated: 2024/02/11 15:19:42 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "cub3d.h"
 
 void	init_config_file(t_conf_file *config_file, char *config_file_name)
 {

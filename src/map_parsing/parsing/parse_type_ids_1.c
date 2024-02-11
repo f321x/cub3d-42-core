@@ -6,11 +6,11 @@
 /*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 11:32:21 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/11 13:39:29 by fahmadia         ###   ########.fr       */
+/*   Updated: 2024/02/11 14:54:36 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "cub3d.h"
 
 bool	all_id_types_present(t_conf_file *conf_file)
 {

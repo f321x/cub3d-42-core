@@ -6,11 +6,11 @@
 /*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 13:32:42 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/11 14:42:26 by fahmadia         ###   ########.fr       */
+/*   Updated: 2024/02/11 15:42:29 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "cub3d.h"
 
 void	print_map_number_of_columns_per_row(t_conf_file config_file)
 {

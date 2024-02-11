@@ -6,11 +6,11 @@
 /*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:41:29 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/10 08:07:41 by fahmadia         ###   ########.fr       */
+/*   Updated: 2024/02/11 14:54:24 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "cub3d.h"
 
 void	print_err_msg(char *message1, char *message2, char *message3)
 {
