@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   type_id_info.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:47:05 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/09 14:08:20 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/11 14:54:50 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	store_type_id_info(t_conf_file *conf_file, t_line *results)
 	free(temp);
 	cur_info_ptr = map_id_to_info_str_address(conf_file, conf_file->current_id);
 	*cur_info_ptr = ft_strdup(info);
-	free(info);
+	free_pointer(&info);
 	info = NULL;
 	return ;
 }
