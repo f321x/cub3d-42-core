@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 15:39:10 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/09 14:08:08 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/11 14:54:20 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,16 @@ void	free_double_pointer(char **p)
 	return ;
 }
 
+void	free_map(t_conf_file *conf_file)
+{
+	if (conf_file->map)
+	{
+		free(conf_file->map);
+		conf_file->map = NULL;
+	}
+	return ;
+}
+
 void	free_config_file_members(t_conf_file *const config_file)
 {
 	free_pointer(&(config_file->no_info));
@@ -44,4 +54,5 @@ void	free_config_file_members(t_conf_file *const config_file)
 	free_pointer(&(config_file->we_info));
 	free_pointer(&(config_file->c_info));
 	free_pointer(&(config_file->f_info));
+	free_map(config_file);
 }

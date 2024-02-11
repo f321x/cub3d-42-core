@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:35:08 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/09 14:03:06 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/11 15:37:21 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef PARSING_H
+# define PARSING_H
+
+# include <stdbool.h>
+# include <fcntl.h>
+# include <string.h>
+# include <errno.h>
+# include "libft.h"
+# include "get_next_line.h"
+# include "cub3d.h"
+
+typedef struct s_map t_map;
+
 
 typedef enum e_type_id
 {
@@ -30,6 +42,11 @@ typedef enum e_error
 	WRONG_CONFIG_FILE_TYPE_ID,
 	INAVLID_CONFIG_FILE_EXTENSION,
 	NOT_ALL_TYPE_IDS_FOUND,
+	INVALID_MAP_CHAR,
+	MAP_TOO_BIG,
+	NO_PLAYER,
+	MULTI_PLAYER,
+	MAP_NOT_SURROUNDED_BY_WALLS,
 }	t_err;
 
 typedef struct s_rgb
@@ -61,6 +78,7 @@ typedef struct s_config_file
 	t_rgb			c_color;
 	t_id			current_id;
 	t_err			error;
+	t_map			*map;
 }	t_conf_file;
 
 // parsing_main.c
@@ -105,5 +123,16 @@ bool	parse_type_ids(t_conf_file *config_file);
 // parse_type_ids_2.c
 bool	id_is_valid(t_conf_file *config_file, char *first_three_chars);
 
+bool	copy_map(t_conf_file *conf_file, t_line *result);
+bool	parse_map(t_conf_file *conf_file);
+
+
+
+void	print_map_plan(t_conf_file const *conf_file, char map[MAX_ROW_NUM][MAX_COLUMN_NUM]);
+void	print_test(t_conf_file config_file);
+
+
 // open_config_file.c
 bool	open_config_file(t_conf_file *config_file);
+
+#endif

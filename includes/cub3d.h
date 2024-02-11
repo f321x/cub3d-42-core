@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/09 15:18:57 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/11 15:40:40 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,30 +23,37 @@
 # include "MLX42.h"
 # include "libft.h"
 # include "get_next_line.h"
-# include "parsing.h"
 
 // Initial window size
 #define WINDOW_WIDTH 1024
 #define WINDOW_HEIGHT 1024
 
-// check when parsing if map is too big, throw error.
-#define MAX_MAP_X_WIDTH 	1000
-#define MAX_MAP_Y_HEIGHT	1000
+#define MAX_COLUMN_NUM	1000
+#define MAX_ROW_NUM		1000
+
+# include "parsing.h"
 
 typedef enum e_field {
-	EMPTY,
-	WALL,
-	NORTH,
-	SOUTH,
-	EAST,
-	WEST,
-	NONE  // initialize array with none
+	EMPTY = '0',
+	SPACE = ' ',
+	WALL = '1',
+	NORTH = 'N',
+	SOUTH = 'S',
+	EAST = 'E',
+	WEST = 'W',
+	NEW_LINE = '\n',
+	INIT = '-',
 } t_field;
 
 typedef struct s_map {
-	size_t	amount_y_rows;		// amount of actual used y rows
-	size_t	amount_x_rows[MAX_MAP_Y_HEIGHT];  // stores the x length of the current y row
-	t_field	map[MAX_MAP_Y_HEIGHT][MAX_MAP_X_WIDTH];  // contains the kind of map element (enum) at Y/X
+	size_t	rows_num;
+	size_t	columns_per_row[MAX_ROW_NUM];
+	size_t	max_columns_num;
+	char	map_plan[MAX_ROW_NUM][MAX_COLUMN_NUM];
+	char	map_copy[MAX_ROW_NUM][MAX_COLUMN_NUM];
+	size_t	player_coord[2];
+	bool	is_player;
+	bool	is_map_valid;
 }	t_map;
 
 typedef struct s_window_frame {

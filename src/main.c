@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:07 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/09 15:28:49 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/11 14:55:43 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ int	main(int argc, char **argv)
 
 	if (!parse_config_file(argc, argv, &config_file))
 		return (config_file.error);
+	print_test(config_file);
+	print_map_plan(&config_file, config_file.map->map_plan);
+	print_map_plan(&config_file, config_file.map->map_copy);
+	free_config_file_members(&config_file);
 
 	mlx_image_to_window(gui.window, gui.frame, 0, 0);
 	mlx_loop(gui.window);
