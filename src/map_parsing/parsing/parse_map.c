@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 15:55:38 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/10 16:56:12 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/11 12:56:25 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ bool	is_char_valid(t_conf_file *conf_file, size_t i, size_t j)
 	char	cur_char;
 
 	cur_char = conf_file->map->map_plan[i][j];
-	if (cur_char == NONE)
+	if (cur_char != SPACE && cur_char != NEW_LINE
+		&& cur_char != WALL && cur_char != EMPTY && cur_char != NORTH
+		&& cur_char != SOUTH && cur_char != WEST && cur_char != EAST)
 	{
 		conf_file->error = INVALID_MAP_CHAR;
 		print_err_msg("Invalid character in map", "", "");
@@ -97,83 +99,38 @@ bool	all_valid_chars(t_conf_file *conf_file)
 	return (true);
 }
 
-// bool	check_next_coord(t_conf_file *conf_file, int x, int y)
-// {
-// 	t_field		field;
-// 	static bool	is_wsp = false;
-// 	static bool	is_closed = true;
-// 	// printf("x = %d\n", x);
-// 	// printf("y = %d\n", y);
-// 	field = conf_file->map->map_plan[y][x];
-// 	if (field ==  WSP || field == NEW_LINE || field == INIT)
-// 	{
-// 		is_wsp = true;
-// 		// return (false);
-// 	}
-// 	// if (field == WALL || field == INIT)
-// 	// 	return (true);
-// 	if (field == WALL)
-// 		return (true);
-// 	if (x < 0 || x > (int)conf_file->map->columns_per_row[y] - 1)
-// 		return (false);
-// 	if (y < 0 || y > (int)conf_file->map->rows_num - 1)
-// 		return (false);
-// 	if ((x == 0 || x == (int)conf_file->map->columns_per_row[y] - 1) && field != WALL)
-// 	{
-// 		is_closed = false;
-// 	}
-// 	if ((y == 0 || y == (int)conf_file->map->rows_num - 1) && field != WALL)
-// 	{
-// 		is_closed = false;
-// 	}
-// 	printf("field = %d\n", field);
-// 	// print_map_plan(conf_file);
-// 	// printf("---------------------\n");
-// 	conf_file->map->map_plan[y][x] = WALL;
-// 	print_map_plan(conf_file);
-// 	printf("---------------------\n");
-// 	check_next_coord(conf_file, x, y - 1);
-// 	check_next_coord(conf_file, x, y + 1);
-// 	check_next_coord(conf_file, x + 1, y);
-// 	check_next_coord(conf_file, x - 1, y);
-// 	if (!is_wsp && is_closed)
-// 		return (true);
-// 	else
-// 		return (false);
-// }
-
 void	check_next_coord(t_conf_file *conf_file, int x, int y)
 {
-	t_field		field;
+	char		field;
 	static bool	is_wsp = false;
 	static bool	is_closed = true;
 
 	field = conf_file->map->map_copy[y][x];
-	if (field ==  WSP || field == NEW_LINE || field == INIT)
+	if (field ==  SPACE || field == NEW_LINE || field == INIT)
 		is_wsp = true;
-	if (field == WALL || field == TEST)
+	if (field == '1' || field == 'X')
 		return ;
 	if (x < 0 || x > (int)conf_file->map->columns_per_row[y] - 1)
 		return ;
 	if (y < 0 || y > (int)conf_file->map->rows_num - 1)
 		return ;
 	if ((x == 0 || x == (int)conf_file->map->columns_per_row[y] - 1)
-		&& field != WALL)
+		&& field != '1')
 		is_closed = false;
-	if ((y == 0 || y == (int)conf_file->map->rows_num - 1) && field != WALL)
+	if ((y == 0 || y == (int)conf_file->map->rows_num - 1) && field != '1')
 		is_closed = false;
-	conf_file->map->map_copy[y][x] = WALL;
-	print_map_plan(conf_file, conf_file->map->map_copy);
-	printf("------------------------------------------------------\n");
+	conf_file->map->map_copy[y][x] = 'X';
 	check_next_coord(conf_file, x, y - 1);
 	check_next_coord(conf_file, x, y + 1);
 	check_next_coord(conf_file, x + 1, y);
 	check_next_coord(conf_file, x - 1, y);
 	if (!is_wsp && is_closed)
 		conf_file->map->is_map_valid = true;
+	else
+		conf_file->map->is_map_valid = false;
 }
 
-t_field (*duplicate_map_plan(t_conf_file const *conf_file, t_field(*map_copy_ptr)[MAX_ROW_NUM][MAX_COLUMN_NUM]))[MAX_ROW_NUM][MAX_COLUMN_NUM]
+char (*duplicate_map_plan(t_conf_file const *conf_file, char(*map_copy_ptr)[MAX_ROW_NUM][MAX_COLUMN_NUM]))[MAX_ROW_NUM][MAX_COLUMN_NUM]
 {
 	size_t	i;
 	size_t	j;
@@ -216,9 +173,6 @@ bool	parse_map(t_conf_file *conf_file)
 	if (!all_valid_chars(conf_file))
 		return (false);
 	if (!is_map_closed(conf_file))
-	{
-		//free();
 		return (false);
-	}
 	return (true);
 }

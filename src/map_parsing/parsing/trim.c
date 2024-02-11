@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:43:05 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/06 10:59:50 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/11 13:28:24 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	*move_to_first_wsp(t_line *results)
 
 char	*trim_final_new_line_char(char *info)
 {
-	if (info[ft_strlen(info) - 1] == '\n')
+	if (ft_strlen(info) && (info[ft_strlen(info) - 1] == '\n'))
 		info = ft_substr(info, 0, ft_strlen(info) - 1);
 	else
 		info = ft_strdup(info);

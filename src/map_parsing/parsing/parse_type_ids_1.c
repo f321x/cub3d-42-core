@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 11:32:21 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/10 07:47:08 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/11 13:39:29 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ bool	parse_cur_line(t_conf_file *conf_file, char *trim_line, t_line *results)
 	{
 		free_pointer(&(results->remainder));
 		free_pointer(&(results->current_line));
-		// free_config_file_members(conf_file);
 		close(conf_file->fd);
 		return (false);
 	}
@@ -78,7 +77,6 @@ bool	store_map(t_conf_file *config_file, t_line *results)
 	{
 		free_pointer(&(results->remainder));
 		free_pointer(&(results->current_line));
-		// free_config_file_members(config_file);
 		close(config_file->fd);
 		return (false);
 	}
