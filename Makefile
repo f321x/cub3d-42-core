@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+         #
+#    By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 14:27:39 by fahmadia          #+#    #+#              #
-#    Updated: 2024/02/09 15:27:27 by fbock            ###   ########.fr        #
+#    Updated: 2024/02/11 15:19:31 by fahmadia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,9 @@ SRCS 	:= $(SRCDIR)/main.c\
 	$(SRCDIR)/map_parsing/parsing/trim.c\
 	$(SRCDIR)/map_parsing/parsing/type_id_info.c\
 	$(SRCDIR)/map_parsing/parsing/open_config_file.c\
+	$(SRCDIR)/map_parsing/parsing/copy_map.c\
+	$(SRCDIR)/map_parsing/parsing/test.c\
+	$(SRCDIR)/map_parsing/parsing/parse_map.c\
 
 OBJS	:= $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SRCS))
 DOBJS   := $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.d.o,$(SRCS))

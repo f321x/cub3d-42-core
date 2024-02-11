@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_error_message.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:41:29 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/09 14:08:11 by fbock            ###   ########.fr       */
+/*   Updated: 2024/02/11 14:54:24 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

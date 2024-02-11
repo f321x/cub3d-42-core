@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trim.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:43:05 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/09 14:08:19 by fbock            ###   ########.fr       */
+/*   Updated: 2024/02/11 14:54:45 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	*move_to_first_wsp(t_line *results)
 
 char	*trim_final_new_line_char(char *info)
 {
-	if (info[ft_strlen(info) - 1] == '\n')
+	if (ft_strlen(info) && (info[ft_strlen(info) - 1] == '\n'))
 		info = ft_substr(info, 0, ft_strlen(info) - 1);
 	else
 		info = ft_strdup(info);
