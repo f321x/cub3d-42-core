@@ -6,36 +6,11 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 09:44:54 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/10 15:51:53 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/11 13:31:34 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
-
-t_field	setField(char current_char)
-{
-	t_field	field;
-
-	if (current_char == ' ' || current_char == '\t')
-		field = WSP;
-	else if (current_char == '1')
-		field = WALL;
-	else if (current_char == '0')
-		field = EMPTY;
-	else if (current_char == 'N')
-		field = NORTH;
-	else if (current_char == 'S')
-		field = SOUTH;
-	else if (current_char == 'E')
-		field = EAST;
-	else if (current_char == 'W')
-		field = WEST;
-	else if (current_char == '\n')
-		field = NEW_LINE;
-	else
-		field = NONE;
-	return field;
-}
 
 bool	is_map_size_correct(t_conf_file *conf_file, int row, char *current_line)
 {
@@ -52,50 +27,20 @@ bool	copy_char_by_char(t_conf_file *conf_file, char *current_line)
 {
 	int			i;
 	static int	row = 0;
-	t_field		field;
 
 	i = 0;
 	if (!is_map_size_correct(conf_file, row, current_line))
 		return (false);
 	while (current_line[i])
 	{
-		// if (current_line[i] == '\n')
-		// {
-		// 	conf_file->map->map_plan[row][i] = NEW_LINE;
-		// 	break ;
-		// }
-		
-		field = setField(current_line[i]);
-		conf_file->map->map_plan[row][i] = field;
-		if (current_line[i] == '\n')
-			break ;
+		conf_file->map->map_plan[row][i] = current_line[i];
 		i++;
 	}
 	row++;
 	return (true);
 }
 
-// void	init_map_plan(t_field (*map_plan)[MAX_MAP_X_WIDTH][MAX_MAP_Y_HEIGHT])
-// {
-// 	int	i;
-// 	int	j;
-
-// 	i = 0;
-// 	while (i < MAX_MAP_X_WIDTH)
-// 	{
-// 		j = 0;
-// 		while (j < MAX_MAP_Y_HEIGHT)
-// 		{
-// 			(*map_plan)[i][j] = NONE;
-// 			j++;
-// 		}
-		
-// 		i++;
-// 	}
-	
-// }
-
-void	init_map_plan(t_field (*map_plan)[MAX_COLUMN_NUM])
+void	init_map_plan(char (*map_plan)[MAX_COLUMN_NUM])
 {
 	int	i;
 
@@ -107,7 +52,7 @@ void	init_map_plan(t_field (*map_plan)[MAX_COLUMN_NUM])
 	}
 }
 
-bool	is_row_empty(t_field *row)
+bool	is_row_empty(char *row)
 {
 	int	column;
 
@@ -120,6 +65,7 @@ bool	is_row_empty(t_field *row)
 	}
 	return (true);
 }
+
 
 
 size_t	get_row_num(t_conf_file *conf_file)
@@ -136,6 +82,20 @@ size_t	get_row_num(t_conf_file *conf_file)
 	return (row_num);
 }
 
+bool	is_other_char(char *row, size_t column)
+{
+	size_t	i;
+
+	i = 0;
+	while ((i < MAX_COLUMN_NUM - column - 1) && row[i] != NEW_LINE)
+	{
+		if (row[i + column] != INIT)
+			return (true);
+		i++;
+	}
+	return (false);
+}
+
 void	get_column_nums(t_conf_file *conf_file)
 {
 	int		row;
@@ -150,8 +110,11 @@ void	get_column_nums(t_conf_file *conf_file)
 		{
 			if (conf_file->map->map_plan[row][column] == INIT)
 			{
-				conf_file->map->columns_per_row[row] = column;
-				break ;
+				if (!is_other_char(conf_file->map->map_plan[row], column))
+				{
+					conf_file->map->columns_per_row[row] = column;
+					break ;
+				}
 			}
 			column++;
 		}
