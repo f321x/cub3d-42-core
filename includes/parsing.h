@@ -6,7 +6,7 @@
 /*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:35:08 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/10 16:09:38 by fahmadia         ###   ########.fr       */
+/*   Updated: 2024/02/10 17:35:29 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ bool	parse_map(t_conf_file *conf_file);
 
 
 
-void	print_map_plan(t_conf_file const *conf_file, t_field map[MAX_ROW_NUM][MAX_COLUMN_NUM]);
+void	print_map_plan(t_conf_file const *conf_file, char map[MAX_ROW_NUM][MAX_COLUMN_NUM]);
 void	print_test(t_conf_file config_file);
 
 

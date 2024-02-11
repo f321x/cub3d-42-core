@@ -6,7 +6,7 @@
 #    By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 14:27:39 by fahmadia          #+#    #+#              #
-#    Updated: 2024/02/09 15:56:38 by fahmadia         ###   ########.fr        #
+#    Updated: 2024/02/11 13:32:21 by fahmadia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRCS = main.c\
 	type_id_info.c\
 	open_config_file.c\
 	copy_map.c\
-	parse_map.c
+	parse_map.c\
+	test.c\
 
 VPATH = ./src\
 	./src/map_parsing\

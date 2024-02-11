@@ -6,7 +6,7 @@
 /*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:47:05 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/06 11:03:12 by fahmadia         ###   ########.fr       */
+/*   Updated: 2024/02/11 13:25:57 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	store_type_id_info(t_conf_file *conf_file, t_line *results)
 	free(temp);
 	cur_info_ptr = map_id_to_info_str_address(conf_file, conf_file->current_id);
 	*cur_info_ptr = ft_strdup(info);
-	free(info);
+	free_pointer(&info);
 	info = NULL;
 	return ;
 }
