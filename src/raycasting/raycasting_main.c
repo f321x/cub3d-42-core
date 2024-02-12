@@ -6,14 +6,14 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/12 12:45:33 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/12 12:47:09 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 // draft, not final
-void calculate_ray(int map[][], int pos[2], int dir_v[2])
+void calculate_ray(int map[][], int pos_xy[2], int dir_v_xy[2])
 {
 
 	return;
