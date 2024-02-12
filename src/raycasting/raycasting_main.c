@@ -6,17 +6,24 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/12 19:52:24 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/12 20:27:04 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 typedef struct s_ray {
-	double
-	double
-	double
+	double	camera_x_point;
+	double	ray_dir_x;
+	double	ray_dir_y;
 } t_ray;
+
+typedef struct s_player_pos {
+	double	player_pos_x;
+	double	player_pos_y;
+	double	player_dir_x;
+	double	player_dir_y;
+}	t_player_pos;
 
 // The ray starts at the position of the player (posX, posY).
 
@@ -32,14 +39,31 @@ typedef struct s_ray {
 // Calculate each ray for a single player position and direction
 // The ray dir is calculated for each x line of the frame
 
-t_ray	calc_ray_direction(double ) {
+t_ray	calc_ray_direction(int current_x, int width, t_player_pos p)
+{
+	t_ray	current_ray;
 
+	current_ray.camera_x_point = 2 * (double)current_x
+								/ (double)width - 1;
+	current_ray.ray_dir_x = p.player_pos_x + p.player_dir_x
+							* current_ray.camera_x_point;
+	current_ray.ray_dir_y = p.player_pos_y + p.player_dir_y
+							* current_ray.camera_x_point;
+	return (current_ray);
 }
 
 // draft, not final
-void calculate_ray(int map[][], int pos_xy[2], int dir_v_xy[2])
+t_ray	*calculate_rays(int frame_width, t_player_pos current_player_pos)
 {
+	int		current_x;
+	t_ray	*frame_rays;
 
-
-	return ;
+	frame_rays = malloc(sizeof(t_ray) * frame_width);
+	if (!frame_rays)
+		return (NULL);  // catch error later, tbd
+	current_x = 0;
+	while (current_x < frame_width)
+		frame_rays[current_x] = calc_ray_direction(current_x,
+								frame_width, current_player_pos);
+	return (frame_rays);  // heap, has to be freed!, NULL check needed!
 }
