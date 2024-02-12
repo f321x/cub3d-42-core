@@ -6,8 +6,15 @@
 /*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/05 14:47:46 by fbock            ###   ########.fr       */
+/*   Updated: 2024/02/12 12:45:33 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+// draft, not final
+void calculate_ray(int map[][], int pos[2], int dir_v[2])
+{
+
+	return;
+}
