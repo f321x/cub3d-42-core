@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/14 15:10:27 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/14 15:23:59 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,9 @@ typedef struct s_ray_steps {
 //       double rayDirX = dirX + planeX * cameraX;
 //       double rayDirY = dirY + planeY * cameraX;
 
-t_ray_steps	calc_ray_step_distances(double ray_dir_x, double ray_dir_y)
-{
-	t_ray_steps	ray_step_distance;
-
-	ray_step_distance.delta_dist_x = sqrt(1 + (ray_dir_x * ray_dir_y)
-											/ (ray_dir_x * ray_dir_x));
-	ray_step_distance.delta_dist_y = sqrt(1 + (ray_dir_x * ray_dir_x)
-											/ (ray_dir_y * ray_dir_y));
-	return (ray_step_distance);
-}
 
 // Calculate each ray for a single player position and direction
 // The ray dir is calculated for each x line of the frame
-
 t_ray	calc_ray_direction(int current_x, int width, t_player_pos p)
 {
 	t_ray	current_ray;
@@ -82,4 +71,17 @@ t_ray	*calculate_rays(int frame_width, t_player_pos current_player_pos)
 		frame_rays[current_x] = calc_ray_direction(current_x,
 								frame_width, current_player_pos);
 	return (frame_rays);  // heap, has to be freed!, NULL check needed!
+}
+
+// calculates the distance for the ray from one square wall to
+// another on x and y axis.
+// we can use 1 instead of len of ray dir X/Y, because only the *ratio* between
+// delta_dist_x and delta_dist_y matters for the DDA.
+t_ray_steps	calc_ray_step_distances(double ray_dir_x, double ray_dir_y)
+{
+	t_ray_steps	ray_step_distance;
+
+	ray_step_distance.delta_dist_x = fabs(1 / ray_dir_x);
+	ray_step_distance.delta_dist_y = fabs(1 / ray_dir_y);
+	return (ray_step_distance);
 }
