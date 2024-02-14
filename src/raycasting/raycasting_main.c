@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/12 20:27:04 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/14 15:10:27 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ typedef struct s_player_pos {
 	double	player_dir_y;
 }	t_player_pos;
 
+typedef struct s_ray_steps {
+	double delta_dist_x;
+	double delta_dist_y;
+}	t_ray_steps;
+
 // The ray starts at the position of the player (posX, posY).
 
 // cameraX is the x-coordinate on the camera plane that the current x-coordinate of the screen represents, done this way so that the right side of the screen will get coordinate 1, the center of the screen gets coordinate 0, and the left side of the screen gets coordinate -1. Out of this, the direction of the ray can be calculated as was explained earlier: as the sum of the direction vector, and a part of the plane vector. This has to be done both for the x and y coordinate of the vector (since adding two vectors is adding their x-coordinates, and adding their y-coordinates).
@@ -35,6 +40,17 @@ typedef struct s_player_pos {
 //       double cameraX = 2 * x / double(w) - 1; //x-coordinate in camera space
 //       double rayDirX = dirX + planeX * cameraX;
 //       double rayDirY = dirY + planeY * cameraX;
+
+t_ray_steps	calc_ray_step_distances(double ray_dir_x, double ray_dir_y)
+{
+	t_ray_steps	ray_step_distance;
+
+	ray_step_distance.delta_dist_x = sqrt(1 + (ray_dir_x * ray_dir_y)
+											/ (ray_dir_x * ray_dir_x));
+	ray_step_distance.delta_dist_y = sqrt(1 + (ray_dir_x * ray_dir_x)
+											/ (ray_dir_y * ray_dir_y));
+	return (ray_step_distance);
+}
 
 // Calculate each ray for a single player position and direction
 // The ray dir is calculated for each x line of the frame
