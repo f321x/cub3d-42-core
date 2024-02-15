@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/15 12:34:09 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/15 13:02:04 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,19 +140,19 @@ void	dda(t_map map, t_init_step step, t_player_pos pl)
 		{
 			step.init_dist_x += pl.delta_dist_x;
 			pl.map_x += step.step_dir_x;
-			side = 0;
+			side = 0;  // assign east west if step_dir_x > 0
 		}
 		else
 		{
 			step.init_dist_y += pl.delta_dist_y;
 			pl.map_y += step.step_dir_y;
-			side = 1;
+			side = 1;  // assign south or north if step_dir_y > 0
 		}
 		if (map.map_plan[pl.map_x][pl.map_y] == WALL)  // is this the correct map?
 			wall = true;
 	}
 	// return something useful
-	XYZ
+	return
 }
 
 // calculates the distance from the perpendicular ray between the camera plane
@@ -199,5 +199,8 @@ t_wall	calculate_wall_height(double dist, int frame_height)
 	return (wall);
 }
 
-
+void	raycast_frame()
+{
+	combine everything and decide on variables/parameters to pass
+}
 
