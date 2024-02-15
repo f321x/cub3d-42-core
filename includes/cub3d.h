@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/11 15:40:40 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/15 09:36:55 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_map {
 	size_t	rows_num;
 	size_t	columns_per_row[MAX_ROW_NUM];
 	size_t	max_columns_num;
-	char	map_plan[MAX_ROW_NUM][MAX_COLUMN_NUM];
+	char	map_plan[MAX_ROW_NUM][MAX_COLUMN_NUM];  // shouldn't this be defined as t_field enum instead of char?
 	char	map_copy[MAX_ROW_NUM][MAX_COLUMN_NUM];
 	size_t	player_coord[2];
 	bool	is_player;
