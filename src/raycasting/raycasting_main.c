@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/14 18:06:30 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/15 09:34:20 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,4 +126,29 @@ t_init_step	calculate_initial_step_and_dist(t_ray ray, t_ray_steps steps,
 		init_dda_step.init_dist_y = (p.map_y + 1.0 - p.player_pos_y) * ray.delta_dist_y;
 	}
 	return (init_dda_step);
+}
+
+void	dda(t_map map, t_init_step step, t_player_pos pl)
+{
+	bool	wall;
+	int		side;
+
+	wall = false;
+	while (!wall)
+	{
+		if (step.init_dist_x < step.init_dist_y)
+		{
+			step.init_dist_x += pl.delta_dist_x;
+			pl.map_x += step.step_dir_x;
+			side = 0;
+		}
+		else
+		{
+			step.init_dist_y += pl.delta_dist_y;
+			pl.map_y += step.step_dir_y;
+			side = 1;
+		}
+		if (map.map_plan[pl.map_x][pl.map_y] == WALL)  // is this the correct map?
+			wall = true;
+	}
 }
