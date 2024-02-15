@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/15 15:58:19 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/15 15:58:56 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,6 @@ typedef struct s_player_pos {
 	int		map_x;
 	int		map_y;
 }	t_player_pos;
-
-// typedef struct s_ray_steps {
-
-// }	t_ray_steps;
-
-// The ray starts at the position of the player (posX, posY).
-
-// cameraX is the x-coordinate on the camera plane that the current x-coordinate of the screen represents, done this way so that the right side of the screen will get coordinate 1, the center of the screen gets coordinate 0, and the left side of the screen gets coordinate -1. Out of this, the direction of the ray can be calculated as was explained earlier: as the sum of the direction vector, and a part of the plane vector. This has to be done both for the x and y coordinate of the vector (since adding two vectors is adding their x-coordinates, and adding their y-coordinates).
-
-//     for(int x = 0; x < w; x++)
-//     {
-//       //calculate ray position and direction
-//       double cameraX = 2 * x / double(w) - 1; //x-coordinate in camera space
-//       double rayDirX = dirX + planeX * cameraX;
-//       double rayDirY = dirY + planeY * cameraX;
-
 
 // Calculate each ray for a single player position and direction
 // The ray dir is calculated for each x line of the frame
