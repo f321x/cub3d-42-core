@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/15 15:58:56 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/15 16:18:27 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,3 +179,8 @@ void	raycast_whole_frame(int frame_width, int frame_width, t_player_pos player, 
 	}
 	return (walls);
 }
+// tbd:
+// adding correct side (N,E,S,W)
+// textures ?
+// collision detection
+// moving -> changing coordinates
