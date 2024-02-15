@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/15 10:56:52 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/15 12:34:09 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,6 +178,7 @@ double	dist_from_hitpt_to_camera_plane(int	side_hit, t_init_step dda_calc_distan
 typedef struct s_wall {
 	int	wall_top_pixel;
 	int	wall_bottom_pixel;
+	int	direction;
 }	t_wall;
 
 // calculate the height of the wall to print to screen from the
@@ -197,3 +198,6 @@ t_wall	calculate_wall_height(double dist, int frame_height)
 		wall.wall_top_pixel = frame_height - 1;
 	return (wall);
 }
+
+
+
