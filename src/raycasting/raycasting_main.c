@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/15 09:39:59 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/15 10:56:52 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,4 +153,47 @@ void	dda(t_map map, t_init_step step, t_player_pos pl)
 	}
 	// return something useful
 	XYZ
+}
+
+// calculates the distance from the perpendicular ray between the camera plane
+// and the hitpoint in the wall determined by the dda algorithm
+double	dist_from_hitpt_to_camera_plane(int	side_hit, t_init_step dda_calc_distance,
+										t_player_pos pl)
+{
+	double	perpendicular_wall_to_cp_distance;
+
+	if (side_hit == 0)
+	{
+		perpendicular_wall_to_cp_distance = dda_calc_distance.init_dist_x
+											- pl.delta_dist_x;
+	}
+	else
+	{
+		perpendicular_wall_to_cp_distance = dda_calc_distance.init_dist_y
+											- pl.delta_dist_y;
+	}
+	return (perpendicular_wall_to_cp_distance);
+}
+
+typedef struct s_wall {
+	int	wall_top_pixel;
+	int	wall_bottom_pixel;
+}	t_wall;
+
+// calculate the height of the wall to print to screen from the
+// perpendicular distance btw wall hit point and camera plane
+// (returned by dist_from_hitpt_to_camera_plane())
+t_wall	calculate_wall_height(double dist, int frame_height)
+{
+	int		wall_height;
+	t_wall 	wall;
+
+	wall_height = (int)(frame_height / dist);
+	wall.wall_bottom_pixel = (-wall_height / 2) + (frame_height / 2);
+	if (wall.wall_bottom_pixel < 0)
+		wall.wall_bottom_pixel = 0;
+	wall.wall_top_pixel = (wall_height / 2) + (frame_height / 2);
+	if (wall.wall_top_pixel >= frame_height)
+		wall.wall_top_pixel = frame_height - 1;
+	return (wall);
 }
