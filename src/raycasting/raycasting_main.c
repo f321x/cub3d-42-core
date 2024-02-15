@@ -6,7 +6,7 @@
 /*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/15 15:58:56 by fbock            ###   ########.fr       */
+/*   Updated: 2024/02/15 16:18:27 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,3 +179,8 @@ void	raycast_whole_frame(int frame_width, int frame_width, t_player_pos player, 
 	}
 	return (walls);
 }
+// tbd:
+// adding correct side (N,E,S,W)
+// textures ?
+// collision detection
+// moving -> changing coordinates
