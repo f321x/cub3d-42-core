@@ -6,7 +6,7 @@
 /*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/15 09:34:20 by fbock            ###   ########.fr       */
+/*   Updated: 2024/02/15 09:39:59 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,4 +151,6 @@ void	dda(t_map map, t_init_step step, t_player_pos pl)
 		if (map.map_plan[pl.map_x][pl.map_y] == WALL)  // is this the correct map?
 			wall = true;
 	}
+	// return something useful
+	XYZ
 }
