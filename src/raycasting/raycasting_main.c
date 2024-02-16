@@ -6,7 +6,7 @@
 /*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/16 12:55:52 by fbock            ###   ########.fr       */
+/*   Updated: 2024/02/16 12:56:40 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,7 @@ void	raycast_whole_frame(int frame_width, int frame_width, t_player_pos player, 
 		dda(&parsed_map, &current_ray, &player);
 		dist_from_hitpt_to_camera_plane(&current_ray, &player);
 		walls[current_column] = calculate_wall_height(&current_ray, frame_height);
+		walls[current_column].direction = current_ray->hit_side_color;
 		current_column++;
 	}
 	return (walls);
