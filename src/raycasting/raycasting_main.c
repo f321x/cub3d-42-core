@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/15 16:18:27 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/16 12:55:52 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ typedef struct s_ray {
 	double	init_dist_y;
 	int		step_dir_x;
 	int		step_dir_y;
-	int		hit_side;
+	int		hit_side_bin;
+	int		hit_side_color;
 	double	perpendicular_wall_to_cp_distance;
 } t_ray;
 
@@ -104,12 +105,20 @@ void	dda(t_map *map, t_ray *ray, t_player_pos *pl)
 			ray->init_dist_x += pl->delta_dist_x;
 			pl->map_x += ray->step_dir_x;
 			ray->hit_side = 0;  // assign east west if step_dir_x > 0
+			if (ray->step_dir_x > 0)
+				ray->hit_side_color = EAST  // dir not checked, check later.
+			else
+				ray->hit_side_color = WEST  // dir not checked, check later.
 		}
 		else
 		{
 			ray->init_dist_y += pl->delta_dist_y;
 			pl->map_y += ray->step_dir_y;
 			ray->hit_side = 1;  // assign south or north if step_dir_y > 0
+			if (ray->step_dir_y > 0)
+				ray->hit_side_color = SOUTH // dir not checked, check later.
+			else
+				ray->hit_side_color = NORTH  // dir not checked, check later.
 		}
 		if (map->map_plan[pl->map_x][pl->map_y] == WALL)  // is this the correct map?
 			wall = true;
