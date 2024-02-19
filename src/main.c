@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:07 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/19 13:19:50 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/19 15:56:32 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,8 @@ int	main(int argc, char **argv)
 	print_test(config_file);
 	print_map_plan(&config_file, config_file.map->map_plan);
 	print_map_plan(&config_file, config_file.map->map_copy);
-	free_config_file_members(&config_file);
 
-	mlx_image_to_window(gui.window, gui.frame, 0, 0);
+	// mlx_image_to_window(gui.window, gui.frame, 0, 0);
 
 	t_player_pos	p;
 	p.player_pos_x = (double)config_file.map->player_coord[0];
@@ -44,9 +43,10 @@ int	main(int argc, char **argv)
 	p.map_x = config_file.map->player_coord[0];
 	p.map_y = config_file.map->player_coord[1];
 
-	draw_a_cast(&gui, *(config_file.map), p);
+	draw_image(&gui, *(config_file.map), p);
 
 	mlx_loop(gui.window);
 	end_program(&config_file, &gui);
+	free_config_file_members(&config_file);
 	return (0);
 }
