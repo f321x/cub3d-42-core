@@ -6,7 +6,7 @@
 /*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:41:39 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/06 16:15:54 by fbock            ###   ########.fr       */
+/*   Updated: 2024/02/19 16:04:03 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	init_gui(t_window_frame *gui)
 	gui->window = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d | fbock & fahmadia", true);
 	if (!(gui->window))
 		cleanup(gui);
+	gui->height = WINDOW_HEIGHT;
+	gui->width = WINDOW_WIDTH;
 	gui->frame = mlx_new_image(gui->window, WINDOW_WIDTH, WINDOW_HEIGHT);
 	if (!(gui->frame))
 	{
