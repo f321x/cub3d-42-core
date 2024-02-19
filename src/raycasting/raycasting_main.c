@@ -6,35 +6,11 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/19 10:07:10 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/19 12:10:11 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-typedef struct s_ray {
-	double	camera_x_point;
-	double	ray_dir_x;
-	double	ray_dir_y;
-	double 	delta_dist_x;
-	double 	delta_dist_y;
-	double	init_dist_x;
-	double	init_dist_y;
-	int		step_dir_x;
-	int		step_dir_y;
-	int		hit_side_bin;
-	int		hit_side_color;
-	double	perpendicular_wall_to_cp_distance;
-} t_ray;
-
-typedef struct s_player_pos {
-	double	player_pos_x;
-	double	player_pos_y;
-	double	player_dir_x;
-	double	player_dir_y;
-	int		map_x;
-	int		map_y;
-}	t_player_pos;
 
 // Calculate each ray for a single player position and direction
 // The ray dir is calculated for each x line of the frame
@@ -56,15 +32,6 @@ t_ray	calc_ray_direction(int current_x, int width, t_player_pos p)
 	current_ray.delta_dist_y = fabs(1 / current_ray.ray_dir_y);
 	return (current_ray);
 }
-
-// the doubles are the distance from the point to the first side of a square
-// the ints are the direction of the first step
-typedef struct s_init_step {
-	double	init_dist_x;
-	double	init_dist_y;
-	int		step_dir_x;
-	int		step_dir_y;
-}	t_init_step;
 
 // calculates the direction of the initial step for the dda
 // also calculates the initial distance from the ray point in the first
@@ -141,12 +108,6 @@ void	dist_from_hitpt_to_camera_plane(t_ray *ray,	t_player_pos *pl)
 	}
 }
 
-typedef struct s_wall {
-	int	wall_top_pixel;
-	int	wall_bottom_pixel;
-	int	direction;
-}	t_wall;
-
 // calculate the height of the wall to print to screen from the
 // perpendicular distance btw wall hit point and camera plane
 // (returned by dist_from_hitpt_to_camera_plane())
@@ -167,7 +128,7 @@ t_wall	calculate_wall_height(t_ray *current_ray, int frame_height)
 	return (wall);
 }
 
-void	raycast_whole_frame(int frame_width, int frame_height, t_player_pos player, t_map parsed_map)
+t_walls	*raycast_whole_frame(int frame_width, int frame_height, t_player_pos player, t_map parsed_map)
 {
 	t_wall		*walls;
 	t_ray		current_ray;
@@ -189,6 +150,7 @@ void	raycast_whole_frame(int frame_width, int frame_height, t_player_pos player,
 	}
 	return (walls);
 }
+
 // tbd:
 // adding correct side (N,E,S,W)
 // textures ?
