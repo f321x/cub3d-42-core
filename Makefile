@@ -6,7 +6,7 @@
 #    By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 14:27:39 by fahmadia          #+#    #+#              #
-#    Updated: 2024/02/19 12:05:54 by fbock            ###   ########.fr        #
+#    Updated: 2024/02/19 15:59:55 by fbock            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ libmlx:
 	@if [ ! -d "$(LIBMLX)" ]; then \
 		mkdir -p libs && \
 		git clone --depth 1 --branch v2.3.2 https://github.com/codam-coding-college/MLX42 $(LIBMLX) && \
-		cmake -S $(LIBMLX) -B $(LIBMLX)/build && \
+		cmake -DDEBUG=1 -S $(LIBMLX) -B $(LIBMLX)/build && \
 		make -C $(LIBMLX)/build -j4; \
 	fi
 
