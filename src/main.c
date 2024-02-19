@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:07 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/19 13:18:50 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/19 13:19:50 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ int	main(int argc, char **argv)
 
 	mlx_image_to_window(gui.window, gui.frame, 0, 0);
 
-	// t_player_pos	p;
-	// p.player_pos_x = (double)config_file.map->player_coord[0];
-	// p.player_pos_y = (double)config_file.map->player_coord[1];
-	// p.player_dir_x = 1.0;
-	// p.player_dir_y = 1.0;
-	// p.map_x = config_file.map->player_coord[0];
-	// p.map_y = config_file.map->player_coord[1];
+	t_player_pos	p;
+	p.player_pos_x = (double)config_file.map->player_coord[0];
+	p.player_pos_y = (double)config_file.map->player_coord[1];
+	p.player_dir_x = 1.0;
+	p.player_dir_y = 1.0;
+	p.map_x = config_file.map->player_coord[0];
+	p.map_y = config_file.map->player_coord[1];
 
-	// draw_a_cast(&gui, *(config_file.map), p);
+	draw_a_cast(&gui, *(config_file.map), p);
 
 	mlx_loop(gui.window);
 	end_program(&config_file, &gui);
