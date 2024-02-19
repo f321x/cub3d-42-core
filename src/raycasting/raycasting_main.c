@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/19 12:10:11 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/19 13:16:35 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,23 +69,23 @@ void	dda(t_map *map, t_ray *ray, t_player_pos *pl)
 	{
 		if (ray->init_dist_x < ray->init_dist_y)
 		{
-			ray->init_dist_x += pl->delta_dist_x;
+			ray->init_dist_x += ray->delta_dist_x;
 			pl->map_x += ray->step_dir_x;
-			ray->hit_side = 0;  // assign east west if step_dir_x > 0
+			ray->hit_side_bin = 0;  // assign east west if step_dir_x > 0
 			if (ray->step_dir_x > 0)
-				ray->hit_side_color = EAST  // dir not checked, check later.
+				ray->hit_side_color = EAST;  // dir not checked, check later.
 			else
-				ray->hit_side_color = WEST  // dir not checked, check later.
+				ray->hit_side_color = WEST;  // dir not checked, check later.
 		}
 		else
 		{
-			ray->init_dist_y += pl->delta_dist_y;
+			ray->init_dist_y += ray->delta_dist_y;
 			pl->map_y += ray->step_dir_y;
-			ray->hit_side = 1;  // assign south or north if step_dir_y > 0
+			ray->hit_side_bin = 1;  // assign south or north if step_dir_y > 0
 			if (ray->step_dir_y > 0)
-				ray->hit_side_color = SOUTH // dir not checked, check later.
+				ray->hit_side_color = SOUTH; // dir not checked, check later.
 			else
-				ray->hit_side_color = NORTH  // dir not checked, check later.
+				ray->hit_side_color = NORTH;  // dir not checked, check later.
 		}
 		if (map->map_plan[pl->map_x][pl->map_y] == WALL)  // is this the correct map?
 			wall = true;
@@ -96,15 +96,15 @@ void	dda(t_map *map, t_ray *ray, t_player_pos *pl)
 // and the hitpoint in the wall determined by the dda algorithm
 void	dist_from_hitpt_to_camera_plane(t_ray *ray,	t_player_pos *pl)
 {
-	if (ray->hit_side == 0)
+	if (ray->hit_side_bin == 0)
 	{
 		ray->perpendicular_wall_to_cp_distance = ray->init_dist_x
-											- pl->delta_dist_x;
+											- ray->delta_dist_x;
 	}
 	else
 	{
 		ray->perpendicular_wall_to_cp_distance = ray->init_dist_y
-											- pl->delta_dist_y;
+											- ray->delta_dist_y;
 	}
 }
 
@@ -128,7 +128,7 @@ t_wall	calculate_wall_height(t_ray *current_ray, int frame_height)
 	return (wall);
 }
 
-t_walls	*raycast_whole_frame(int frame_width, int frame_height, t_player_pos player, t_map parsed_map)
+t_wall	*raycast_whole_frame(int frame_width, int frame_height, t_player_pos player, t_map parsed_map)
 {
 	t_wall		*walls;
 	t_ray		current_ray;
@@ -145,7 +145,7 @@ t_walls	*raycast_whole_frame(int frame_width, int frame_height, t_player_pos pla
 		dda(&parsed_map, &current_ray, &player);
 		dist_from_hitpt_to_camera_plane(&current_ray, &player);
 		walls[current_column] = calculate_wall_height(&current_ray, frame_height);
-		walls[current_column].direction = current_ray->hit_side_color;
+		walls[current_column].direction = current_ray.hit_side_color;
 		current_column++;
 	}
 	return (walls);
