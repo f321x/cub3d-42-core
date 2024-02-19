@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 14:27:39 by fahmadia          #+#    #+#              #
-#    Updated: 2024/02/11 15:19:31 by fahmadia         ###   ########.fr        #
+#    Updated: 2024/02/19 12:05:54 by fbock            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRCS 	:= $(SRCDIR)/main.c\
 	$(SRCDIR)/map_parsing/parsing/copy_map.c\
 	$(SRCDIR)/map_parsing/parsing/test.c\
 	$(SRCDIR)/map_parsing/parsing/parse_map.c\
+	$(SRCDIR)/raycasting/raycasting_main.c\
 
 OBJS	:= $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SRCS))
 DOBJS   := $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.d.o,$(SRCS))

@@ -6,7 +6,7 @@
 /*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:16:25 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/09 15:10:51 by fbock            ###   ########.fr       */
+/*   Updated: 2024/02/19 12:15:10 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	resize_function(int32_t width, int32_t height, void *param)
 	gui->buffer = mlx_new_image(gui->window, width, height);
 	if (!gui->buffer)
 		cleanup(gui);
-
+	gui->width = width;
+	gui->height = height;
 	// generate_next_cub3d_frame(gui, gui->buffer);  tbd
 
 	if ((mlx_image_to_window(gui->window, gui->buffer, 0, 0)) < 0)
