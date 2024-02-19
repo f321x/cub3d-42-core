@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 13:32:42 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/02/11 15:42:29 by fahmadia         ###   ########.fr       */
+/*   Updated: 2024/02/19 16:35:56 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	print_map_number_of_columns_per_row(t_conf_file config_file)
 		printf("columns_per_row[%d]= %lu\n", i, config_file.map->columns_per_row[i]);
 		i++;
 	}
-	
+
 }
 
 void	print_test(t_conf_file config_file)
