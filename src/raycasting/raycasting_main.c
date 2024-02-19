@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/19 15:39:22 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/19 16:11:11 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	dda(t_map *map, t_ray *ray, t_player_pos *pl)
 			else
 				ray->hit_side_color = NORTH;  // dir not checked, check later.
 		}
-		if (map->map_plan[pl->map_x][pl->map_y] == WALL)  // is this the correct map?
+		if (map->map_plan[pl->map_y][pl->map_x] == WALL)  // is this the correct map?
 			wall = true;
 	}
 }
