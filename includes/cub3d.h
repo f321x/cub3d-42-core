@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/15 09:36:55 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/19 12:14:22 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,41 @@ typedef struct s_window_frame {
 	mlx_t			*window;
 	mlx_image_t		*frame;
 	mlx_image_t		*buffer;
+	int32_t			width;
+	int32_t			height;
 	double			mouse_x;
 	double			mouse_y;
 }	t_window_frame;
+
+typedef struct s_wall {
+	int	wall_top_pixel;
+	int	wall_bottom_pixel;
+	int	direction;
+}	t_wall;
+
+typedef struct s_ray {
+	double	camera_x_point;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	double 	delta_dist_x;
+	double 	delta_dist_y;
+	double	init_dist_x;
+	double	init_dist_y;
+	int		step_dir_x;
+	int		step_dir_y;
+	int		hit_side_bin;
+	int		hit_side_color;
+	double	perpendicular_wall_to_cp_distance;
+} t_ray;
+
+typedef struct s_player_pos {
+	double	player_pos_x;
+	double	player_pos_y;
+	double	player_dir_x;
+	double	player_dir_y;
+	int		map_x;
+	int		map_y;
+}	t_player_pos;
 
 // mlx_handlers/handlers_main.c
 void	init_hooks(t_window_frame *gui);
@@ -74,3 +106,11 @@ void	resize_function(int32_t width, int32_t height, void *param);
 void	scrolling_handler(double xdelta, double ydelta, void *param);
 void	mouse_position_handler(double xpos, double ypos, void *param);
 void	key_handler(mlx_key_data_t keydata, void *param);
+
+// raycasting_main.c
+t_walls	*raycast_whole_frame(int frame_width, int frame_height, t_player_pos player, t_map parsed_map);
+t_wall	calculate_wall_height(t_ray *current_ray, int frame_height);
+void	dist_from_hitpt_to_camera_plane(t_ray *ray,	t_player_pos *pl);
+void	dda(t_map *map, t_ray *ray, t_player_pos *pl);
+void	calculate_initial_step_and_dist(t_ray *ray, t_player_pos *p);
+t_ray	calc_ray_direction(int current_x, int width, t_player_pos p);
