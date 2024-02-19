@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:42:10 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/19 15:54:21 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/19 16:06:29 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,14 @@ void	draw_image(t_window_frame *gui, t_map map, t_player_pos p)
 
 	walls = raycast_whole_frame(gui->width, gui->height, p, map);
 	width_index = 0;
+	return ;
 
 	gui->buffer = mlx_new_image(gui->window, gui->width, gui->height);
 	if (!gui->buffer)
 		cleanup(gui);
+
+	return ;
+
 	while (width_index < gui->width)
 	{
 		height_index = 0;

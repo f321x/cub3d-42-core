@@ -6,14 +6,14 @@
 #    By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 14:27:39 by ***REMOVED***          #+#    #+#              #
-#    Updated: 2024/02/19 15:59:55 by ***REMOVED***            ###   ########.fr        #
+#    Updated: 2024/02/19 16:07:10 by ***REMOVED***            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= cub3d
 
 CC 		:= cc
-# CFLAGS 	:= -Wall -Wextra -Werror
+CFLAGS 	:= -g3 -fsanitize=address # -Wall -Wextra -Werror
 DFLAGS 	:= -g3 -fsanitize=address
 DNAME 	:= cub3d_debug
 
