@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:07 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/11 14:55:43 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/19 12:51:58 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,17 @@ int	main(int argc, char **argv)
 	free_config_file_members(&config_file);
 
 	mlx_image_to_window(gui.window, gui.frame, 0, 0);
+
+	t_player_pos	p;
+	p.player_pos_x = (double)conf_file.map->player_coord[0];
+	p.player_pos_y = (double)conf_file.map->player_coord[1];
+	p.player_dir_x = 1.0;
+	p.player_dir_y = 1.0;
+	p.map_x = conf_file.map->player_coord[0];
+	p.map_y = conf_file.map->player_coord[1];
+
+	draw_a_cast(&gui, config_file.map, &p);
+
 	mlx_loop(gui.window);
 	end_program(&config_file, &gui);
 	return (0);
