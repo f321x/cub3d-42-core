@@ -6,7 +6,7 @@
 /*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/19 13:16:14 by fbock            ###   ########.fr       */
+/*   Updated: 2024/02/19 15:56:27 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,4 +116,5 @@ void	calculate_initial_step_and_dist(t_ray *ray, t_player_pos *p);
 t_ray	calc_ray_direction(int current_x, int width, t_player_pos p);
 
 // drawing_main.c
-void	draw_a_cast(t_window_frame *gui, t_map map, t_player_pos p);
+void	draw_image(t_window_frame *gui, t_map map, t_player_pos p);
+void new_frame(t_window_frame *gui);
