@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/19 16:11:11 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/19 17:05:38 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	dda(t_map *map, t_ray *ray, t_player_pos *pl)
 	bool	wall;
 
 	wall = false;
+	// printf("map_y: %d | map_x: %d, value: %c\n", pl->map_y, pl->map_x, map->map_plan[pl->map_x][pl->map_y]);
 	while (!wall)
 	{
 		if (ray->init_dist_x < ray->init_dist_y)
@@ -87,7 +88,10 @@ void	dda(t_map *map, t_ray *ray, t_player_pos *pl)
 			else
 				ray->hit_side_color = NORTH;  // dir not checked, check later.
 		}
-		if (map->map_plan[pl->map_y][pl->map_x] == WALL)  // is this the correct map?
+		// printf("map_y: %d | map_x: %d, value: %c\n", pl->map_y, pl->map_x, map->map_plan[pl->map_x][pl->map_y]);
+		// if (map->map_plan[pl->map_x][pl->map_y] == '-')
+		// 	exit(0);
+		if (map->map_plan[pl->map_x][pl->map_y] == '1')  // is this the correct map?
 			wall = true;
 	}
 }
@@ -133,13 +137,17 @@ t_wall	*raycast_whole_frame(int frame_width, int frame_height, t_player_pos play
 	t_wall		*walls;
 	t_ray		current_ray;
 	int			current_column;
+	t_player_pos	buffer;
 
 	current_column = 0;
 	walls = malloc(sizeof(t_wall) * frame_width);
 	if (!walls)
 		return (NULL);
+
+	buffer = player;
 	while (current_column < frame_width)
 	{
+		player = buffer;
 		current_ray = calc_ray_direction(current_column, frame_width, player);
 		calculate_initial_step_and_dist(&current_ray, &player);
 		dda(&parsed_map, &current_ray, &player);
@@ -156,3 +164,5 @@ t_wall	*raycast_whole_frame(int frame_width, int frame_height, t_player_pos play
 // textures ?
 // collision detection
 // moving -> changing coordinates
+
+// https://chat.openai.com/share/d2d7e150-c68f-4007-a2a3-2c353f645987
