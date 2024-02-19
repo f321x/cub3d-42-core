@@ -6,7 +6,7 @@
 /*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/16 12:56:40 by fbock            ###   ########.fr       */
+/*   Updated: 2024/02/19 10:07:10 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,7 @@ t_wall	calculate_wall_height(t_ray *current_ray, int frame_height)
 	return (wall);
 }
 
-void	raycast_whole_frame(int frame_width, int frame_width, t_player_pos player, t_map parsed_map)
+void	raycast_whole_frame(int frame_width, int frame_height, t_player_pos player, t_map parsed_map)
 {
 	t_wall		*walls;
 	t_ray		current_ray;
