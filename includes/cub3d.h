@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/19 12:14:22 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/19 12:52:32 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,3 +114,6 @@ void	dist_from_hitpt_to_camera_plane(t_ray *ray,	t_player_pos *pl);
 void	dda(t_map *map, t_ray *ray, t_player_pos *pl);
 void	calculate_initial_step_and_dist(t_ray *ray, t_player_pos *p);
 t_ray	calc_ray_direction(int current_x, int width, t_player_pos p);
+
+// drawing_main.c
+void	draw_a_cast(t_window_frame *gui, t_map *map, t_player_pos *p);
