@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 13:32:42 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/11 15:42:29 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/19 16:35:56 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	print_map_number_of_columns_per_row(t_conf_file config_file)
 		printf("columns_per_row[%d]= %lu\n", i, config_file.map->columns_per_row[i]);
 		i++;
 	}
-	
+
 }
 
 void	print_test(t_conf_file config_file)
