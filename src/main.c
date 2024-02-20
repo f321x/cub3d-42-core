@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:07 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/19 16:57:45 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/20 10:23:27 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,13 @@ int	main(int argc, char **argv)
 	t_player_pos	p;
 	p.player_pos_x = (double)config_file.map->player_coord[0];
 	p.player_pos_y = (double)config_file.map->player_coord[1];
-	p.player_dir_x = 1.0;
-	p.player_dir_y = 1.0;
+	p.player_dir_x = -1.0;
+	p.player_dir_y = 0;
+	// vector is a bit longer than the camera plane, so the FOV will be smaller than 90° (more precisely, the FOV is
+	// 2 * atan(0.66/1.0)=66°, which is perfect for a first person shooter game). Later on when rotating around with the
+	// input keys, the values of dir and plane will be changed, but they'll always remain perpendicular and keep the same length.
+	p.camera_plane_x = 0;
+	p.camera_plane_y = 0.66;
 	p.map_x = config_file.map->player_coord[0];
 	p.map_y = config_file.map->player_coord[1];
 
