@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:07 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/20 15:39:05 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/20 16:01:39 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int	main(int argc, char **argv)
 	// print_map_plan(&config_file, config_file.map->map_copy);
 
 	init_player(&gui);
-
 	init_gui(&gui);
 	init_hooks(&gui);
 	mlx_loop(gui.window);
