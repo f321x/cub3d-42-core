@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/20 10:21:21 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/20 15:33:33 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,6 @@ typedef struct s_map {
 	bool	is_map_valid;
 }	t_map;
 
-typedef struct s_window_frame {
-	mlx_t			*window;
-	mlx_image_t		*frame;
-	mlx_image_t		*buffer;
-	int32_t			width;
-	int32_t			height;
-	double			mouse_x;
-	double			mouse_y;
-}	t_window_frame;
-
 typedef struct s_wall {
 	int	wall_top_pixel;
 	int	wall_bottom_pixel;
@@ -98,6 +88,18 @@ typedef struct s_player_pos {
 	int		map_y;
 }	t_player_pos;
 
+typedef struct s_window_frame {
+	mlx_t			*window;
+	mlx_image_t		*frame;
+	mlx_image_t		*buffer;
+	int32_t			width;
+	int32_t			height;
+	double			mouse_x;
+	double			mouse_y;
+	t_player_pos	player;
+	t_conf_file		config_file;
+}	t_window_frame;
+
 // mlx_handlers/handlers_main.c
 void	init_hooks(t_window_frame *gui);
 void	init_gui(t_window_frame *gui);
@@ -118,5 +120,5 @@ void	calculate_initial_step_and_dist(t_ray *ray, t_player_pos *p);
 t_ray	calc_ray_direction(int current_x, int width, t_player_pos p);
 
 // drawing_main.c
-void	draw_image(t_window_frame *gui, t_map map, t_player_pos p);
+void	draw_image(t_window_frame *gui);
 void new_frame(t_window_frame *gui);

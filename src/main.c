@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:07 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/20 13:32:10 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/20 15:39:05 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,41 +18,38 @@ static void	end_program(t_conf_file *conf_file, t_window_frame *gui)
 	free_config_file_members(conf_file);
 }
 
+static void	init_player(t_window_frame *gui)
+{
+	t_player_pos *p;
+
+	p = &(gui->player);
+	p->player_pos_x = (double)gui->config_file.map->player_coord[0];
+	p->player_pos_y = (double)gui->config_file.map->player_coord[1];
+	p->player_dir_x = -1.0;
+	p->player_dir_y = 0;
+
+	p->camera_plane_x = 0;
+	p->camera_plane_y = 0.66;
+	p->map_x = gui->config_file.map->player_coord[0];
+	p->map_y = gui->config_file.map->player_coord[1];
+}
+
 int	main(int argc, char **argv)
 {
 	t_window_frame gui;
 
-	t_conf_file	config_file;
+	if (!parse_config_file(argc, argv, &(gui.config_file)))
+		return (gui.config_file.error);
+	print_test(gui.config_file);
+	print_map_plan(&(gui.config_file), gui.config_file.map->map_plan);
+	// print_map_plan(&config_file, config_file.map->map_copy);
+
+	init_player(&gui);
 
 	init_gui(&gui);
 	init_hooks(&gui);
-
-	if (!parse_config_file(argc, argv, &config_file))
-		return (config_file.error);
-	print_test(config_file);
-	print_map_plan(&config_file, config_file.map->map_plan);
-	// print_map_plan(&config_file, config_file.map->map_copy);
-
-	mlx_image_to_window(gui.window, gui.frame, 0, 0);
-
-	t_player_pos	p;
-	p.player_pos_x = (double)config_file.map->player_coord[0];
-	p.player_pos_y = (double)config_file.map->player_coord[1];
-	p.player_dir_x = -1.0;
-	p.player_dir_y = 0;
-	// vector is a bit longer than the camera plane, so the FOV will be smaller than 90° (more precisely, the FOV is
-	// 2 * atan(0.66/1.0)=66°, which is perfect for a first person shooter game). Later on when rotating around with the
-	// input keys, the values of dir and plane will be changed, but they'll always remain perpendicular and keep the same length.
-	p.camera_plane_x = 0;
-	p.camera_plane_y = 0.66;
-	p.map_x = config_file.map->player_coord[0];
-	p.map_y = config_file.map->player_coord[1];
-	// printf("map_y: %d | map_x: %d\n", p.map_y, p.map_x);
-	draw_image(&gui, *(config_file.map), p);
-	new_frame(&gui);
-
 	mlx_loop(gui.window);
-	end_program(&config_file, &gui);
-	free_config_file_members(&config_file);
+	end_program(&(gui.config_file), &gui);
+	free_config_file_members(&(gui.config_file));
 	return (0);
 }

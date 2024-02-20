@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:41:39 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/19 16:04:03 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/20 15:26:23 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,14 @@ void	init_gui(t_window_frame *gui)
 		cleanup(gui);
 	gui->height = WINDOW_HEIGHT;
 	gui->width = WINDOW_WIDTH;
-	gui->frame = mlx_new_image(gui->window, WINDOW_WIDTH, WINDOW_HEIGHT);
-	if (!(gui->frame))
-	{
-		mlx_terminate(gui->window);
+
+	draw_image(gui);
+	if (!(gui->buffer))
 		cleanup(gui);
-	}
+	if ((mlx_image_to_window(gui->window, gui->buffer, 0, 0)) < 0)
+		cleanup(gui);
+	gui->frame = gui->buffer;
+	gui->buffer = NULL;
 }
 
 void	cleanup(t_window_frame *gui)
