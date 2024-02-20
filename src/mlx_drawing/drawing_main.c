@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:42:10 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/20 14:39:31 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/20 15:40:01 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ uint32_t	convert_rgba(int r, int g, int b, int a)
 	return (r << 24 | g << 16 | b << 8 | a);
 }
 
-void	draw_image(t_window_frame *gui, t_map map, t_player_pos p)
+void	draw_image(t_window_frame *gui)
 {
 	t_wall	*walls;
 	int		width_index;
@@ -25,7 +25,7 @@ void	draw_image(t_window_frame *gui, t_map map, t_player_pos p)
 	int32_t	pixel;
 
 	// printf("draw_image: map_y: %d | map_x: %d\n", p.map_y, p.map_x);
-	walls = raycast_whole_frame(gui->width, gui->height, p, map);
+	walls = raycast_whole_frame(gui->width, gui->height, gui->player, *(gui->config_file.map));
 	width_index = 0;
 
 	gui->buffer = mlx_new_image(gui->window, gui->width, gui->height);
