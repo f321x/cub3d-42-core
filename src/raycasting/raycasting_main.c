@@ -6,7 +6,7 @@
 /*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/20 14:43:17 by fbock            ###   ########.fr       */
+/*   Updated: 2024/02/20 15:28:23 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,8 @@ t_wall	*raycast_whole_frame(int frame_width, int frame_height, t_player_pos play
 	t_ray		current_ray;
 	int			current_column;
 	t_player_pos	buffer;
+
+
 
 	current_column = 0;
 	walls = malloc(sizeof(t_wall) * frame_width);
