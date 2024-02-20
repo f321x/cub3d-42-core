@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:07 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/20 10:23:27 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/20 13:32:10 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(int argc, char **argv)
 	p.camera_plane_y = 0.66;
 	p.map_x = config_file.map->player_coord[0];
 	p.map_y = config_file.map->player_coord[1];
-
+	// printf("map_y: %d | map_x: %d\n", p.map_y, p.map_x);
 	draw_image(&gui, *(config_file.map), p);
 	new_frame(&gui);
 

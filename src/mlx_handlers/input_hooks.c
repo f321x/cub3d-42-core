@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:16:25 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/19 12:15:10 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/20 14:46:29 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,12 @@ void	key_handler(mlx_key_data_t keydata, void *param)
 	t_window_frame	*gui;
 
 	gui = (t_window_frame *)param;
+	// right: 262
+	// left: 263
+	// w: 87
+	// a: 65
+	// s: 83
+	// d: 68
 	if (keydata.key == 256)
 	{
 		mlx_delete_image(gui->window, gui->frame);

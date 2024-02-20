@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/20 10:22:13 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/20 14:43:17 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,15 @@ t_ray	calc_ray_direction(int current_x, int width, t_player_pos p)
 
 	current_ray.camera_x_point = 2 * (double)current_x
 								/ (double)width - 1;
-
 	current_ray.ray_dir_x = p.player_dir_x + p.camera_plane_x
 							* current_ray.camera_x_point;
 	current_ray.ray_dir_y = p.player_dir_y + p.camera_plane_y
 							* current_ray.camera_x_point;
 
+	if (current_ray.ray_dir_x == 0)
+		current_ray.ray_dir_x = 0.00001;
+	if (current_ray.ray_dir_y == 0)
+		current_ray.ray_dir_y = 0.00001;
 	current_ray.delta_dist_x = fabs(1 / current_ray.ray_dir_x);
 	current_ray.delta_dist_y = fabs(1 / current_ray.ray_dir_y);
 	return (current_ray);
@@ -147,6 +150,7 @@ t_wall	*raycast_whole_frame(int frame_width, int frame_height, t_player_pos play
 		return (NULL);
 
 	buffer = player;
+	// printf("rcwf|| map_y: %d | map_x: %d\n", player.map_y, player.map_x);
 	while (current_column < frame_width)
 	{
 		player = buffer;

@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:42:10 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/19 17:02:24 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/20 14:39:31 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	draw_image(t_window_frame *gui, t_map map, t_player_pos p)
 	int		height_index;
 	int32_t	pixel;
 
+	// printf("draw_image: map_y: %d | map_x: %d\n", p.map_y, p.map_x);
 	walls = raycast_whole_frame(gui->width, gui->height, p, map);
 	width_index = 0;
 
@@ -31,11 +32,9 @@ void	draw_image(t_window_frame *gui, t_map map, t_player_pos p)
 	if (!gui->buffer)
 		cleanup(gui);
 
-	for (int i = 0; i < gui->width; i++) {
-		printf("Wall top: %d, wall bottom: %d \n", walls[i].wall_top_pixel, walls[i].wall_bottom_pixel);
-	}
-
-
+	// for (int i = 0; i < gui->width; i++) {
+	// 	printf("Wall top: %d, wall bottom: %d \n", walls[i].wall_top_pixel, walls[i].wall_bottom_pixel);
+	// }
 	while (width_index < gui->width)
 	{
 		height_index = 0;
@@ -53,6 +52,7 @@ void	draw_image(t_window_frame *gui, t_map map, t_player_pos p)
 		}
 		width_index++;
 	}
+	free(walls);
 }
 
 void new_frame(t_window_frame *gui)
