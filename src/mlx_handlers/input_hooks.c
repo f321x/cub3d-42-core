@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:16:25 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/21 12:58:43 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:16:42 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,8 @@ void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 		else
 			degree = atan(gui->player.player_dir_y / gui->player.player_dir_x);
 
-		dx = speed * cos(degree);
-		dy = speed * sin(degree);
+		dx = speed * cos(fabs(degree));
+		dy = speed * sin(fabs(degree));
 
 		// int player_new_y = gui->player.player_pos_y += dy;
 		// int player_new_x = gui->player.player_pos_x += dx;
@@ -158,8 +158,8 @@ void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 			degree = atan(gui->player.player_dir_y / gui->player.player_dir_x);
 		printf("degree = %f\n", degree * 180 / M_PI);
 		degree -= M_PI_2;
-		dx = speed * cos(degree);
-		dy = speed * sin(degree);
+		dx = speed * cos(fabs(degree));
+		dy = speed * sin(fabs(degree));
 
 		// int player_new_y = gui->player.player_pos_y += dy;
 		// int player_new_x = gui->player.player_pos_x += dx;
@@ -195,8 +195,8 @@ void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 		else
 			degree = atan(gui->player.player_dir_y / gui->player.player_dir_x);
 		degree -= M_PI_2;
-		dx = speed * cos(degree);
-		dy = speed * sin(degree);
+		dx = speed * cos(fabs(degree));
+		dy = speed * sin(fabs(degree));
 
 		// int player_new_y = gui->player.player_pos_y += dy;
 		// int player_new_x = gui->player.player_pos_x += dx;
