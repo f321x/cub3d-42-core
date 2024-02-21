@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/21 12:13:18 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/21 15:22:44 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,14 @@
 # include "get_next_line.h"
 
 // Initial window size
-#define WINDOW_WIDTH 1024
-#define WINDOW_HEIGHT 1024
+# define WINDOW_WIDTH 1024
+# define WINDOW_HEIGHT 1024
 
-#define MAX_COLUMN_NUM	1000
-#define MAX_ROW_NUM		1000
+# define MAX_COLUMN_NUM	1000
+# define MAX_ROW_NUM		1000
 
-#define ROTATION_SPEED_RAD 0.08
+# define ROTATION_SPEED_RAD 0.08
+# define SPEED 0.2
 
 # include "parsing.h"
 
