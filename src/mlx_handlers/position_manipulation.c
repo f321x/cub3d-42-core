@@ -6,7 +6,7 @@
 /*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 09:27:52 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/21 10:13:17 by fbock            ###   ########.fr       */
+/*   Updated: 2024/02/21 10:54:27 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void rotate(t_window_frame *gui, bool true_if_right)
 	double			rotation_rad;
 
 	if (true_if_right)
-		rotation_rad = ROTATION_SPEED_RAD;
-	else
 		rotation_rad = ROTATION_SPEED_RAD * (-1);
+	else
+		rotation_rad = ROTATION_SPEED_RAD;
 	rotation_calculation(gui->player.player_dir_x, gui->player.player_dir_y, rotation_rad, calc_result);
 	gui->player.player_dir_x = calc_result[0];
 	gui->player.player_dir_y = calc_result[1];
