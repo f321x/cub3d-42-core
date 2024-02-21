@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:07 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/20 15:39:05 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/21 09:56:25 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ static void	init_player(t_window_frame *gui)
 	p = &(gui->player);
 	p->player_pos_x = (double)gui->config_file.map->player_coord[0];
 	p->player_pos_y = (double)gui->config_file.map->player_coord[1];
-	p->player_dir_x = -1.0;
+	p->player_dir_x = -1;
 	p->player_dir_y = 0;
+	// p->player_dir_x = -1.0;
+	// p->player_dir_y = 0;
 
 	p->camera_plane_x = 0;
 	p->camera_plane_y = 0.66;
@@ -40,11 +42,20 @@ int	main(int argc, char **argv)
 
 	if (!parse_config_file(argc, argv, &(gui.config_file)))
 		return (gui.config_file.error);
-	print_test(gui.config_file);
-	print_map_plan(&(gui.config_file), gui.config_file.map->map_plan);
+
+
+
+	
+	// print_test(gui.config_file);
+	// print_map_plan(&(gui.config_file), gui.config_file.map->map_plan);
 	// print_map_plan(&config_file, config_file.map->map_copy);
 
 	init_player(&gui);
+	
+	printf("*************************************\n");
+	printf("gui->player.player_pos_y = %f\n", gui.player.player_pos_y);
+	printf("gui->player.player_pos_x %f\n", gui.player.player_pos_x);
+	printf("*************************************\n");
 
 	init_gui(&gui);
 	init_hooks(&gui);
