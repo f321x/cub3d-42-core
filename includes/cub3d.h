@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/21 11:03:50 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/21 12:13:18 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void	resize_function(int32_t width, int32_t height, void *param);
 // void	mouse_position_handler(double xpos, double ypos, void *param);
 void	key_handler(mlx_key_data_t keydata, void *param);
 
-// mlx_handlers/position_manipulation.
+// mlx_handlers/position_manipulation.c
 void rotate(t_window_frame *gui, bool true_if_right);
 
 // raycasting_main.c
@@ -127,3 +127,4 @@ t_ray	calc_ray_direction(int current_x, int width, t_player_pos p);
 // drawing_main.c
 void	draw_image(t_window_frame *gui);
 void new_frame(t_window_frame *gui);
+int32_t	convert_rgba(int r, int g, int b, int a);

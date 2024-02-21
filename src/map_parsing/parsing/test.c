@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 13:32:42 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/19 16:35:56 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/21 12:46:40 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ void	print_test(t_conf_file config_file)
 	printf("config_file.F_exist = %d\n", config_file.f_exist);
 	printf("config_file.all_type_id_found = %d\n", config_file.all_ids_found);
 	printf("config_file.current_type_id = %d\n", config_file.current_id);
-	printf("C_colors.r = %d\n", config_file.c_color.r);
-	printf("C_colors.g = %d\n", config_file.c_color.g);
-	printf("C_colors.b = %d\n", config_file.c_color.b);
-	printf("F_colors.r = %d\n", config_file.f_color.r);
-	printf("F_colors.g = %d\n", config_file.f_color.g);
-	printf("F_colors.b = %d\n", config_file.f_color.b);
+	// printf("C_colors.r = %d\n", config_file.c_color.r);
+	// printf("C_colors.g = %d\n", config_file.c_color.g);
+	// printf("C_colors.b = %d\n", config_file.c_color.b);
+	// printf("F_colors.r = %d\n", config_file.f_color.r);
+	// printf("F_colors.g = %d\n", config_file.f_color.g);
+	// printf("F_colors.b = %d\n", config_file.f_color.b);
 	printf("------------------------------------------------\n");
 	return ;
 }
