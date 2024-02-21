@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:16:25 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/21 13:16:42 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:07:30 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,8 +158,8 @@ void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 			degree = atan(gui->player.player_dir_y / gui->player.player_dir_x);
 		printf("degree = %f\n", degree * 180 / M_PI);
 		degree -= M_PI_2;
-		dx = speed * cos(fabs(degree));
-		dy = speed * sin(fabs(degree));
+		dx = speed * fabs(cos(fabs(degree)));
+		dy = speed * fabs(sin(fabs(degree)));
 
 		// int player_new_y = gui->player.player_pos_y += dy;
 		// int player_new_x = gui->player.player_pos_x += dx;
@@ -167,16 +167,30 @@ void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 		// 	|| player_new_x < 0 || player_new_x > gui->config_file.map->max_columns_num)
 		// 	return;
 
-		if (gui->player.player_dir_y >= 0)
+		if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x < 0)
+		{
+			printf("NE\n");
 			gui->player.player_pos_y += dy;
-		else
-			gui->player.player_pos_y -= dy;
-			
-		if (gui->player.player_dir_x >= 0)
 			gui->player.player_pos_x += dx;
-		else
+		}
+		else if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x >= 0)
+		{
+			printf("SE\n");
+			gui->player.player_pos_y -= dy;
+			gui->player.player_pos_x += dx;
+		}
+		else if (gui->player.player_dir_y < 0 && gui->player.player_dir_x >= 0)
+		{
+			printf("SW\n");
+			gui->player.player_pos_y -= dy;
 			gui->player.player_pos_x -= dx;
-
+		}
+		else
+		{
+			printf("NW\n");
+			gui->player.player_pos_y += dy;
+			gui->player.player_pos_x -= dx;
+		}
 		// gui->player.player_pos_y -= dy;
 		// gui->player.player_pos_x -= dx;
 		draw_image(gui);
@@ -195,8 +209,8 @@ void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 		else
 			degree = atan(gui->player.player_dir_y / gui->player.player_dir_x);
 		degree -= M_PI_2;
-		dx = speed * cos(fabs(degree));
-		dy = speed * sin(fabs(degree));
+		dx = speed * fabs(cos(fabs(degree)));
+		dy = speed * fabs(sin(fabs(degree)));
 
 		// int player_new_y = gui->player.player_pos_y += dy;
 		// int player_new_x = gui->player.player_pos_x += dx;
@@ -204,15 +218,30 @@ void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 		// 	|| player_new_x < 0 || player_new_x > gui->config_file.map->max_columns_num)
 		// 	return;
 
-		if (gui->player.player_dir_y >= 0)
-			gui->player.player_pos_y += dy;
-		else
+		if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x < 0)
+		{
+			printf("NE\n");
 			gui->player.player_pos_y -= dy;
-			
-		if (gui->player.player_dir_x >= 0)
-			gui->player.player_pos_x += dx;
-		else
 			gui->player.player_pos_x -= dx;
+		}
+		else if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x >= 0)
+		{
+			printf("SE\n");
+			gui->player.player_pos_y += dy;
+			gui->player.player_pos_x -= dx;
+		}
+		else if (gui->player.player_dir_y < 0 && gui->player.player_dir_x >= 0)
+		{
+			printf("SW\n");
+			gui->player.player_pos_y += dy;
+			gui->player.player_pos_x += dx;
+		}
+		else
+		{
+			printf("NW\n");
+			gui->player.player_pos_y -= dy;
+			gui->player.player_pos_x += dx;
+		}
 
 		// gui->player.player_pos_y += dy;
 		// gui->player.player_pos_x += dx;
