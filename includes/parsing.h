@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:35:08 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/19 13:18:47 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/21 12:12:24 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ typedef enum e_error
 	MAP_NOT_SURROUNDED_BY_WALLS,
 }	t_err;
 
-typedef struct s_rgb
-{
-	unsigned short int	r;
-	unsigned short int	g;
-	unsigned short int	b;
-}	t_rgb;
+// typedef struct s_rgb
+// {
+// 	unsigned short int	r;
+// 	unsigned short int	g;
+// 	unsigned short int	b;
+// }	t_rgb;
 
 typedef struct s_config_file
 {
@@ -74,8 +74,8 @@ typedef struct s_config_file
 	char			*ea_info;
 	char			*f_info;
 	char			*c_info;
-	t_rgb			f_color;
-	t_rgb			c_color;
+	int32_t			f_color;
+	int32_t			c_color;
 	t_id			current_id;
 	t_err			error;
 	t_map			*map;
@@ -98,7 +98,7 @@ bool	atoint(const char *str, int *color);
 
 // get_config_file_members.c
 char	**map_id_to_info_str_address(t_conf_file *config_file, t_id type_id);
-t_rgb	*map_type_id_to_rgb_address(t_conf_file *config_file, t_id type_id);
+int32_t	*map_type_id_to_rgb_address(t_conf_file *config_file, t_id type_id);
 bool	*map_type_id_to_bool_address(t_conf_file *config_file, t_id type_id);
 char	*map_type_id_to_string(t_id type_id);
 

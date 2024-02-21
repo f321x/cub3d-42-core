@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   type_id_info.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:47:05 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/11 14:54:50 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/21 12:13:29 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,10 @@ void	store_type_id_info(t_conf_file *conf_file, t_line *results)
 
 void	store_colors(t_conf_file *config_file, int *colors)
 {
-	t_rgb	*rgbs;
+	int32_t	*rgbs;
 
 	rgbs = map_type_id_to_rgb_address(config_file, config_file->current_id);
 	if (!rgbs)
 		return ;
-	rgbs->r = colors[0];
-	rgbs->g = colors[1];
-	rgbs->b = colors[2];
-	return ;
+	*rgbs = convert_rgba(colors[0], colors[1], colors[2], 255);
 }
