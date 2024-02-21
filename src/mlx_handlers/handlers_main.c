@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:41:39 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/21 11:02:10 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/21 16:50:34 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,31 @@ void	init_hooks(t_window_frame *gui)
 	mlx_key_hook(gui->window, key_handler, gui);
 }
 
+static void	load_textures(t_window_frame *gui)
+{
+	char	*north_path;
+	char	*south_path;
+	char	*east_path;
+	char	*west_path;
+
+	north_path = gui->config_file.no_info;
+	south_path = gui->config_file.so_info;
+	east_path = gui->config_file.ea_info;
+	west_path = gui->config_file.we_info;
+	gui->textures->north = mlx_load_png(north_path);
+	if (!gui->textures->north)
+		cleanup(&gui);
+	gui->textures->south = mlx_load_png(south_path);
+	if (!gui->textures->south)
+		cleanup(&gui);
+	gui->textures->east = mlx_load_png(east_path);
+	if (!gui->textures->east)
+		cleanup(&gui);
+	gui->textures->west = mlx_load_png(west_path);
+	if (!gui->textures->west)
+		cleanup(&gui);
+}
+
 void	init_gui(t_window_frame *gui)
 {
 	gui->window = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d | ***REMOVED*** & ***REMOVED***", true);
@@ -27,7 +52,7 @@ void	init_gui(t_window_frame *gui)
 		cleanup(gui);
 	gui->height = WINDOW_HEIGHT;
 	gui->width = WINDOW_WIDTH;
-
+	load_textures(gui);
 	draw_image(gui);
 	if (!(gui->buffer))
 		cleanup(gui);
