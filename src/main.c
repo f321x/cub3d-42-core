@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:07 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/21 13:13:39 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/21 15:14:15 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ static void	init_player(t_window_frame *gui)
 	p->player_pos_y = (double)gui->config_file.map->player_coord[1];
 	p->player_dir_x = -1;
 	p->player_dir_y = 0;
-	// p->player_dir_x = -1.0;
-	// p->player_dir_y = 0;
 
 	p->camera_plane_x = 0;
 	p->camera_plane_y = 0.66;
