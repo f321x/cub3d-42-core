@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:16:25 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/21 09:54:11 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/21 11:02:24 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,17 @@ void	resize_function(int32_t width, int32_t height, void *param)
 		cleanup(gui);
 	gui->width = width;
 	gui->height = height;
-	// generate_next_cub3d_frame(gui, gui->buffer);  tbd
-
-	if ((mlx_image_to_window(gui->window, gui->buffer, 0, 0)) < 0)
-		cleanup(gui);
-	mlx_delete_image(gui->window, gui->frame);
-	gui->frame = gui->buffer;
-	gui->buffer = NULL;
+	draw_image(gui);
+	new_frame(gui);
 }
 
-void	scrolling_handler(double xdelta, double ydelta, void *param)
-{
-	xdelta = 0;
-	ydelta = 0;
-	param = NULL;
-	return ;
-}
+// void	scrolling_handler(double xdelta, double ydelta, void *param)
+// {
+// 	xdelta = 0;
+// 	ydelta = 0;
+// 	param = NULL;
+// 	return ;
+// }
 
 /*
 ** Gets called on every mouse movement and stores the current mouse
@@ -51,28 +46,28 @@ void	scrolling_handler(double xdelta, double ydelta, void *param)
 ** the middle of the screen will be stored in the gui struct on mouse
 ** movement.
 */
-void	mouse_position_handler(double xpos, double ypos, void *param)
-{
-	t_window_frame	*gui;
+// void	mouse_position_handler(double xpos, double ypos, void *param)
+// {
+// 	t_window_frame	*gui;
 
-	gui = (t_window_frame *)param;
-	if (xpos > 0.0 && xpos < gui->frame->width)
-		gui->mouse_x = xpos;
-	else
-	{
-		gui->mouse_x = (gui->frame->width / 2);
-		gui->mouse_y = (gui->frame->height / 2);
-		return ;
-	}
-	if (ypos > 0.0 && ypos < gui->frame->height)
-		gui->mouse_y = ypos;
-	else
-	{
-		gui->mouse_x = (gui->frame->width / 2);
-		gui->mouse_y = (gui->frame->height / 2);
-		return ;
-	}
-}
+// 	gui = (t_window_frame *)param;
+// 	if (xpos > 0.0 && xpos < gui->frame->width)
+// 		gui->mouse_x = xpos;
+// 	else
+// 	{
+// 		gui->mouse_x = (gui->frame->width / 2);
+// 		gui->mouse_y = (gui->frame->height / 2);
+// 		return ;
+// 	}
+// 	if (ypos > 0.0 && ypos < gui->frame->height)
+// 		gui->mouse_y = ypos;
+// 	else
+// 	{
+// 		gui->mouse_x = (gui->frame->width / 2);
+// 		gui->mouse_y = (gui->frame->height / 2);
+// 		return ;
+// 	}
+// }
 
 /*
 ** Short hook handler for the keypresses which terminates the
