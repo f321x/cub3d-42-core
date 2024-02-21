@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:16:25 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/21 15:22:19 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/21 16:32:11 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,155 +69,166 @@ void	resize_function(int32_t width, int32_t height, void *param)
 // 	}
 // }
 
+void	move_forward(t_window_frame *gui, float  dx, float dy, float angle)
+{
+	if (gui->player.player_dir_y == 0 && gui->player.player_dir_x == 0)
+		angle = 0;
+	else
+		angle = atan(gui->player.player_dir_y / gui->player.player_dir_x);
+	dx = SPEED * cos(fabs(angle));
+	dy = SPEED * sin(fabs(angle));
+	if (gui->player.player_dir_y >= 0)
+		gui->player.player_pos_y += dy;
+	else
+		gui->player.player_pos_y -= dy;
+		
+	if (gui->player.player_dir_x >= 0)
+		gui->player.player_pos_x += dx;
+	else
+		gui->player.player_pos_x -= dx;
+	draw_image(gui);
+	new_frame(gui);
+	printf("angle = %f\n", angle * 180 / M_PI);
+	printf("dx= %f\n", dx);
+	printf("dy= %f\n", dy);
+	printf("gui->player.player_dir_y = %f\n", gui->player.player_dir_y);
+	printf("gui->player.player_dir_x = %f\n", gui->player.player_dir_x);
+	printf("gui->player.player_pos_y = %f\n", gui->player.player_pos_y);
+	printf("gui->player.player_pos_x %f\n", gui->player.player_pos_x);
+	printf("--------------------------------\n");
+	return ;
+}
+
+void	move_backward(t_window_frame *gui, float dx, float dy, float angle)
+{
+	if (gui->player.player_dir_y == 0 && gui->player.player_dir_x == 0)
+		angle = 0;
+	else
+		angle = atan(gui->player.player_dir_y / gui->player.player_dir_x);
+
+	dx = SPEED * cos(fabs(angle));
+	dy = SPEED * sin(fabs(angle));
+	if (gui->player.player_dir_y >= 0)
+		gui->player.player_pos_y -= dy;
+	else
+		gui->player.player_pos_y += dy;
+		
+	if (gui->player.player_dir_x >= 0)
+		gui->player.player_pos_x -= dx;
+	else
+		gui->player.player_pos_x += dx;
+	draw_image(gui);
+	new_frame(gui);
+	printf("angle = %f\n", angle * 180 / M_PI);
+	printf("dx= %f\n", dx);
+	printf("dy= %f\n", dy);
+	printf("gui->player.player_pos_y = %f\n", gui->player.player_pos_y);
+	printf("gui->player.player_pos_x %f\n", gui->player.player_pos_x);
+	printf("--------------------------------\n");
+}
+
+void	move_right(t_window_frame *gui, float dx, float dy, float angle)
+{
+	if (gui->player.player_dir_y == 0 && gui->player.player_dir_x == 0)
+		angle = 0;
+	else
+		angle = atan(gui->player.player_dir_y / gui->player.player_dir_x);
+	printf("angle = %f\n", angle * 180 / M_PI);
+	angle -= M_PI_2;
+	dx = SPEED * fabs(cos(fabs(angle)));
+	dy = SPEED * fabs(sin(fabs(angle)));
+	if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x < 0)
+	{
+		printf("NE\n");
+		gui->player.player_pos_y += dy;
+		gui->player.player_pos_x += dx;
+	}
+	else if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x >= 0)
+	{
+		printf("SE\n");
+		gui->player.player_pos_y -= dy;
+		gui->player.player_pos_x += dx;
+	}
+	else if (gui->player.player_dir_y < 0 && gui->player.player_dir_x >= 0)
+	{
+		printf("SW\n");
+		gui->player.player_pos_y -= dy;
+		gui->player.player_pos_x -= dx;
+	}
+	else
+	{
+		printf("NW\n");
+		gui->player.player_pos_y += dy;
+		gui->player.player_pos_x -= dx;
+	}
+	draw_image(gui);
+	new_frame(gui);
+	printf("angle = %f\n", angle * 180 / M_PI);
+	printf("dx= %f\n", dx);
+	printf("dy= %f\n", dy);
+	printf("gui->player.player_pos_y = %f\n", gui->player.player_pos_y);
+	printf("gui->player.player_pos_x %f\n", gui->player.player_pos_x);
+	printf("--------------------------------\n");
+}
+
+void	move_left(t_window_frame *gui, float dx, float dy, float angle)
+{
+	if (gui->player.player_dir_y == 0 && gui->player.player_dir_x == 0)
+		angle = 0;
+	else
+		angle = atan(gui->player.player_dir_y / gui->player.player_dir_x);
+	angle -= M_PI_2;
+	dx = SPEED * fabs(cos(fabs(angle)));
+	dy = SPEED * fabs(sin(fabs(angle)));
+	if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x < 0)
+	{
+		printf("NE\n");
+		gui->player.player_pos_y -= dy;
+		gui->player.player_pos_x -= dx;
+	}
+	else if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x >= 0)
+	{
+		printf("SE\n");
+		gui->player.player_pos_y += dy;
+		gui->player.player_pos_x -= dx;
+	}
+	else if (gui->player.player_dir_y < 0 && gui->player.player_dir_x >= 0)
+	{
+		printf("SW\n");
+		gui->player.player_pos_y += dy;
+		gui->player.player_pos_x += dx;
+	}
+	else
+	{
+		printf("NW\n");
+		gui->player.player_pos_y -= dy;
+		gui->player.player_pos_x += dx;
+	}
+	draw_image(gui);
+	new_frame(gui);
+	printf("angle = %f\n", angle * 180 / M_PI);
+	printf("dx= %f\n", dx);
+	printf("dy= %f\n", dy);
+	printf("gui->player.player_pos_y = %f\n", gui->player.player_pos_y);
+	printf("gui->player.player_pos_x %f\n", gui->player.player_pos_x);
+	printf("--------------------------------\n");
+}
+
 void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 {
 	float	dx;
 	float	dy;
+	float	angle ;
 
-	double degree ;
 	if (keydata.key == MLX_KEY_W && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
-	{
-		if (gui->player.player_dir_y == 0 && gui->player.player_dir_x == 0)
-		degree = 0;
-		else
-			degree = atan(gui->player.player_dir_y / gui->player.player_dir_x);
-		
-
-		dx = SPEED * cos(fabs(degree));
-		dy = SPEED * sin(fabs(degree));
-		if (gui->player.player_dir_y >= 0)
-			gui->player.player_pos_y += dy;
-		else
-			gui->player.player_pos_y -= dy;
-			
-		if (gui->player.player_dir_x >= 0)
-			gui->player.player_pos_x += dx;
-		else
-			gui->player.player_pos_x -= dx;
-		draw_image(gui);
-		new_frame(gui);
-		printf("degree = %f\n", degree * 180 / M_PI);
-		printf("dx= %f\n", dx);
-		printf("dy= %f\n", dy);
-		printf("gui->player.player_dir_y = %f\n", gui->player.player_dir_y);
-		printf("gui->player.player_dir_x = %f\n", gui->player.player_dir_x);
-		printf("gui->player.player_pos_y = %f\n", gui->player.player_pos_y);
-		printf("gui->player.player_pos_x %f\n", gui->player.player_pos_x);
-		printf("--------------------------------\n");
-	}
+		move_forward(gui, dx, dy, angle);
 	else if (keydata.key == MLX_KEY_S && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
-	{
-		if (gui->player.player_dir_y == 0 && gui->player.player_dir_x == 0)
-		degree = 0;
-		else
-			degree = atan(gui->player.player_dir_y / gui->player.player_dir_x);
-
-		dx = SPEED * cos(fabs(degree));
-		dy = SPEED * sin(fabs(degree));
-		if (gui->player.player_dir_y >= 0)
-			gui->player.player_pos_y -= dy;
-		else
-			gui->player.player_pos_y += dy;
-			
-		if (gui->player.player_dir_x >= 0)
-			gui->player.player_pos_x -= dx;
-		else
-			gui->player.player_pos_x += dx;
-		draw_image(gui);
-		new_frame(gui);
-		printf("degree = %f\n", degree * 180 / M_PI);
-		printf("dx= %f\n", dx);
-		printf("dy= %f\n", dy);
-		printf("gui->player.player_pos_y = %f\n", gui->player.player_pos_y);
-		printf("gui->player.player_pos_x %f\n", gui->player.player_pos_x);
-		printf("--------------------------------\n");
-	}
+		move_backward(gui, dx, dy, angle);
 	else if (keydata.key == MLX_KEY_D && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
-	{
-		if (gui->player.player_dir_y == 0 && gui->player.player_dir_x == 0)
-		degree = 0;
-		else
-			degree = atan(gui->player.player_dir_y / gui->player.player_dir_x);
-		printf("degree = %f\n", degree * 180 / M_PI);
-		degree -= M_PI_2;
-		dx = SPEED * fabs(cos(fabs(degree)));
-		dy = SPEED * fabs(sin(fabs(degree)));
-		if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x < 0)
-		{
-			printf("NE\n");
-			gui->player.player_pos_y += dy;
-			gui->player.player_pos_x += dx;
-		}
-		else if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x >= 0)
-		{
-			printf("SE\n");
-			gui->player.player_pos_y -= dy;
-			gui->player.player_pos_x += dx;
-		}
-		else if (gui->player.player_dir_y < 0 && gui->player.player_dir_x >= 0)
-		{
-			printf("SW\n");
-			gui->player.player_pos_y -= dy;
-			gui->player.player_pos_x -= dx;
-		}
-		else
-		{
-			printf("NW\n");
-			gui->player.player_pos_y += dy;
-			gui->player.player_pos_x -= dx;
-		}
-		draw_image(gui);
-		new_frame(gui);
-		printf("degree = %f\n", degree * 180 / M_PI);
-		printf("dx= %f\n", dx);
-		printf("dy= %f\n", dy);
-		printf("gui->player.player_pos_y = %f\n", gui->player.player_pos_y);
-		printf("gui->player.player_pos_x %f\n", gui->player.player_pos_x);
-		printf("--------------------------------\n");
-	}
+		move_right(gui, dx, dy, angle);
 	else if (keydata.key == MLX_KEY_A && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
-	{
-		if (gui->player.player_dir_y == 0 && gui->player.player_dir_x == 0)
-		degree = 0;
-		else
-			degree = atan(gui->player.player_dir_y / gui->player.player_dir_x);
-		degree -= M_PI_2;
-		dx = SPEED * fabs(cos(fabs(degree)));
-		dy = SPEED * fabs(sin(fabs(degree)));
-		if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x < 0)
-		{
-			printf("NE\n");
-			gui->player.player_pos_y -= dy;
-			gui->player.player_pos_x -= dx;
-		}
-		else if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x >= 0)
-		{
-			printf("SE\n");
-			gui->player.player_pos_y += dy;
-			gui->player.player_pos_x -= dx;
-		}
-		else if (gui->player.player_dir_y < 0 && gui->player.player_dir_x >= 0)
-		{
-			printf("SW\n");
-			gui->player.player_pos_y += dy;
-			gui->player.player_pos_x += dx;
-		}
-		else
-		{
-			printf("NW\n");
-			gui->player.player_pos_y -= dy;
-			gui->player.player_pos_x += dx;
-		}
-		draw_image(gui);
-		new_frame(gui);
-		printf("degree = %f\n", degree * 180 / M_PI);
-		printf("dx= %f\n", dx);
-		printf("dy= %f\n", dy);
-		printf("gui->player.player_pos_y = %f\n", gui->player.player_pos_y);
-		printf("gui->player.player_pos_x %f\n", gui->player.player_pos_x);
-		printf("--------------------------------\n");
-	}
-	
+		move_left(gui, dx, dy, angle);
+	return ;
 }
 
 /*
