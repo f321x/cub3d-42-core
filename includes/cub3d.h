@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/21 10:13:44 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/21 11:03:50 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,8 @@ typedef struct s_window_frame {
 	mlx_image_t		*buffer;
 	int32_t			width;
 	int32_t			height;
-	double			mouse_x;
-	double			mouse_y;
+	// double			mouse_x;
+	// double			mouse_y;
 	t_player_pos	player;
 	t_conf_file		config_file;
 }	t_window_frame;
@@ -109,8 +109,8 @@ void	cleanup(t_window_frame *gui);
 
 // mlx_handlers/input_hooks.c
 void	resize_function(int32_t width, int32_t height, void *param);
-void	scrolling_handler(double xdelta, double ydelta, void *param);
-void	mouse_position_handler(double xpos, double ypos, void *param);
+// void	scrolling_handler(double xdelta, double ydelta, void *param);
+// void	mouse_position_handler(double xpos, double ypos, void *param);
 void	key_handler(mlx_key_data_t keydata, void *param);
 
 // mlx_handlers/position_manipulation.
