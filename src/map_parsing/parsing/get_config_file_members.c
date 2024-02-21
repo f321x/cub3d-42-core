@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 09:21:45 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/09 15:07:18 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/21 12:12:18 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	**map_id_to_info_str_address(t_conf_file *config_file, t_id id)
 	return (info_pointer);
 }
 
-t_rgb	*map_type_id_to_rgb_address(t_conf_file *config_file, t_id id)
+int32_t	*map_type_id_to_rgb_address(t_conf_file *config_file, t_id id)
 {
 	if (id == C)
 		return (&(config_file->c_color));
