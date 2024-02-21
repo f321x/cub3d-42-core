@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:16:25 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/21 15:07:30 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:22:19 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,11 @@ void	resize_function(int32_t width, int32_t height, void *param)
 
 void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 {
-	int		speed;
 	float	dx;
 	float	dy;
 
-	speed = 1;
 	double degree ;
-	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
+	if (keydata.key == MLX_KEY_W && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
 	{
 		if (gui->player.player_dir_y == 0 && gui->player.player_dir_x == 0)
 		degree = 0;
@@ -85,14 +83,8 @@ void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 			degree = atan(gui->player.player_dir_y / gui->player.player_dir_x);
 		
 
-		dx = speed * cos(fabs(degree));
-		dy = speed * sin(fabs(degree));
-
-		// int player_new_y = gui->player.player_pos_y += dy;
-		// int player_new_x = gui->player.player_pos_x += dx;
-		// if (player_new_y < 0 || player_new_y > gui->config_file.map->rows_num
-		// 	|| player_new_x < 0 || player_new_x > gui->config_file.map->max_columns_num)
-		// 	return;
+		dx = SPEED * cos(fabs(degree));
+		dy = SPEED * sin(fabs(degree));
 		if (gui->player.player_dir_y >= 0)
 			gui->player.player_pos_y += dy;
 		else
@@ -113,22 +105,15 @@ void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 		printf("gui->player.player_pos_x %f\n", gui->player.player_pos_x);
 		printf("--------------------------------\n");
 	}
-	else if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
+	else if (keydata.key == MLX_KEY_S && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
 	{
 		if (gui->player.player_dir_y == 0 && gui->player.player_dir_x == 0)
 		degree = 0;
 		else
 			degree = atan(gui->player.player_dir_y / gui->player.player_dir_x);
 
-		dx = speed * cos(fabs(degree));
-		dy = speed * sin(fabs(degree));
-
-		// int player_new_y = gui->player.player_pos_y += dy;
-		// int player_new_x = gui->player.player_pos_x += dx;
-		// if (player_new_y < 0 || player_new_y > gui->config_file.map->rows_num
-		// 	|| player_new_x < 0 || player_new_x > gui->config_file.map->max_columns_num)
-		// 	return;
-
+		dx = SPEED * cos(fabs(degree));
+		dy = SPEED * sin(fabs(degree));
 		if (gui->player.player_dir_y >= 0)
 			gui->player.player_pos_y -= dy;
 		else
@@ -138,9 +123,6 @@ void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 			gui->player.player_pos_x -= dx;
 		else
 			gui->player.player_pos_x += dx;
-
-		// gui->player.player_pos_y -= dy;
-		// gui->player.player_pos_x -= dx;
 		draw_image(gui);
 		new_frame(gui);
 		printf("degree = %f\n", degree * 180 / M_PI);
@@ -150,7 +132,7 @@ void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 		printf("gui->player.player_pos_x %f\n", gui->player.player_pos_x);
 		printf("--------------------------------\n");
 	}
-	else if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
+	else if (keydata.key == MLX_KEY_D && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
 	{
 		if (gui->player.player_dir_y == 0 && gui->player.player_dir_x == 0)
 		degree = 0;
@@ -158,15 +140,8 @@ void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 			degree = atan(gui->player.player_dir_y / gui->player.player_dir_x);
 		printf("degree = %f\n", degree * 180 / M_PI);
 		degree -= M_PI_2;
-		dx = speed * fabs(cos(fabs(degree)));
-		dy = speed * fabs(sin(fabs(degree)));
-
-		// int player_new_y = gui->player.player_pos_y += dy;
-		// int player_new_x = gui->player.player_pos_x += dx;
-		// if (player_new_y < 0 || player_new_y > gui->config_file.map->rows_num
-		// 	|| player_new_x < 0 || player_new_x > gui->config_file.map->max_columns_num)
-		// 	return;
-
+		dx = SPEED * fabs(cos(fabs(degree)));
+		dy = SPEED * fabs(sin(fabs(degree)));
 		if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x < 0)
 		{
 			printf("NE\n");
@@ -191,8 +166,6 @@ void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 			gui->player.player_pos_y += dy;
 			gui->player.player_pos_x -= dx;
 		}
-		// gui->player.player_pos_y -= dy;
-		// gui->player.player_pos_x -= dx;
 		draw_image(gui);
 		new_frame(gui);
 		printf("degree = %f\n", degree * 180 / M_PI);
@@ -202,22 +175,15 @@ void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 		printf("gui->player.player_pos_x %f\n", gui->player.player_pos_x);
 		printf("--------------------------------\n");
 	}
-	else if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
+	else if (keydata.key == MLX_KEY_A && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
 	{
 		if (gui->player.player_dir_y == 0 && gui->player.player_dir_x == 0)
 		degree = 0;
 		else
 			degree = atan(gui->player.player_dir_y / gui->player.player_dir_x);
 		degree -= M_PI_2;
-		dx = speed * fabs(cos(fabs(degree)));
-		dy = speed * fabs(sin(fabs(degree)));
-
-		// int player_new_y = gui->player.player_pos_y += dy;
-		// int player_new_x = gui->player.player_pos_x += dx;
-		// if (player_new_y < 0 || player_new_y > gui->config_file.map->rows_num
-		// 	|| player_new_x < 0 || player_new_x > gui->config_file.map->max_columns_num)
-		// 	return;
-
+		dx = SPEED * fabs(cos(fabs(degree)));
+		dy = SPEED * fabs(sin(fabs(degree)));
 		if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x < 0)
 		{
 			printf("NE\n");
@@ -242,9 +208,6 @@ void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 			gui->player.player_pos_y -= dy;
 			gui->player.player_pos_x += dx;
 		}
-
-		// gui->player.player_pos_y += dy;
-		// gui->player.player_pos_x += dx;
 		draw_image(gui);
 		new_frame(gui);
 		printf("degree = %f\n", degree * 180 / M_PI);
