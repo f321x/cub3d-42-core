@@ -6,7 +6,7 @@
 /*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:41:39 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/20 15:26:23 by fbock            ###   ########.fr       */
+/*   Updated: 2024/02/21 11:02:10 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	init_hooks(t_window_frame *gui)
 {
 	mlx_resize_hook(gui->window, resize_function, gui);
-	mlx_scroll_hook(gui->window, scrolling_handler, gui);
-	mlx_cursor_hook(gui->window, mouse_position_handler, gui);
+	// mlx_scroll_hook(gui->window, scrolling_handler, gui);
+	// mlx_cursor_hook(gui->window, mouse_position_handler, gui);
 	mlx_key_hook(gui->window, key_handler, gui);
 }
 
