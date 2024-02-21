@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:16:25 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/20 17:36:59 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/21 09:54:11 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void	mouse_position_handler(double xpos, double ypos, void *param)
 void	key_handler(mlx_key_data_t keydata, void *param)
 {
 	t_window_frame	*gui;
-	static int	rotation_degree = 0;
 
 	gui = (t_window_frame *)param;
 	// right: 262
@@ -91,20 +90,9 @@ void	key_handler(mlx_key_data_t keydata, void *param)
 	// s: 83
 	// d: 68
 	if (keydata.key == 262)  // right
-	{
-		rotation_degree += 1;
-		rotation_degree %= 360;
-		gui->player.player_dir_x = gui->player.player_dir_x * cos(rotation_degree) - gui->player.player_dir_y * sin(rotation_degree);
-		gui->player.player_dir_y = gui->player.player_dir_x * sin(rotation_degree) + gui->player.player_dir_y * cos(rotation_degree);
-		gui->player.camera_plane_x = gui->player.camera_plane_x * cos(rotation_degree) - gui->player.camera_plane_y * sin(rotation_degree);
-		gui->player.camera_plane_y = gui->player.camera_plane_x * sin(rotation_degree) + gui->player.camera_plane_y * cos(rotation_degree);
-		draw_image(gui);
-		new_frame(gui);
-	}
-	// else if (keydata.key == 263)  // left
-	// {
-
-	// }
+		rotate(gui, true);
+	else if (keydata.key == 263)  // left
+		rotate(gui, false);
 	if (keydata.key == 256)
 	{
 		mlx_delete_image(gui->window, gui->frame);
