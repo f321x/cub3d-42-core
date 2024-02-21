@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/20 15:33:33 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/21 10:13:44 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 
 #define MAX_COLUMN_NUM	1000
 #define MAX_ROW_NUM		1000
+
+#define ROTATION_SPEED_RAD 0.08
 
 # include "parsing.h"
 
@@ -110,6 +112,9 @@ void	resize_function(int32_t width, int32_t height, void *param);
 void	scrolling_handler(double xdelta, double ydelta, void *param);
 void	mouse_position_handler(double xpos, double ypos, void *param);
 void	key_handler(mlx_key_data_t keydata, void *param);
+
+// mlx_handlers/position_manipulation.
+void rotate(t_window_frame *gui, bool true_if_right);
 
 // raycasting_main.c
 t_wall	*raycast_whole_frame(int frame_width, int frame_height, t_player_pos player, t_map parsed_map);
