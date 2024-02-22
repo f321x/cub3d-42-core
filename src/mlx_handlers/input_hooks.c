@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:16:25 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/21 17:02:56 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/22 11:39:46 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,85 @@ void	resize_function(int32_t width, int32_t height, void *param)
 // 	}
 // }
 
+bool	is_inside_map(t_window_frame *gui, float player_new_x, float player_new_y)
+{
+	int	x;
+	int	y;
+	x = trunc(player_new_x);
+	y = trunc(player_new_y);
+	printf("player_new_x: %d\n", x);
+	printf("player_new_y: %d\n", y);
+	// if (gui->config_file.map->map_plan[x][y] == INIT
+	// 	|| gui->config_file.map->map_plan[x][y] == NEW_LINE)
+	// {
+	// 	printf("MAP BORDER!\n");
+	// 	return (false);
+	// }
+		printf("********gui->config_file.map->rows_num = %lu\n", gui->config_file.map->rows_num);
+	if (x <= 0 || x >= gui->config_file.map->rows_num || y <= 0 || y >= gui->config_file.map->columns_per_row[x] || gui->config_file.map->map_plan[x][y] == INIT || gui->config_file.map->map_plan[x][y] == NEW_LINE || gui->config_file.map->map_plan[x][y] == WALL)
+		return (false);
+	else
+		return (true);
+}
 
+bool	move_south_east(t_window_frame *gui,float dx, float dy)
+{
+	float 	player_new_x;
+	float	player_new_y;
+	player_new_x = gui->player.player_pos_x + dx;
+	player_new_y = gui->player.player_pos_y + dy;
+	if (!is_inside_map(gui, player_new_x, player_new_y))
+		return (false);
+	gui->player.player_pos_y += dy;
+	gui->player.player_pos_x += dx;
+	printf("gui->config_file.map->map_plan[x][y] = %c\n", gui->config_file.map->map_plan[(int)player_new_x][(int)player_new_y]);
+	return (true);
+}
+
+bool	move_south_west(t_window_frame *gui,float dx, float dy)
+{
+	float 	player_new_x;
+	float	player_new_y;
+
+	player_new_x = gui->player.player_pos_x + dx;
+	player_new_y = gui->player.player_pos_y - dy;
+	if (!is_inside_map(gui, player_new_x, player_new_y))
+		return (false);
+	gui->player.player_pos_y -= dy;
+	gui->player.player_pos_x += dx;
+	printf("gui->config_file.map->map_plan[x][y] = %c\n", gui->config_file.map->map_plan[(int)player_new_x][(int)player_new_y]);
+	return (true);
+}
+
+bool	move_north_east(t_window_frame *gui,float dx, float dy)
+{
+	float 	player_new_x;
+	float	player_new_y;
+
+	player_new_x = gui->player.player_pos_x - dx;
+	player_new_y = gui->player.player_pos_y + dy;
+	if (!is_inside_map(gui, player_new_x, player_new_y))
+		return (false);
+	gui->player.player_pos_y += dy;
+	gui->player.player_pos_x -= dx;
+	printf("gui->config_file.map->map_plan[x][y] = %c\n", gui->config_file.map->map_plan[(int)player_new_x][(int)player_new_y]);
+	return (true);
+}
+
+bool	move_north_west(t_window_frame *gui,float dx, float dy)
+{
+	float 	player_new_x;
+	float	player_new_y;
+
+	player_new_y = gui->player.player_pos_y - dy;
+	player_new_x = gui->player.player_pos_x - dx;
+	if (!is_inside_map(gui, player_new_x, player_new_y))
+		return (false);
+	gui->player.player_pos_y -= dy;
+	gui->player.player_pos_x -= dx;
+	printf("gui->config_file.map->map_plan[x][y] = %c\n", gui->config_file.map->map_plan[(int)player_new_x][(int)player_new_y]);
+	return (true);
+}
 
 void	move_forward(t_window_frame *gui, float  dx, float dy, float angle)
 {
@@ -83,33 +161,13 @@ void	move_forward(t_window_frame *gui, float  dx, float dy, float angle)
 	dx = SPEED * cos(fabs(angle));
 	dy = SPEED * sin(fabs(angle));
 	if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x >= 0)
-	{
-		player_new_x = gui->player.player_pos_x + dx;
-		player_new_y = gui->player.player_pos_y + dy;
-		gui->player.player_pos_y += dy;
-		gui->player.player_pos_x += dx;
-	}
+		move_south_east(gui, dx, dy);
 	else if (gui->player.player_dir_y < 0 && gui->player.player_dir_x >= 0)
-	{
-		player_new_x = gui->player.player_pos_x + dx;
-		player_new_y = gui->player.player_pos_y - dy;
-		gui->player.player_pos_y -= dy;
-		gui->player.player_pos_x += dx;
-	}
+		move_south_west(gui, dx, dy);
 	else if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x < 0)
-	{
-		player_new_x = gui->player.player_pos_x - dx;
-		player_new_y = gui->player.player_pos_y + dy;
-		gui->player.player_pos_y += dy;
-		gui->player.player_pos_x -= dx;
-	}
+		move_north_east(gui,dx, dy);
 	else
-	{
-		player_new_y = gui->player.player_pos_y - dy;
-		player_new_x = gui->player.player_pos_x - dx;
-		gui->player.player_pos_y -= dy;
-		gui->player.player_pos_x -= dx;
-	}
+		move_north_west(gui, dx, dy);
 	draw_image(gui);
 	new_frame(gui);
 	printf("angle = %f\n", angle * 180 / M_PI);
@@ -132,37 +190,16 @@ void	move_backward(t_window_frame *gui, float dx, float dy, float angle)
 		angle = 0;
 	else
 		angle = atan(gui->player.player_dir_y / gui->player.player_dir_x);
-
 	dx = SPEED * cos(fabs(angle));
 	dy = SPEED * sin(fabs(angle));
 	if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x >= 0)
-	{
-		player_new_y = gui->player.player_pos_y - dy;
-		player_new_x = gui->player.player_pos_x - dx;
-		gui->player.player_pos_y -= dy;
-		gui->player.player_pos_x -= dx;
-	}
+		move_north_west(gui, dx, dy);
 	else if (gui->player.player_dir_y < 0 && gui->player.player_dir_x >= 0)
-	{
-		player_new_y = gui->player.player_pos_y + dy;
-		player_new_x = gui->player.player_pos_x - dx;
-		gui->player.player_pos_x -= dx;
-		gui->player.player_pos_y += dy;
-	}
+		move_north_east(gui, dx, dy);
 	else if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x < 0)
-	{
-		player_new_y = gui->player.player_pos_y - dy;
-		player_new_x = gui->player.player_pos_x + dx;
-		gui->player.player_pos_y -= dy;
-		gui->player.player_pos_x += dx;
-	}
+		move_south_west(gui, dx, dy);
 	else
-	{
-		player_new_y = gui->player.player_pos_y + dy;
-		player_new_x = gui->player.player_pos_x + dx;
-		gui->player.player_pos_y += dy;
-		gui->player.player_pos_x += dx;
-	}
+		move_south_east(gui, dx, dy);
 	draw_image(gui);
 	new_frame(gui);
 	printf("angle = %f\n", angle * 180 / M_PI);
@@ -175,6 +212,9 @@ void	move_backward(t_window_frame *gui, float dx, float dy, float angle)
 
 void	move_right(t_window_frame *gui, float dx, float dy, float angle)
 {
+	float	player_new_x;
+	float	player_new_y;
+
 	if (gui->player.player_dir_y == 0 && gui->player.player_dir_x == 0)
 		angle = 0;
 	else
@@ -186,26 +226,22 @@ void	move_right(t_window_frame *gui, float dx, float dy, float angle)
 	if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x < 0)
 	{
 		printf("NE\n");
-		gui->player.player_pos_y += dy;
-		gui->player.player_pos_x += dx;
+		move_south_east(gui, dx, dy);
 	}
 	else if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x >= 0)
 	{
 		printf("SE\n");
-		gui->player.player_pos_y -= dy;
-		gui->player.player_pos_x += dx;
+		move_south_west(gui, dx, dy);
 	}
 	else if (gui->player.player_dir_y < 0 && gui->player.player_dir_x >= 0)
 	{
 		printf("SW\n");
-		gui->player.player_pos_y -= dy;
-		gui->player.player_pos_x -= dx;
+		move_north_west(gui, dx, dy);
 	}
 	else
 	{
 		printf("NW\n");
-		gui->player.player_pos_y += dy;
-		gui->player.player_pos_x -= dx;
+		move_north_east(gui, dx, dy);
 	}
 	draw_image(gui);
 	new_frame(gui);
@@ -219,6 +255,9 @@ void	move_right(t_window_frame *gui, float dx, float dy, float angle)
 
 void	move_left(t_window_frame *gui, float dx, float dy, float angle)
 {
+	float	player_new_x;
+	float	player_new_y;
+	
 	if (gui->player.player_dir_y == 0 && gui->player.player_dir_x == 0)
 		angle = 0;
 	else
@@ -229,26 +268,22 @@ void	move_left(t_window_frame *gui, float dx, float dy, float angle)
 	if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x < 0)
 	{
 		printf("NE\n");
-		gui->player.player_pos_y -= dy;
-		gui->player.player_pos_x -= dx;
+		move_north_west(gui, dx, dy);
 	}
 	else if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x >= 0)
 	{
 		printf("SE\n");
-		gui->player.player_pos_y += dy;
-		gui->player.player_pos_x -= dx;
+		move_north_east(gui, dx, dy);
 	}
 	else if (gui->player.player_dir_y < 0 && gui->player.player_dir_x >= 0)
 	{
 		printf("SW\n");
-		gui->player.player_pos_y += dy;
-		gui->player.player_pos_x += dx;
+		move_south_east(gui, dx, dy);
 	}
 	else
 	{
 		printf("NW\n");
-		gui->player.player_pos_y -= dy;
-		gui->player.player_pos_x += dx;
+		move_south_west(gui, dx, dy);
 	}
 	draw_image(gui);
 	new_frame(gui);
