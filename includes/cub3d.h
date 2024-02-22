@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/21 15:22:44 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:37:54 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,13 @@ typedef enum e_field {
 	NEW_LINE = '\n',
 	INIT = '-',
 } t_field;
+
+typedef struct s_textures {
+	mlx_texture_t* north;
+	mlx_texture_t* south;
+	mlx_texture_t* east;
+	mlx_texture_t* west;
+}	t_textures;
 
 typedef struct s_map {
 	size_t	rows_num;
@@ -101,6 +108,7 @@ typedef struct s_window_frame {
 	// double			mouse_y;
 	t_player_pos	player;
 	t_conf_file		config_file;
+	t_textures		textures;
 }	t_window_frame;
 
 // mlx_handlers/handlers_main.c
