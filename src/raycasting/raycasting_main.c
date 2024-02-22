@@ -6,7 +6,7 @@
 /*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/21 14:41:16 by fbock            ###   ########.fr       */
+/*   Updated: 2024/02/21 15:41:36 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,6 @@ t_wall	*raycast_whole_frame(int frame_width, int frame_height, t_player_pos play
 	if (!walls)
 		return (NULL);
 	buffer = player;
-	// printf("rcwf|| map_y: %d | map_x: %d\n", player.map_y, player.map_x);
 	while (current_column < frame_width)
 	{
 		player = buffer;
