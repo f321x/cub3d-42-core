@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handlers_main.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:41:39 by fbock             #+#    #+#             */
-/*   Updated: 2024/02/22 09:40:04 by fbock            ###   ########.fr       */
+/*   Updated: 2024/02/22 10:09:30 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	init_gui(t_window_frame *gui)
 		cleanup(gui);
 	gui->height = WINDOW_HEIGHT;
 	gui->width = WINDOW_WIDTH;
-	load_textures(gui);
+	// load_textures(gui);
 	draw_image(gui);
 	if (!(gui->buffer))
 		cleanup(gui);
