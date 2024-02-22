@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:41:39 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/21 16:50:34 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/22 09:40:04 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,18 @@ static void	load_textures(t_window_frame *gui)
 	south_path = gui->config_file.so_info;
 	east_path = gui->config_file.ea_info;
 	west_path = gui->config_file.we_info;
-	gui->textures->north = mlx_load_png(north_path);
-	if (!gui->textures->north)
-		cleanup(&gui);
-	gui->textures->south = mlx_load_png(south_path);
-	if (!gui->textures->south)
-		cleanup(&gui);
-	gui->textures->east = mlx_load_png(east_path);
-	if (!gui->textures->east)
-		cleanup(&gui);
-	gui->textures->west = mlx_load_png(west_path);
-	if (!gui->textures->west)
-		cleanup(&gui);
+	gui->textures.north = mlx_load_png(north_path);
+	if (!gui->textures.north)
+		cleanup(gui);
+	gui->textures.south = mlx_load_png(south_path);
+	if (!gui->textures.south)
+		cleanup(gui);
+	gui->textures.east = mlx_load_png(east_path);
+	if (!gui->textures.east)
+		cleanup(gui);
+	gui->textures.west = mlx_load_png(west_path);
+	if (!gui->textures.west)
+		cleanup(gui);
 }
 
 void	init_gui(t_window_frame *gui)
