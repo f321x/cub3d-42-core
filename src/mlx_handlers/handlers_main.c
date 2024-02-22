@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:41:39 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/22 10:08:10 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/22 10:48:14 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	init_gui(t_window_frame *gui)
 		cleanup(gui);
 	gui->height = WINDOW_HEIGHT;
 	gui->width = WINDOW_WIDTH;
-	// load_textures(gui);
+	load_textures(gui);
 	draw_image(gui);
 	if (!(gui->buffer))
 		cleanup(gui);
