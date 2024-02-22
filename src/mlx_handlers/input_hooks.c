@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:16:25 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/21 16:32:11 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:02:56 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,23 +69,47 @@ void	resize_function(int32_t width, int32_t height, void *param)
 // 	}
 // }
 
+
+
 void	move_forward(t_window_frame *gui, float  dx, float dy, float angle)
 {
+	float	player_new_x;
+	float	player_new_y;
+
 	if (gui->player.player_dir_y == 0 && gui->player.player_dir_x == 0)
 		angle = 0;
 	else
 		angle = atan(gui->player.player_dir_y / gui->player.player_dir_x);
 	dx = SPEED * cos(fabs(angle));
 	dy = SPEED * sin(fabs(angle));
-	if (gui->player.player_dir_y >= 0)
+	if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x >= 0)
+	{
+		player_new_x = gui->player.player_pos_x + dx;
+		player_new_y = gui->player.player_pos_y + dy;
 		gui->player.player_pos_y += dy;
-	else
-		gui->player.player_pos_y -= dy;
-		
-	if (gui->player.player_dir_x >= 0)
 		gui->player.player_pos_x += dx;
-	else
+	}
+	else if (gui->player.player_dir_y < 0 && gui->player.player_dir_x >= 0)
+	{
+		player_new_x = gui->player.player_pos_x + dx;
+		player_new_y = gui->player.player_pos_y - dy;
+		gui->player.player_pos_y -= dy;
+		gui->player.player_pos_x += dx;
+	}
+	else if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x < 0)
+	{
+		player_new_x = gui->player.player_pos_x - dx;
+		player_new_y = gui->player.player_pos_y + dy;
+		gui->player.player_pos_y += dy;
 		gui->player.player_pos_x -= dx;
+	}
+	else
+	{
+		player_new_y = gui->player.player_pos_y - dy;
+		player_new_x = gui->player.player_pos_x - dx;
+		gui->player.player_pos_y -= dy;
+		gui->player.player_pos_x -= dx;
+	}
 	draw_image(gui);
 	new_frame(gui);
 	printf("angle = %f\n", angle * 180 / M_PI);
@@ -101,6 +125,9 @@ void	move_forward(t_window_frame *gui, float  dx, float dy, float angle)
 
 void	move_backward(t_window_frame *gui, float dx, float dy, float angle)
 {
+	float	player_new_x;
+	float	player_new_y;
+
 	if (gui->player.player_dir_y == 0 && gui->player.player_dir_x == 0)
 		angle = 0;
 	else
@@ -108,15 +135,34 @@ void	move_backward(t_window_frame *gui, float dx, float dy, float angle)
 
 	dx = SPEED * cos(fabs(angle));
 	dy = SPEED * sin(fabs(angle));
-	if (gui->player.player_dir_y >= 0)
+	if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x >= 0)
+	{
+		player_new_y = gui->player.player_pos_y - dy;
+		player_new_x = gui->player.player_pos_x - dx;
 		gui->player.player_pos_y -= dy;
-	else
-		gui->player.player_pos_y += dy;
-		
-	if (gui->player.player_dir_x >= 0)
 		gui->player.player_pos_x -= dx;
-	else
+	}
+	else if (gui->player.player_dir_y < 0 && gui->player.player_dir_x >= 0)
+	{
+		player_new_y = gui->player.player_pos_y + dy;
+		player_new_x = gui->player.player_pos_x - dx;
+		gui->player.player_pos_x -= dx;
+		gui->player.player_pos_y += dy;
+	}
+	else if (gui->player.player_dir_y >= 0 && gui->player.player_dir_x < 0)
+	{
+		player_new_y = gui->player.player_pos_y - dy;
+		player_new_x = gui->player.player_pos_x + dx;
+		gui->player.player_pos_y -= dy;
 		gui->player.player_pos_x += dx;
+	}
+	else
+	{
+		player_new_y = gui->player.player_pos_y + dy;
+		player_new_x = gui->player.player_pos_x + dx;
+		gui->player.player_pos_y += dy;
+		gui->player.player_pos_x += dx;
+	}
 	draw_image(gui);
 	new_frame(gui);
 	printf("angle = %f\n", angle * 180 / M_PI);
