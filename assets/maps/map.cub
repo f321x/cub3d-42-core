@@ -1,7 +1,7 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO ./assets/textures/lasagna256.png
+SO ./assets/textures/pepe1_256.png
+WE ./assets/textures/pepe2_256.png
+EA ./assets/textures/pepe3_256.png
 F 0,255,0
 C 0,0,255
 1111111111111111111111111
