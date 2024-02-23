@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/21 15:41:36 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/02/22 15:46:44 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,33 +70,29 @@ void	dda(t_map *map, t_ray *ray, t_player_pos *pl)
 	bool	wall;
 
 	wall = false;
-	// printf("map_y: %d | map_x: %d, value: %c\n", pl->map_y, pl->map_x, map->map_plan[pl->map_x][pl->map_y]);
 	while (!wall)
 	{
 		if (ray->init_dist_x < ray->init_dist_y)
 		{
 			ray->init_dist_x += ray->delta_dist_x;
 			pl->map_x += ray->step_dir_x;
-			ray->hit_side_bin = 0;  // assign east west if step_dir_x > 0
+			ray->hit_side_bin = 0;
 			if (ray->step_dir_x > 0)
-				ray->hit_side_color = EAST;  // dir not checked, check later.
+				ray->hit_side_color = EAST;
 			else
-				ray->hit_side_color = WEST;  // dir not checked, check later.
+				ray->hit_side_color = WEST;
 		}
 		else
 		{
 			ray->init_dist_y += ray->delta_dist_y;
 			pl->map_y += ray->step_dir_y;
-			ray->hit_side_bin = 1;  // assign south or north if step_dir_y > 0
+			ray->hit_side_bin = 1;
 			if (ray->step_dir_y > 0)
-				ray->hit_side_color = SOUTH; // dir not checked, check later.
+				ray->hit_side_color = SOUTH;
 			else
-				ray->hit_side_color = NORTH;  // dir not checked, check later.
+				ray->hit_side_color = NORTH;
 		}
-		// printf("map_y: %d | map_x: %d, value: %c\n", pl->map_y, pl->map_x, map->map_plan[pl->map_x][pl->map_y]);
-		// if (map->map_plan[pl->map_x][pl->map_y] == '-')
-		// 	exit(0);
-		if (map->map_plan[pl->map_x][pl->map_y] == '1')  // is this the correct map?
+		if (map->map_plan[pl->map_x][pl->map_y] == '1')
 			wall = true;
 	}
 }
