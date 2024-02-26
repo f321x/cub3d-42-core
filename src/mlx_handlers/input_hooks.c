@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:16:25 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/22 11:39:46 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/02/26 09:20:12 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,17 @@ void	resize_function(int32_t width, int32_t height, void *param)
 // 	}
 // }
 
-bool	is_inside_map(t_window_frame *gui, float player_new_x, float player_new_y)
+
+
+
+
+
+
+
+
+
+
+/* bool	is_inside_map(t_window_frame *gui, float player_new_x, float player_new_y)
 {
 	int	x;
 	int	y;
@@ -310,6 +320,31 @@ void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 	else if (keydata.key == MLX_KEY_A && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
 		move_left(gui, dx, dy, angle);
 	return ;
+} */
+
+
+
+
+
+
+
+
+void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
+{
+	if (keydata.key == MLX_KEY_W)
+	{
+		gui->player.player_pos_x += gui->player.player_dir_x * SPEED;
+		gui->player.player_pos_y += gui->player.player_dir_y * SPEED;
+		draw_image(gui);
+		new_frame(gui);
+	}
+	// else if (keydata.key == MLX_KEY_S)
+	// {
+	// 	gui->player.player_pos_x -= gui->player.player_dir_x * SPEED;
+	// 	gui->player.player_pos_y -= gui->player.player_dir_y * SPEED;
+	// 	draw_image(gui);
+	// 	new_frame(gui);
+	// }
 }
 
 /*
