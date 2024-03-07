@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/21 17:37:54 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/07 10:17:52 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ typedef enum e_field {
 } t_field;
 
 typedef struct s_textures {
-	mlx_texture_t* north;
-	mlx_texture_t* south;
-	mlx_texture_t* east;
-	mlx_texture_t* west;
+	t_tex north;
+	t_tex south;
+	t_tex east;
+	t_tex west;
 }	t_textures;
 
 typedef struct s_map {
@@ -67,10 +67,16 @@ typedef struct s_map {
 }	t_map;
 
 typedef struct s_wall {
-	int	wall_top_pixel;
-	int	wall_bottom_pixel;
-	int	direction;
+	int32_t*		pixels;
+	int				wall_top_pixel;
+	int				wall_bottom_pixel;
 }	t_wall;
+
+typedef struct s_tex {
+	int32_t* 	pixels;
+	uint32_t	width;
+	uint32_t	height;
+}	t_tex;
 
 typedef struct s_ray {
 	double	camera_x_point;
@@ -126,12 +132,15 @@ void	key_handler(mlx_key_data_t keydata, void *param);
 void rotate(t_window_frame *gui, bool true_if_right);
 
 // raycasting_main.c
-t_wall	*raycast_whole_frame(int frame_width, int frame_height, t_player_pos player, t_map parsed_map);
+t_wall	*raycast_whole_frame(t_player_pos player, t_map parsed_map, t_window_frame *gui);
 t_wall	calculate_wall_height(t_ray *current_ray, int frame_height);
 void	dist_from_hitpt_to_camera_plane(t_ray *ray,	t_player_pos *pl);
 void	dda(t_map *map, t_ray *ray, t_player_pos *pl);
 void	calculate_initial_step_and_dist(t_ray *ray, t_player_pos *p);
 t_ray	calc_ray_direction(int current_x, int width, t_player_pos p);
+
+// textures.c
+t_wall	calculate_textures(t_ray *ray, t_window_frame *gui);
 
 // drawing_main.c
 void	draw_image(t_window_frame *gui);

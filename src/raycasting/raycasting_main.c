@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/22 15:46:44 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/06 17:15:11 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ t_ray	calc_ray_direction(int current_x, int width, t_player_pos p)
 							* current_ray.camera_x_point;
 	current_ray.ray_dir_y = p.player_dir_y + p.camera_plane_y
 							* current_ray.camera_x_point;
-
 	if (current_ray.ray_dir_x == 0)
 		current_ray.ray_dir_x = 0.00001;
 	if (current_ray.ray_dir_y == 0)
@@ -133,7 +132,7 @@ t_wall	calculate_wall_height(t_ray *current_ray, int frame_height)
 	return (wall);
 }
 
-t_wall	*raycast_whole_frame(int frame_width, int frame_height, t_player_pos player, t_map parsed_map)
+t_wall	*raycast_whole_frame(t_player_pos player, t_map parsed_map, t_window_frame *gui)
 {
 	t_wall		*walls;
 	t_ray		current_ray;
@@ -141,19 +140,21 @@ t_wall	*raycast_whole_frame(int frame_width, int frame_height, t_player_pos play
 	t_player_pos	buffer;
 
 	current_column = 0;
-	walls = malloc(sizeof(t_wall) * frame_width);
+	walls = malloc(sizeof(t_wall) * gui->width);
 	if (!walls)
 		return (NULL);
 	buffer = player;
-	while (current_column < frame_width)
+	while (current_column < gui->width)
 	{
 		player = buffer;
-		current_ray = calc_ray_direction(current_column, frame_width, player);
+		current_ray = calc_ray_direction(current_column, gui->width, player);
 		calculate_initial_step_and_dist(&current_ray, &player);
 		dda(&parsed_map, &current_ray, &player);
 		dist_from_hitpt_to_camera_plane(&current_ray, &player);
-		walls[current_column] = calculate_wall_height(&current_ray, frame_height);
-		walls[current_column].direction = current_ray.hit_side_color;
+
+		walls[current_column] = calculate_textures(&current_ray, gui);
+		// walls[current_column] = calculate_wall_height(&current_ray, gui->height);
+		// walls[current_column].direction = current_ray.hit_side_color;
 		current_column++;
 	}
 	return (walls);
