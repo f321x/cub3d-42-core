@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_hooks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:16:25 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/02/26 09:20:12 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/03/11 14:55:52 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -267,7 +267,7 @@ void	move_left(t_window_frame *gui, float dx, float dy, float angle)
 {
 	float	player_new_x;
 	float	player_new_y;
-	
+
 	if (gui->player.player_dir_y == 0 && gui->player.player_dir_x == 0)
 		angle = 0;
 	else
@@ -322,29 +322,41 @@ void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 	return ;
 } */
 
-
-
-
-
-
-
+static bool	check_wall(t_window_frame *gui, int new_x, int new_y)
+{
+	if (gui->config_file.map->map_plan[new_x][new_y] == WALL ||
+		gui->config_file.map->map_plan[new_x][new_y] == INIT)
+	{
+		return (true);
+	}
+	return (false);
+}
 
 void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 {
+	double	new_x;
+	double	new_y;
+
+	new_x = gui->player.player_pos_x;
+	new_y = gui->player.player_pos_y;
 	if (keydata.key == MLX_KEY_W)
 	{
-		gui->player.player_pos_x += gui->player.player_dir_x * SPEED;
-		gui->player.player_pos_y += gui->player.player_dir_y * SPEED;
+		new_x += gui->player.player_dir_x * SPEED;
+		new_y += gui->player.player_dir_y * SPEED;
+	}
+	// uncommented, idk?
+	else if (keydata.key == MLX_KEY_S)
+	{
+		new_x -= gui->player.player_dir_x * SPEED;
+		new_y -= gui->player.player_dir_y * SPEED;
+	}
+	if (!check_wall(gui, (int)new_x, (int)new_y))
+	{
+		gui->player.player_pos_x = new_x;
+		gui->player.player_pos_y = new_y;
 		draw_image(gui);
 		new_frame(gui);
 	}
-	// else if (keydata.key == MLX_KEY_S)
-	// {
-	// 	gui->player.player_pos_x -= gui->player.player_dir_x * SPEED;
-	// 	gui->player.player_pos_y -= gui->player.player_dir_y * SPEED;
-	// 	draw_image(gui);
-	// 	new_frame(gui);
-	// }
 }
 
 /*
