@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:07:09 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/07 10:56:14 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/11 10:48:28 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,22 @@ static int32_t*	determine_wall_pixels(double exact_wall_hp, t_tex* tex, int wall
 	int32_t*	wall_pixels;
 	int			index;
 	double		step_size;
+	double		position;
 
 	index = 0;
 	wall_pixels = malloc(sizeof(int32_t) * wall_height);
 	if (!wall_pixels)
 		return (NULL);
 	// probably needs a case for mirroring
-	step_size = tex->height / wall_height;
-	while (index < wall_height && (int)position < tex->height)
-	// { wall hp ?
-		wall_pixels[index] = tex->pixels[];
+	step_size = (double)tex->height / wall_height;
+	position = 0;
+	exact_wall_hp = (int)(exact_wall_hp * tex->width) % tex->width;  // reused as tex x pos
+	while (index < wall_height) // && (int)position < tex->height)
+	{
+        wall_pixels[index++] = tex->pixels[(int)position * tex->width + (int)exact_wall_hp];
+        position += step_size;
 	}
-
+	return (wall_pixels);
 }
 
 t_wall	calculate_textures(t_ray *ray, t_window_frame *gui)
@@ -80,4 +84,5 @@ t_wall	calculate_textures(t_ray *ray, t_window_frame *gui)
 	if (!wall_result.pixels)
 		cleanup(gui);
 
+	return (wall_result);
 }
