@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:41:39 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/07 10:54:31 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/11 12:20:21 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ static t_tex	convert_texture(mlx_texture_t* mlx_tex)
 		return (texture);
 	texture.height = mlx_tex->height;
 	texture.width = mlx_tex->width;  // pixels should be freed somewhere
-	texture.pixels = malloc(sizeof(int32_t) * ((texture.width * texture.height) / 4));
+	texture.pixels = malloc(sizeof(int32_t) * (texture.width * texture.height));
 	if (!texture.pixels)
 		return (texture);
 	index = 0;
-	while (index < texture.width * texture.height)
+	while (index < (texture.width * texture.height) * 4)
 	{
-		texture.pixels[index] = convert_rgba(
+		texture.pixels[index / 4] = convert_rgba(
 			mlx_tex->pixels[index],
 			mlx_tex->pixels[index + 1],
 			mlx_tex->pixels[index + 2],

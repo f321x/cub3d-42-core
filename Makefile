@@ -6,7 +6,7 @@
 #    By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 14:27:39 by ***REMOVED***          #+#    #+#              #
-#    Updated: 2024/02/21 09:28:42 by ***REMOVED***            ###   ########.fr        #
+#    Updated: 2024/03/11 12:09:09 by ***REMOVED***            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRCS 	:= $(SRCDIR)/main.c\
 	$(SRCDIR)/map_parsing/parsing/test.c\
 	$(SRCDIR)/map_parsing/parsing/parse_map.c\
 	$(SRCDIR)/raycasting/raycasting_main.c\
+	$(SRCDIR)/raycasting/textures.c\
 	$(SRCDIR)/mlx_handlers/position_manipulation.c\
 
 OBJS	:= $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SRCS))
