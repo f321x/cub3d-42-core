@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:42:10 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/06 15:01:41 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/11 10:54:54 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ void	draw_image(t_window_frame *gui)
 			else if (height_index > walls[width_index].wall_top_pixel)
 				pixel = gui->config_file.f_color;
 			else
-				pixel = convert_rgba(255,0,0,120);
+			{
+				while (walls[width_index].)
+			}
 			mlx_put_pixel(gui->buffer, width_index,
 				height_index, pixel);
 			height_index++;
