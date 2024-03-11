@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/06 17:15:11 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/11 14:33:47 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ t_ray	calc_ray_direction(int current_x, int width, t_player_pos p)
 // square to the first side of a square.
 void	calculate_initial_step_and_dist(t_ray *ray, t_player_pos *p)
 {
+	p->map_x = (int)p->player_pos_x;
+	p->map_y = (int)p->player_pos_y;
 	if (ray->ray_dir_x < 0)
 	{
 		ray->step_dir_x = -1;
@@ -122,6 +124,11 @@ t_wall	calculate_wall_height(t_ray *current_ray, int frame_height)
 	t_wall 	wall;
 
 	dist = current_ray->perpendicular_wall_to_cp_distance;
+	if (dist < 0)
+	{
+		printf("negative distance, wtf? %f\n", dist);
+		dist = 0.01;
+	}
 	wall_height = (int)(frame_height / dist);
 	wall.wall_bottom_pixel = (-wall_height / 2) + (frame_height / 2);
 	if (wall.wall_bottom_pixel < 0)

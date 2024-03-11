@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/07 10:17:52 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/11 12:08:30 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@ typedef enum e_field {
 	INIT = '-',
 } t_field;
 
+typedef struct s_tex {
+	int32_t* 	pixels;
+	uint32_t	width;
+	uint32_t	height;
+}	t_tex;
+
 typedef struct s_textures {
 	t_tex north;
 	t_tex south;
@@ -71,12 +77,6 @@ typedef struct s_wall {
 	int				wall_top_pixel;
 	int				wall_bottom_pixel;
 }	t_wall;
-
-typedef struct s_tex {
-	int32_t* 	pixels;
-	uint32_t	width;
-	uint32_t	height;
-}	t_tex;
 
 typedef struct s_ray {
 	double	camera_x_point;

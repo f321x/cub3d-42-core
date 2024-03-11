@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:42:10 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/11 10:54:54 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/11 13:20:01 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,28 @@ int32_t	convert_rgba(int r, int g, int b, int a)
 	return (r << 24 | g << 16 | b << 8 | a);
 }
 
+// void put_texture(t_wall *walls, int width_i, int height_i, mlx_image_t *buffer)
+// {
+
+// }
+
 void	draw_image(t_window_frame *gui)
 {
 	t_wall	*walls;
 	int		width_index;
 	int		height_index;
 	int32_t	pixel;
+	int		tex_index;
 
 	walls = raycast_whole_frame(gui->player, *(gui->config_file.map), gui);
-	width_index = 0;
 	gui->buffer = mlx_new_image(gui->window, gui->width, gui->height);
 	if (!gui->buffer)
 		cleanup(gui);
+	width_index = 0;
 	while (width_index < gui->width)
 	{
 		height_index = 0;
+		tex_index = 0;
 		while (height_index < gui->height)
 		{
 			if (height_index < walls[width_index].wall_bottom_pixel)
@@ -39,13 +46,12 @@ void	draw_image(t_window_frame *gui)
 			else if (height_index > walls[width_index].wall_top_pixel)
 				pixel = gui->config_file.f_color;
 			else
-			{
-				while (walls[width_index].)
-			}
+				pixel = walls[width_index].pixels[tex_index++];
 			mlx_put_pixel(gui->buffer, width_index,
 				height_index, pixel);
 			height_index++;
 		}
+		free(walls[width_index].pixels);
 		width_index++;
 	}
 	free(walls);
