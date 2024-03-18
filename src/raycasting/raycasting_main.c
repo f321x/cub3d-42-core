@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 11:59:46 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 12:03:42 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_ray	calc_ray_direction(int current_x, int width, t_player_pos p)
 	current_ray.ray_dir_x = p.player_dir_x + p.camera_plane_x
 		* current_ray.camera_x_point;
 	current_ray.ray_dir_y = p.player_dir_y + p.camera_plane_y
-							* current_ray.camera_x_point;
+		* current_ray.camera_x_point;
 	if (current_ray.ray_dir_x == 0)
 		current_ray.ray_dir_x = 0.00001;
 	if (current_ray.ray_dir_y == 0)
@@ -52,7 +52,8 @@ void	calculate_initial_step_and_dist(t_ray *ray, t_player_pos *p)
 	else
 	{
 		ray->step_dir_x = 1;
-		ray->init_dist_x = (p->map_x + 1.0 - p->player_pos_x) * ray->delta_dist_x ;
+		ray->init_dist_x = (p->map_x + 1.0 - p->player_pos_x)
+			* ray->delta_dist_x ;
 	}
 	if (ray->ray_dir_y < 0)
 	{
@@ -62,40 +63,8 @@ void	calculate_initial_step_and_dist(t_ray *ray, t_player_pos *p)
 	else
 	{
 		ray->step_dir_y = 1;
-		ray->init_dist_y = (p->map_y + 1.0 - p->player_pos_y) * ray->delta_dist_y;
-	}
-}
-// dda algorithm to detect the next wall, iterating the distance
-// from side to side of the map elements till it encounters a wall element
-void	dda(t_map *map, t_ray *ray, t_player_pos *pl)
-{
-	bool	wall;
-
-	wall = false;
-	while (!wall)
-	{
-		if (ray->init_dist_x < ray->init_dist_y)
-		{
-			ray->init_dist_x += ray->delta_dist_x;
-			pl->map_x += ray->step_dir_x;
-			ray->hit_side_bin = 0;
-			if (ray->step_dir_x > 0)
-				ray->hit_side_color = SOUTH;
-			else
-				ray->hit_side_color = NORTH;
-		}
-		else
-		{
-			ray->init_dist_y += ray->delta_dist_y;
-			pl->map_y += ray->step_dir_y;
-			ray->hit_side_bin = 1;
-			if (ray->step_dir_y > 0)
-				ray->hit_side_color = EAST;
-			else
-				ray->hit_side_color = WEST;
-		}
-		if (map->map_plan[pl->map_x][pl->map_y] == '1')
-			wall = true;
+		ray->init_dist_y = (p->map_y + 1.0 - p->player_pos_y)
+			* ray->delta_dist_y;
 	}
 }
 
@@ -106,12 +75,12 @@ void	dist_from_hitpt_to_camera_plane(t_ray *ray)
 	if (ray->hit_side_bin == 0)
 	{
 		ray->perpendicular_wall_to_cp_distance = ray->init_dist_x
-											- ray->delta_dist_x;
+			- ray->delta_dist_x;
 	}
 	else
 	{
 		ray->perpendicular_wall_to_cp_distance = ray->init_dist_y
-											- ray->delta_dist_y;
+			- ray->delta_dist_y;
 	}
 }
 
@@ -122,7 +91,7 @@ t_wall	calculate_wall_height(t_ray *current_ray, int frame_height)
 {
 	int		wall_height;
 	double	dist;
-	t_wall 	wall;
+	t_wall	wall;
 
 	dist = current_ray->perpendicular_wall_to_cp_distance;
 	if (dist <= 0.001)
@@ -140,11 +109,12 @@ t_wall	calculate_wall_height(t_ray *current_ray, int frame_height)
 // main raycasting function that returns an array of walls containing the
 // pixel colors for the wall and the height of the wall for drawing with
 // the graphics library
-t_wall	*raycast_whole_frame(t_player_pos player, t_map parsed_map, t_window_frame *gui)
+t_wall	*raycast_whole_frame(t_player_pos player, t_map parsed_map,
+								t_window_frame *gui)
 {
-	t_wall		*walls;
-	t_ray		current_ray;
-	int			current_column;
+	t_wall			*walls;
+	t_ray			current_ray;
+	int				current_column;
 	t_player_pos	buffer;
 
 	current_column = 0;
