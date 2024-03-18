@@ -6,20 +6,23 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:41:39 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/11 12:20:21 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 09:37:52 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+// initializes the hooks for resizing the window
+// and the key inpyt handler
 void	init_hooks(t_window_frame *gui)
 {
 	mlx_resize_hook(gui->window, resize_function, gui);
-	// mlx_scroll_hook(gui->window, scrolling_handler, gui);
-	// mlx_cursor_hook(gui->window, mouse_position_handler, gui);
 	mlx_key_hook(gui->window, key_handler, gui);
 }
 
+// converts the loaded texture image in 32bit integers
+// and stores it together with metadata in a t_tex struct
+// for further use
 static t_tex	convert_texture(mlx_texture_t* mlx_tex)
 {
 	t_tex				texture;
@@ -47,6 +50,9 @@ static t_tex	convert_texture(mlx_texture_t* mlx_tex)
 	return (texture);
 }
 
+// loads the png texture file located at the parsed path
+// from the map file in the according texture variable in
+// the gui struct
 static void	load_textures(t_window_frame *gui)
 {
 	char	*north_path;
@@ -72,6 +78,9 @@ static void	load_textures(t_window_frame *gui)
 		cleanup(gui);
 }
 
+// initializes the gui on startup,
+// populates the gui struct, loads the textures and draws
+// the first frame
 void	init_gui(t_window_frame *gui)
 {
 	gui->window = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d | ***REMOVED*** & ***REMOVED***", true);
@@ -89,6 +98,8 @@ void	init_gui(t_window_frame *gui)
 	gui->buffer = NULL;
 }
 
+// cleanup function to be called on error
+// to free up memory and exit with error
 void	cleanup(t_window_frame *gui)
 {
 	if (gui->frame)
