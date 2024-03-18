@@ -6,7 +6,7 @@
 /*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:07:09 by fbock             #+#    #+#             */
-/*   Updated: 2024/03/18 10:11:36 by fbock            ###   ########.fr       */
+/*   Updated: 2024/03/18 10:38:25 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,5 @@ t_wall	calculate_textures(t_ray *ray, t_window_frame *gui)
 	wall_result.pixels = determine_wall_pixels(exact_wall_hp, wall_tex, wall_height);
 	if (!wall_result.pixels)
 		cleanup(gui);
-
 	return (wall_result);
 }
