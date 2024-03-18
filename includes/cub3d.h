@@ -6,7 +6,7 @@
 /*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by fbock             #+#    #+#             */
-/*   Updated: 2024/03/18 13:41:41 by fbock            ###   ########.fr       */
+/*   Updated: 2024/03/18 13:51:16 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ typedef struct s_player_pos {
 	double	camera_plane_y;
 	int		map_x;
 	int		map_y;
+	char	init_dir;
 }	t_player_pos;
 
 typedef struct s_window_frame {
