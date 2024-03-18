@@ -1,6 +1,5 @@
-- Verify correct orientation (e.g. correct texture on North/South...)
-
-- add key handler for A and D
+- mirroring static int32_t	*determine_wall_pixels(double exact_wall_hp,
+										t_tex *tex, int wall_height)
 
 - norminette
 
