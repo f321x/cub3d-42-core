@@ -6,13 +6,13 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 12:03:16 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 12:09:41 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 12:15:48 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	x_smaller_y(t_map *map, t_ray *ray, t_player_pos *pl)
+static void	x_smaller_y(t_ray *ray, t_player_pos *pl)
 {
 	ray->init_dist_x += ray->delta_dist_x;
 	pl->map_x += ray->step_dir_x;
@@ -23,7 +23,7 @@ static void	x_smaller_y(t_map *map, t_ray *ray, t_player_pos *pl)
 		ray->hit_side_color = NORTH;
 }
 
-static void	x_bigger_y(t_map *map, t_ray *ray, t_player_pos *pl)
+static void	x_bigger_y(t_ray *ray, t_player_pos *pl)
 {
 	ray->init_dist_y += ray->delta_dist_y;
 	pl->map_y += ray->step_dir_y;
@@ -44,9 +44,9 @@ void	dda(t_map *map, t_ray *ray, t_player_pos *pl)
 	while (!wall)
 	{
 		if (ray->init_dist_x < ray->init_dist_y)
-			x_smaller_y(map, ray, pl);
+			x_smaller_y(ray, pl);
 		else
-			x_bigger_y(map, ray, pl);
+			x_bigger_y(ray, pl);
 		if (map->map_plan[pl->map_x][pl->map_y] == '1')
 			wall = true;
 	}
