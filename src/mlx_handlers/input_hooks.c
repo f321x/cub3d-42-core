@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:16:25 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 13:59:59 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 15:56:29 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,21 +110,17 @@ void	key_handler(mlx_key_data_t keydata, void *param)
 	handle_movement(keydata, gui);
 	if (keydata.key == 262 && (gui->player.init_dir == 'N'
 			|| gui->player.init_dir == 'E'))
-	{
-		printf("right");
 		rotate(gui, true);
-	}
 	else if (keydata.key == 263
 		&& (gui->player.init_dir == 'N' || gui->player.init_dir == 'E'))
-	{
-		printf("left");
 		rotate(gui, false);
-	}
 	else if (keydata.key == 262
 		&& (gui->player.init_dir == 'S' || gui->player.init_dir == 'W'))
 		rotate(gui, false);
 	else if (keydata.key == 263)
 		rotate(gui, true);
-	if (keydata.key == 256)
+	else if (keydata.key == 256)
 		handle_escape(gui);
+	else if (keydata.key == 81)
+		reset(gui);
 }

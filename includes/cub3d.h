@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 14:13:51 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 15:58:23 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,9 @@ typedef struct s_window_frame {
 	t_textures		textures;
 }	t_window_frame;
 
+// main.c
+void	init_player(t_window_frame *gui);
+
 // mlx_handlers/handlers_main.c
 void	init_hooks(t_window_frame *gui);
 void	init_gui(t_window_frame *gui);
@@ -132,6 +135,9 @@ void	rotate(t_window_frame *gui, bool true_if_right);
 
 // mlx_handlers/key_hook_utils.c
 void	handle_escape(t_window_frame *gui);
+
+// mlx_handlers/movement_utils.c
+void 	reset(t_window_frame *gui);
 
 // raycasting_main.c
 t_wall	*raycast_whole_frame(t_player_pos player,
