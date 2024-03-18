@@ -6,21 +6,19 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:42:10 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/11 13:20:01 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 09:32:05 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+// encodes red, green, blue and transparency
+// into a single 32bit integer for use with the
+// MLX42 library
 int32_t	convert_rgba(int r, int g, int b, int a)
 {
 	return (r << 24 | g << 16 | b << 8 | a);
 }
-
-// void put_texture(t_wall *walls, int width_i, int height_i, mlx_image_t *buffer)
-// {
-
-// }
 
 void	draw_image(t_window_frame *gui)
 {
@@ -57,6 +55,8 @@ void	draw_image(t_window_frame *gui)
 	free(walls);
 }
 
+// sets the buffer image in the gui struct as the active window
+// and frees the old image.
 void new_frame(t_window_frame *gui)
 {
 	if ((mlx_image_to_window(gui->window, gui->buffer, 0, 0)) < 0)

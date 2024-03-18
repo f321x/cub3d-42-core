@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:07:09 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/11 13:29:01 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/11 15:07:53 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static t_tex*	fetch_fitting_texture(t_ray *ray, t_window_frame *gui)
 	return (NULL);
 }
 
+
 static double	calc_exact_wall_hitpoint(t_ray *ray, t_window_frame *gui)
 {
 	double	exact_wall_hp;
@@ -43,6 +44,8 @@ static double	calc_exact_wall_hitpoint(t_ray *ray, t_window_frame *gui)
 	return (exact_wall_hp - (int)exact_wall_hp);
 }
 
+// returns the 32-bit array of integers for the colors of a single
+// column of the wall (one t_wall element)
 static int32_t*	determine_wall_pixels(double exact_wall_hp, t_tex* tex, int wall_height)
 {
 	int32_t*	wall_pixels;
@@ -51,15 +54,14 @@ static int32_t*	determine_wall_pixels(double exact_wall_hp, t_tex* tex, int wall
 	double		position;
 
 	index = 0;
-	// printf("\nWALL HEIGHT: %d\n", wall_height);
 	wall_pixels = malloc(sizeof(int32_t) * wall_height);
 	if (!wall_pixels)
 		return (NULL);
-	// probably needs a case for mirroring
+	// maybe needs a case for mirroring
 	step_size = (double)tex->height / wall_height;
 	position = 0;
-	exact_wall_hp = (int)(exact_wall_hp * tex->width) % tex->width;  // reused as tex x pos
-	while (index < wall_height) // && (int)position < tex->height)
+	exact_wall_hp = (int)(exact_wall_hp * tex->width) % tex->width;
+	while (index < wall_height)
 	{
         wall_pixels[index++] = tex->pixels[(int)position * tex->width + (int)exact_wall_hp];
         position += step_size;
@@ -67,6 +69,11 @@ static int32_t*	determine_wall_pixels(double exact_wall_hp, t_tex* tex, int wall
 	return (wall_pixels);
 }
 
+// main texture calculation function, determines the correct
+// texture, scales the texture to the wall size and determines the
+// correct pixels to draw on the wall. returns t_wall which
+// contains an array of 32-bit integers that represent the colors
+// of the wall
 t_wall	calculate_textures(t_ray *ray, t_window_frame *gui)
 {
 	t_wall			wall_result;

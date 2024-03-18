@@ -2,8 +2,8 @@ NO ./assets/textures/Bark.png
 SO ./assets/textures/bookshelf.png
 WE ./assets/textures/Bricks.png
 EA ./assets/textures/Coal.png
-F 0,255,0
-C 0,0,255
+F 245,245,220
+C 255,223,0
 1111111111111111111111111
 1000000000110000000000001
 1011000001110000000000001
