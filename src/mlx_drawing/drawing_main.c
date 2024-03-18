@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:42:10 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 09:32:05 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 12:21:06 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,13 @@ int32_t	convert_rgba(int r, int g, int b, int a)
 	return (r << 24 | g << 16 | b << 8 | a);
 }
 
-void	draw_image(t_window_frame *gui)
+static void	populate_frame_buffer(t_window_frame *gui, t_wall *walls)
 {
-	t_wall	*walls;
 	int		width_index;
-	int		height_index;
-	int32_t	pixel;
 	int		tex_index;
+	int32_t	pixel;
+	int		height_index;
 
-	walls = raycast_whole_frame(gui->player, *(gui->config_file.map), gui);
-	gui->buffer = mlx_new_image(gui->window, gui->width, gui->height);
-	if (!gui->buffer)
-		cleanup(gui);
 	width_index = 0;
 	while (width_index < gui->width)
 	{
@@ -52,12 +47,25 @@ void	draw_image(t_window_frame *gui)
 		free(walls[width_index].pixels);
 		width_index++;
 	}
+}
+
+// generates the pixels to draw and puts them in the buffer pixel by
+// pixel, traversing trough the frame size
+void	draw_image(t_window_frame *gui)
+{
+	t_wall	*walls;
+
+	walls = raycast_whole_frame(gui->player, *(gui->config_file.map), gui);
+	gui->buffer = mlx_new_image(gui->window, gui->width, gui->height);
+	if (!gui->buffer)
+		cleanup(gui);
+	populate_frame_buffer(gui, walls);
 	free(walls);
 }
 
 // sets the buffer image in the gui struct as the active window
 // and frees the old image.
-void new_frame(t_window_frame *gui)
+void	new_frame(t_window_frame *gui)
 {
 	if ((mlx_image_to_window(gui->window, gui->buffer, 0, 0)) < 0)
 		cleanup(gui);
