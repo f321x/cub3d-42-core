@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:35:08 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/21 12:12:24 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 13:47:55 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include "cub3d.h"
 
 typedef struct s_map t_map;
-
+typedef char (*map_ptr)[MAX_ROW_NUM][MAX_COLUMN_NUM];
 
 typedef enum e_type_id
 {
@@ -48,13 +48,6 @@ typedef enum e_error
 	MULTI_PLAYER,
 	MAP_NOT_SURROUNDED_BY_WALLS,
 }	t_err;
-
-// typedef struct s_rgb
-// {
-// 	unsigned short int	r;
-// 	unsigned short int	g;
-// 	unsigned short int	b;
-// }	t_rgb;
 
 typedef struct s_config_file
 {
@@ -122,11 +115,21 @@ bool	parse_type_ids(t_conf_file *config_file);
 
 // parse_type_ids_2.c
 bool	id_is_valid(t_conf_file *config_file, char *first_three_chars);
+bool	parse_type_ids(t_conf_file *config_file);
 
 bool	copy_map(t_conf_file *conf_file, t_line *result);
 bool	parse_map(t_conf_file *conf_file);
 
+// parse_map.c
+map_ptr duplicate_map_plan(t_conf_file const *conf_file, map_ptr map_copy_ptr);
+void	check_next_coord(t_conf_file *conf_file, int x, int y);
+bool	is_only_one_player(t_conf_file *conf_file, size_t i, size_t j);
+bool	search_for_player(t_conf_file *conf_file, size_t i, size_t j);
 
+// copy_map.c
+void	init_map_plan(char (*map_plan)[MAX_COLUMN_NUM]);
+bool	copy_char_by_char(t_conf_file *conf_file, char *current_line);
+size_t	get_row_num(t_conf_file *conf_file);
 
 void	print_map_plan(t_conf_file const *conf_file, char map[MAX_ROW_NUM][MAX_COLUMN_NUM]);
 void	print_test(t_conf_file config_file);

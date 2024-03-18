@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_type_ids_1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 11:32:21 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/11 14:54:36 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/03/18 13:47:39 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,34 +78,6 @@ bool	store_map(t_conf_file *config_file, t_line *results)
 		free_pointer(&(results->remainder));
 		free_pointer(&(results->current_line));
 		close(config_file->fd);
-		return (false);
-	}
-	return (true);	
-}
-
-bool	parse_type_ids(t_conf_file *config_file)
-{
-	t_line	results;
-
-	results = get_next_line(config_file->fd);
-	while (results.current_line)
-	{
-		results.current_line = trim_begin(results);
-		if (is_empty_line(config_file, &results))
-			continue ;
-		if (!parse_cur_line(config_file, results.current_line, &results))
-			return (false);
-		store_type_id_info(config_file, &results);
-		free_pointer(&(results.current_line));
-		results = get_next_line(config_file->fd);
-		if (!store_map(config_file, &results))
-			return (false);
-	}
-	free_pointer(&(results.remainder));
-	if (!all_id_types_present(config_file))
-	{
-		config_file->error = NOT_ALL_TYPE_IDS_FOUND;
-		print_err_msg("One or more type identifiers are missing", "", "");
 		return (false);
 	}
 	return (true);
