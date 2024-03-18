@@ -6,7 +6,7 @@
 #    By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 14:27:39 by fahmadia          #+#    #+#              #
-#    Updated: 2024/03/18 10:57:04 by fbock            ###   ########.fr        #
+#    Updated: 2024/03/18 12:04:11 by fbock            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRCS 	:= $(SRCDIR)/main.c\
 	$(SRCDIR)/map_parsing/parsing/parse_map.c\
 	$(SRCDIR)/raycasting/raycasting_main.c\
 	$(SRCDIR)/raycasting/textures.c\
+	$(SRCDIR)/raycasting/raycasting_dda.c\
 	$(SRCDIR)/mlx_handlers/position_manipulation.c\
 
 OBJS	:= $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SRCS))
