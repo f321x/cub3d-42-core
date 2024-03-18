@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_hooks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:16:25 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 13:46:08 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/03/18 13:59:59 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ static bool	check_wall(t_window_frame *gui, int new_x, int new_y)
 static void	move_left_right(t_window_frame *gui, double *new_x, double *new_y,
 							mlx_key_data_t keydata)
 {
-    double perpendicular_x;
-    double perpendicular_y;
+	double	perpendicular_x;
+	double	perpendicular_y;
 
 	if (gui->player.init_dir == 'N' || gui->player.init_dir == 'E')
 	{
@@ -58,20 +58,19 @@ static void	move_left_right(t_window_frame *gui, double *new_x, double *new_y,
 		perpendicular_x = -gui->player.player_dir_y;
 		perpendicular_y = gui->player.player_dir_x;
 	}
-
-    if (keydata.key == MLX_KEY_A)
-    {
-        *new_x -= perpendicular_x * SPEED;
-        *new_y -= perpendicular_y * SPEED;
-    }
-    else if (keydata.key == MLX_KEY_D)
-    {
-        *new_x += perpendicular_x * SPEED;
-        *new_y += perpendicular_y * SPEED;
-    }
+	if (keydata.key == MLX_KEY_A)
+	{
+		*new_x -= perpendicular_x * SPEED;
+		*new_y -= perpendicular_y * SPEED;
+	}
+	else if (keydata.key == MLX_KEY_D)
+	{
+		*new_x += perpendicular_x * SPEED;
+		*new_y += perpendicular_y * SPEED;
+	}
 }
 
-void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
+void	handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 {
 	double	new_x;
 	double	new_y;
@@ -106,41 +105,26 @@ void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 void	key_handler(mlx_key_data_t keydata, void *param)
 {
 	t_window_frame	*gui;
+
 	gui = (t_window_frame *)param;
 	handle_movement(keydata, gui);
-	
-	if (keydata.key == 262 && (gui->player.init_dir == 'N' || gui->player.init_dir == 'E'))
+	if (keydata.key == 262 && (gui->player.init_dir == 'N'
+			|| gui->player.init_dir == 'E'))
 	{
 		printf("right");
 		rotate(gui, true);
 	}
-	else if (keydata.key == 263  && (gui->player.init_dir == 'N' || gui->player.init_dir == 'E'))
+	else if (keydata.key == 263
+		&& (gui->player.init_dir == 'N' || gui->player.init_dir == 'E'))
 	{
 		printf("left");
 		rotate(gui, false);
 	}
-
-	else if (keydata.key == 262 && (gui->player.init_dir == 'S' || gui->player.init_dir == 'W'))
+	else if (keydata.key == 262
+		&& (gui->player.init_dir == 'S' || gui->player.init_dir == 'W'))
 		rotate(gui, false);
 	else if (keydata.key == 263)
 		rotate(gui, true);
-
-	// if (keydata.key == 262)
-	// {
-
-	// 	printf("right");
-	// 	rotate(gui, true);
-	// }
-	// else if (keydata.key == 263 )
-	// {
-	// 	printf("left");
-	// 	rotate(gui, false);
-	// }
-
 	if (keydata.key == 256)
-	{
-		mlx_delete_image(gui->window, gui->frame);
-		mlx_terminate(gui->window);
-		exit(EXIT_SUCCESS);
-	}
+		handle_escape(gui);
 }

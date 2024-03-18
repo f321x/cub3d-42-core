@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:07 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 13:19:24 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/03/18 14:04:45 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,25 @@ static void	end_program(t_conf_file *conf_file, t_window_frame *gui)
 {
 	mlx_terminate(gui->window);
 	free_config_file_members(conf_file);
+}
+
+static void	set_player_south_west(t_window_frame *gui, int x,
+									int y, t_player_pos *p)
+{
+	if (gui->config_file.map->map_plan[x][y] == 'S')
+	{
+		p->player_dir_x = 1;
+		p->player_dir_y = 0;
+		p->camera_plane_x = 0;
+		p->camera_plane_y = 0.66;
+		p->init_dir = 'S';
+	}
+	else if (gui->config_file.map->map_plan[x][y] == 'W')
+	{
+		p->player_dir_x = 0;
+		p->player_dir_y = -1;
+		p->init_dir = 'W';
+	}
 }
 
 static void	set_player_direction(t_window_frame *gui, int x,
@@ -35,20 +54,7 @@ static void	set_player_direction(t_window_frame *gui, int x,
 		p->player_dir_y = 1;
 		p->init_dir = 'E';
 	}
-	else if (gui->config_file.map->map_plan[x][y] == 'S')
-	{
-		p->player_dir_x = 1;
-		p->player_dir_y = 0;
-		p->camera_plane_x = 0;
-		p->camera_plane_y = 0.66;
-		p->init_dir = 'S';
-	}
-	else if (gui->config_file.map->map_plan[x][y] == 'W')
-	{
-		p->player_dir_x = 0;
-		p->player_dir_y = -1;
-		p->init_dir = 'W';
-	}
+	set_player_south_west(gui, x, y, p);
 }
 
 // initializes the player position in the gui struct

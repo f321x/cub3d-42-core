@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 15:55:38 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/03/18 13:45:43 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 14:07:54 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,16 @@ bool	search_for_player(t_conf_file *conf_file, size_t i, size_t j)
 	return (false);
 }
 
+static bool	check_if_closed(char field, int x, int y, t_conf_file *conf_file)
+{
+	if ((x == 0 || x == (int)conf_file->map->columns_per_row[y] - 1)
+		&& field != '1')
+		return (false);
+	if ((y == 0 || y == (int)conf_file->map->rows_num - 1) && field != '1')
+		return (false);
+	return (true);
+}
+
 void	check_next_coord(t_conf_file *conf_file, int x, int y)
 {
 	char		field;
@@ -45,11 +55,7 @@ void	check_next_coord(t_conf_file *conf_file, int x, int y)
 		return ;
 	if (y < 0 || y > (int)conf_file->map->rows_num - 1)
 		return ;
-	if ((x == 0 || x == (int)conf_file->map->columns_per_row[y] - 1)
-		&& field != '1')
-		is_closed = false;
-	if ((y == 0 || y == (int)conf_file->map->rows_num - 1) && field != '1')
-		is_closed = false;
+	is_closed = check_if_closed(field, x, y, conf_file);
 	conf_file->map->map_copy[y][x] = 'X';
 	check_next_coord(conf_file, x, y - 1);
 	check_next_coord(conf_file, x, y + 1);
