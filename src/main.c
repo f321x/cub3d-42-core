@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:07 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 11:57:53 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 12:00:43 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ static void	end_program(t_conf_file *conf_file, t_window_frame *gui)
 	free_config_file_members(conf_file);
 }
 
-static void	set_player_direction(t_window_frame *gui, int x, int y, t_player_pos *p)
+static void	set_player_direction(t_window_frame *gui, int x,
+									int y, t_player_pos *p)
 {
 	if (gui->config_file.map->map_plan[x][y] == 'N')
 	{
@@ -50,7 +51,7 @@ static void	set_player_direction(t_window_frame *gui, int x, int y, t_player_pos
 // with the parsed start coordinates from the map file
 static void	init_player(t_window_frame *gui)
 {
-	t_player_pos *p;
+	t_player_pos	*p;
 
 	p = &(gui->player);
 	p->player_pos_x = (double)gui->config_file.map->player_coord[0];
@@ -58,15 +59,14 @@ static void	init_player(t_window_frame *gui)
 	p->camera_plane_x = 0.66;
 	p->camera_plane_y = 0;
 	set_player_direction(gui, gui->config_file.map->player_coord[0],
-							gui->config_file.map->player_coord[1],
-							&(gui->player));
+		gui->config_file.map->player_coord[1], &(gui->player));
 	p->map_x = gui->config_file.map->player_coord[0];
 	p->map_y = gui->config_file.map->player_coord[1];
 }
 
 int	main(int argc, char **argv)
 {
-	t_window_frame gui;
+	t_window_frame	gui;
 
 	if (!parse_config_file(argc, argv, &(gui.config_file)))
 		return (gui.config_file.error);
