@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 10:46:03 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 12:04:32 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,9 +133,11 @@ void rotate(t_window_frame *gui, bool true_if_right);
 t_wall	*raycast_whole_frame(t_player_pos player, t_map parsed_map, t_window_frame *gui);
 t_wall	calculate_wall_height(t_ray *current_ray, int frame_height);
 void	dist_from_hitpt_to_camera_plane(t_ray *ray);
-void	dda(t_map *map, t_ray *ray, t_player_pos *pl);
 void	calculate_initial_step_and_dist(t_ray *ray, t_player_pos *p);
 t_ray	calc_ray_direction(int current_x, int width, t_player_pos p);
+
+// raycasting_dda.c
+void	dda(t_map *map, t_ray *ray, t_player_pos *pl);
 
 // textures.c
 t_wall	calculate_textures(t_ray *ray, t_window_frame *gui);
