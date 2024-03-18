@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 15:58:23 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 15:59:43 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ void	rotate(t_window_frame *gui, bool true_if_right);
 void	handle_escape(t_window_frame *gui);
 
 // mlx_handlers/movement_utils.c
-void 	reset(t_window_frame *gui);
+void	reset(t_window_frame *gui);
 
 // raycasting_main.c
 t_wall	*raycast_whole_frame(t_player_pos player,

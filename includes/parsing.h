@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:35:08 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/03/18 14:16:03 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 16:00:08 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,8 @@ char	*trim_begin(t_line results);
 // parse_type_ids_1.c
 bool	parse_type_ids(t_conf_file *config_file);
 bool	is_empty_line(const t_conf_file *const config_file, t_line *results);
-bool	parse_cur_line(t_conf_file *conf_file, char *trim_line, t_line *results);
+bool	parse_cur_line(t_conf_file *conf_file,
+			char *trim_line, t_line *results);
 bool	store_map(t_conf_file *config_file, t_line *results);
 bool	all_id_types_present(t_conf_file *conf_file);
 
