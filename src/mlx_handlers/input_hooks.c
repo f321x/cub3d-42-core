@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_hooks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:16:25 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 10:39:27 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 11:44:39 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,14 @@ void	resize_function(int32_t width, int32_t height, void *param)
 
 
 
-/* bool	is_inside_map(t_window_frame *gui, float player_new_x, float player_new_y)
+bool	is_inside_map(t_window_frame *gui, float player_new_x, float player_new_y)
 {
-	int	x;
-	int	y;
+	size_t	x;
+	size_t	y;
 	x = trunc(player_new_x);
 	y = trunc(player_new_y);
-	printf("player_new_x: %d\n", x);
-	printf("player_new_y: %d\n", y);
+	printf("player_new_x: %lu\n", x);
+	printf("player_new_y: %lu\n", y);
 	// if (gui->config_file.map->map_plan[x][y] == INIT
 	// 	|| gui->config_file.map->map_plan[x][y] == NEW_LINE)
 	// {
@@ -161,8 +161,8 @@ bool	move_north_west(t_window_frame *gui,float dx, float dy)
 
 void	move_forward(t_window_frame *gui, float  dx, float dy, float angle)
 {
-	float	player_new_x;
-	float	player_new_y;
+	// float	player_new_x;
+	// float	player_new_y;
 
 	if (gui->player.player_dir_y == 0 && gui->player.player_dir_x == 0)
 		angle = 0;
@@ -193,8 +193,8 @@ void	move_forward(t_window_frame *gui, float  dx, float dy, float angle)
 
 void	move_backward(t_window_frame *gui, float dx, float dy, float angle)
 {
-	float	player_new_x;
-	float	player_new_y;
+	// float	player_new_x;
+	// float	player_new_y;
 
 	if (gui->player.player_dir_y == 0 && gui->player.player_dir_x == 0)
 		angle = 0;
@@ -222,8 +222,8 @@ void	move_backward(t_window_frame *gui, float dx, float dy, float angle)
 
 void	move_right(t_window_frame *gui, float dx, float dy, float angle)
 {
-	float	player_new_x;
-	float	player_new_y;
+	// float	player_new_x;
+	// float	player_new_y;
 
 	if (gui->player.player_dir_y == 0 && gui->player.player_dir_x == 0)
 		angle = 0;
@@ -265,8 +265,8 @@ void	move_right(t_window_frame *gui, float dx, float dy, float angle)
 
 void	move_left(t_window_frame *gui, float dx, float dy, float angle)
 {
-	float	player_new_x;
-	float	player_new_y;
+	// float	player_new_x;
+	// float	player_new_y;
 
 	if (gui->player.player_dir_y == 0 && gui->player.player_dir_x == 0)
 		angle = 0;
@@ -307,9 +307,9 @@ void	move_left(t_window_frame *gui, float dx, float dy, float angle)
 
 void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 {
-	float	dx;
-	float	dy;
-	float	angle ;
+	float	dx = 0;
+	float	dy = 0;
+	float	angle = 0 ;
 
 	if (keydata.key == MLX_KEY_W && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
 		move_forward(gui, dx, dy, angle);
@@ -320,19 +320,19 @@ void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 	else if (keydata.key == MLX_KEY_A && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
 		move_left(gui, dx, dy, angle);
 	return ;
-} */
-
-static bool	check_wall(t_window_frame *gui, int new_x, int new_y)
-{
-	if (gui->config_file.map->map_plan[new_x][new_y] == WALL ||
-		gui->config_file.map->map_plan[new_x][new_y] == INIT)
-	{
-		return (true);
-	}
-	return (false);
 }
 
-void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
+// static bool	check_wall(t_window_frame *gui, int new_x, int new_y)
+// {
+// 	if (gui->config_file.map->map_plan[new_x][new_y] == WALL ||
+// 		gui->config_file.map->map_plan[new_x][new_y] == INIT)
+// 	{
+// 		return (true);
+// 	}
+// 	return (false);
+// }
+
+/* void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 {
 	double	new_x;
 	double	new_y;
@@ -357,7 +357,7 @@ void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 		draw_image(gui);
 		new_frame(gui);
 	}
-}
+} */
 
 /*
 ** Short hook handler for the keypresses which terminates the
