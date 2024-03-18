@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 10:38:21 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 10:46:17 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	dda(t_map *map, t_ray *ray, t_player_pos *pl)
 
 // calculates the distance from the perpendicular ray between the camera plane
 // and the hitpoint in the wall determined by the dda algorithm
-void	dist_from_hitpt_to_camera_plane(t_ray *ray,	t_player_pos *pl)
+void	dist_from_hitpt_to_camera_plane(t_ray *ray)
 {
 	if (ray->hit_side_bin == 0)
 	{
@@ -158,7 +158,7 @@ t_wall	*raycast_whole_frame(t_player_pos player, t_map parsed_map, t_window_fram
 		current_ray = calc_ray_direction(current_column, gui->width, player);
 		calculate_initial_step_and_dist(&current_ray, &player);
 		dda(&parsed_map, &current_ray, &player);
-		dist_from_hitpt_to_camera_plane(&current_ray, &player);
+		dist_from_hitpt_to_camera_plane(&current_ray);
 		walls[current_column] = calculate_textures(&current_ray, gui);
 		current_column++;
 	}

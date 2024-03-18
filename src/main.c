@@ -6,11 +6,11 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:07 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 09:39:51 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 10:45:23 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"..
+#include "cub3d.h"
 
 static void	end_program(t_conf_file *conf_file, t_window_frame *gui)
 {
