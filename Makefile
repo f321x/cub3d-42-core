@@ -6,7 +6,7 @@
 #    By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 14:27:39 by ***REMOVED***          #+#    #+#              #
-#    Updated: 2024/03/18 12:04:11 by ***REMOVED***            ###   ########.fr        #
+#    Updated: 2024/03/18 13:38:02 by ***REMOVED***            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,10 @@ SRCS 	:= $(SRCDIR)/main.c\
 	$(SRCDIR)/map_parsing/parsing/type_id_info.c\
 	$(SRCDIR)/map_parsing/parsing/open_config_file.c\
 	$(SRCDIR)/map_parsing/parsing/copy_map.c\
+	$(SRCDIR)/map_parsing/parsing/copy_map_2.c\
 	$(SRCDIR)/map_parsing/parsing/test.c\
 	$(SRCDIR)/map_parsing/parsing/parse_map.c\
+	$(SRCDIR)/map_parsing/parsing/parse_map_2.c\
 	$(SRCDIR)/raycasting/raycasting_main.c\
 	$(SRCDIR)/raycasting/textures.c\
 	$(SRCDIR)/raycasting/raycasting_dda.c\
