@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:07:09 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 10:11:36 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 10:38:25 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,5 @@ t_wall	calculate_textures(t_ray *ray, t_window_frame *gui)
 	wall_result.pixels = determine_wall_pixels(exact_wall_hp, wall_tex, wall_height);
 	if (!wall_result.pixels)
 		cleanup(gui);
-
 	return (wall_result);
 }

@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 10:15:20 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 10:38:21 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,11 +125,8 @@ t_wall	calculate_wall_height(t_ray *current_ray, int frame_height)
 	t_wall 	wall;
 
 	dist = current_ray->perpendicular_wall_to_cp_distance;
-	if (dist < 0)
-	{
-		printf("negative distance, wtf? %f\n", dist);
-		dist = 0.01;
-	}
+	if (dist <= 0.001)
+		dist = 0.1;
 	wall_height = (int)(frame_height / dist);
 	wall.wall_bottom_pixel = (-wall_height / 2) + (frame_height / 2);
 	if (wall.wall_bottom_pixel < 0)
