@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/12 16:20:15 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 09:32:43 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct s_map {
 	size_t	rows_num;
 	size_t	columns_per_row[MAX_ROW_NUM];
 	size_t	max_columns_num;
-	char	map_plan[MAX_ROW_NUM][MAX_COLUMN_NUM];  // shouldn't this be defined as t_field enum instead of char?
+	char	map_plan[MAX_ROW_NUM][MAX_COLUMN_NUM];
 	char	map_copy[MAX_ROW_NUM][MAX_COLUMN_NUM];
 	size_t	player_coord[2];
 	bool	is_player;
@@ -110,8 +110,6 @@ typedef struct s_window_frame {
 	mlx_image_t		*buffer;
 	int32_t			width;
 	int32_t			height;
-	// double			mouse_x;
-	// double			mouse_y;
 	t_player_pos	player;
 	t_conf_file		config_file;
 	t_textures		textures;
