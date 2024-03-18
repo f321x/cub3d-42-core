@@ -1,7 +1,3 @@
-- Fix Makefile
-
-- fix glitching in wall (collision detection ?)
-
 - Verify correct orientation (e.g. correct texture on North/South...)
 
 - add key handler for A and D
