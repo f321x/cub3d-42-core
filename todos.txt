@@ -8,3 +8,6 @@
 - check subject again / verify implementation is according to subject
 
 - go trough eval sheet
+
+- 	texture.width = mlx_tex->width;  // pixels should be freed somewhere
+static t_tex	convert_texture(mlx_texture_t *mlx_tex)

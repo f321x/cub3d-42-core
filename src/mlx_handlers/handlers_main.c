@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:41:39 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 09:37:52 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 12:25:45 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_hooks(t_window_frame *gui)
 // converts the loaded texture image in 32bit integers
 // and stores it together with metadata in a t_tex struct
 // for further use
-static t_tex	convert_texture(mlx_texture_t* mlx_tex)
+static t_tex	convert_texture(mlx_texture_t *mlx_tex)
 {
 	t_tex				texture;
 	unsigned int		index;
@@ -32,7 +32,7 @@ static t_tex	convert_texture(mlx_texture_t* mlx_tex)
 	if (!mlx_tex)
 		return (texture);
 	texture.height = mlx_tex->height;
-	texture.width = mlx_tex->width;  // pixels should be freed somewhere
+	texture.width = mlx_tex->width;
 	texture.pixels = malloc(sizeof(int32_t) * (texture.width * texture.height));
 	if (!texture.pixels)
 		return (texture);
@@ -40,11 +40,11 @@ static t_tex	convert_texture(mlx_texture_t* mlx_tex)
 	while (index < (texture.width * texture.height) * 4)
 	{
 		texture.pixels[index / 4] = convert_rgba(
-			mlx_tex->pixels[index],
-			mlx_tex->pixels[index + 1],
-			mlx_tex->pixels[index + 2],
-			mlx_tex->pixels[index + 3]
-		);
+				mlx_tex->pixels[index],
+				mlx_tex->pixels[index + 1],
+				mlx_tex->pixels[index + 2],
+				mlx_tex->pixels[index + 3]
+				);
 		index += 4;
 	}
 	return (texture);
@@ -83,7 +83,8 @@ static void	load_textures(t_window_frame *gui)
 // the first frame
 void	init_gui(t_window_frame *gui)
 {
-	gui->window = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d | ***REMOVED*** & ***REMOVED***", true);
+	gui->window = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT,
+			"cub3d | ***REMOVED*** & ***REMOVED***", true);
 	if (!(gui->window))
 		cleanup(gui);
 	gui->height = WINDOW_HEIGHT;
