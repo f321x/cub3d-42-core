@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:07:09 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 09:50:46 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 10:11:36 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,7 @@ t_wall	calculate_textures(t_ray *ray, t_window_frame *gui)
 	wall_tex = fetch_fitting_texture(ray, gui);
 	if (!wall_tex->pixels)
 		cleanup(gui);
-
 	exact_wall_hp = calc_exact_wall_hitpoint(ray, gui);
-
 	wall_result = calculate_wall_height(ray, gui->height);
 	wall_height = (wall_result.wall_top_pixel - wall_result.wall_bottom_pixel) + 1;
 	wall_result.pixels = determine_wall_pixels(exact_wall_hp, wall_tex, wall_height);
