@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:07 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 11:46:37 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/03/18 11:57:53 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,8 @@ static void	end_program(t_conf_file *conf_file, t_window_frame *gui)
 	free_config_file_members(conf_file);
 }
 
-static void	set_player_direction(t_window_frame *gui)
+static void	set_player_direction(t_window_frame *gui, int x, int y, t_player_pos *p)
 {
-
-	int x = gui->config_file.map->player_coord[0];
-	int y = gui->config_file.map->player_coord[1];
-	t_player_pos *p = &(gui->player);
-	
 	if (gui->config_file.map->map_plan[x][y] == 'N')
 	{
 		p->player_dir_x = -1;
@@ -36,8 +31,6 @@ static void	set_player_direction(t_window_frame *gui)
 	{
 		p->player_dir_x = 0;
 		p->player_dir_y = 1;
-		p->camera_plane_x = 0.66;
-		p->camera_plane_y = 0;
 	}
 	else if (gui->config_file.map->map_plan[x][y] == 'S')
 	{
@@ -50,8 +43,6 @@ static void	set_player_direction(t_window_frame *gui)
 	{
 		p->player_dir_x = 0;
 		p->player_dir_y = -1;
-		p->camera_plane_x = 0.66;
-		p->camera_plane_y = 0;
 	}
 }
 
@@ -64,9 +55,11 @@ static void	init_player(t_window_frame *gui)
 	p = &(gui->player);
 	p->player_pos_x = (double)gui->config_file.map->player_coord[0];
 	p->player_pos_y = (double)gui->config_file.map->player_coord[1];
-	set_player_direction(gui);
-	// p->camera_plane_x = 0;
-	// p->camera_plane_y = 0.66;
+	p->camera_plane_x = 0.66;
+	p->camera_plane_y = 0;
+	set_player_direction(gui, gui->config_file.map->player_coord[0],
+							gui->config_file.map->player_coord[1],
+							&(gui->player));
 	p->map_x = gui->config_file.map->player_coord[0];
 	p->map_y = gui->config_file.map->player_coord[1];
 }
