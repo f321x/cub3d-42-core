@@ -4,6 +4,8 @@
 
 - Verify correct orientation (e.g. correct texture on North/South...)
 
+- add key handler for A and D
+
 - norminette
 
 - check memory leaks / free memory
