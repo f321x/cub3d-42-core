@@ -6,11 +6,11 @@
 /*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:07 by fbock             #+#    #+#             */
-/*   Updated: 2024/03/18 09:39:51 by fbock            ###   ########.fr       */
+/*   Updated: 2024/03/18 10:45:23 by fbock            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"..
+#include "cub3d.h"
 
 static void	end_program(t_conf_file *conf_file, t_window_frame *gui)
 {
