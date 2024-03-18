@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 10:46:17 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 11:05:27 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ void	dda(t_map *map, t_ray *ray, t_player_pos *pl)
 			pl->map_x += ray->step_dir_x;
 			ray->hit_side_bin = 0;
 			if (ray->step_dir_x > 0)
-				ray->hit_side_color = EAST;
+				ray->hit_side_color = SOUTH;
 			else
-				ray->hit_side_color = WEST;
+				ray->hit_side_color = NORTH;
 		}
 		else
 		{
@@ -90,9 +90,9 @@ void	dda(t_map *map, t_ray *ray, t_player_pos *pl)
 			pl->map_y += ray->step_dir_y;
 			ray->hit_side_bin = 1;
 			if (ray->step_dir_y > 0)
-				ray->hit_side_color = SOUTH;
+				ray->hit_side_color = EAST;
 			else
-				ray->hit_side_color = NORTH;
+				ray->hit_side_color = WEST;
 		}
 		if (map->map_plan[pl->map_x][pl->map_y] == '1')
 			wall = true;
