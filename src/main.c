@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:07 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 12:00:43 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 13:19:24 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ static void	set_player_direction(t_window_frame *gui, int x,
 		p->player_dir_y = 0;
 		p->camera_plane_x = 0;
 		p->camera_plane_y = 0.66;
+		p->init_dir = 'N';
 	}
 	else if (gui->config_file.map->map_plan[x][y] == 'E')
 	{
 		p->player_dir_x = 0;
 		p->player_dir_y = 1;
+		p->init_dir = 'E';
 	}
 	else if (gui->config_file.map->map_plan[x][y] == 'S')
 	{
@@ -39,11 +41,13 @@ static void	set_player_direction(t_window_frame *gui, int x,
 		p->player_dir_y = 0;
 		p->camera_plane_x = 0;
 		p->camera_plane_y = 0.66;
+		p->init_dir = 'S';
 	}
 	else if (gui->config_file.map->map_plan[x][y] == 'W')
 	{
 		p->player_dir_x = 0;
 		p->player_dir_y = -1;
+		p->init_dir = 'W';
 	}
 }
 
