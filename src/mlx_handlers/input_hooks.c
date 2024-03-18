@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:16:25 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/11 14:55:52 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 10:29:18 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -352,6 +352,7 @@ void handle_movement(mlx_key_data_t keydata, t_window_frame *gui)
 	}
 	if (!check_wall(gui, (int)new_x, (int)new_y))
 	{
+		printf("Player x: %f | Player y: %f \n", new_x, new_y);
 		gui->player.player_pos_x = new_x;
 		gui->player.player_pos_y = new_y;
 		draw_image(gui);
