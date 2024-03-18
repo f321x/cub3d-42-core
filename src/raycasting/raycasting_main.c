@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:47:40 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/11 14:33:47 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 09:29:51 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ void	calculate_initial_step_and_dist(t_ray *ray, t_player_pos *p)
 		ray->init_dist_y = (p->map_y + 1.0 - p->player_pos_y) * ray->delta_dist_y;
 	}
 }
-
+// dda algorithm to detect the next wall, iterating the distance
+// from side to side of the map elements till it encounters a wall element
 void	dda(t_map *map, t_ray *ray, t_player_pos *pl)
 {
 	bool	wall;
@@ -139,6 +140,9 @@ t_wall	calculate_wall_height(t_ray *current_ray, int frame_height)
 	return (wall);
 }
 
+// main raycasting function that returns an array of walls containing the
+// pixel colors for the wall and the height of the wall for drawing with
+// the graphics library
 t_wall	*raycast_whole_frame(t_player_pos player, t_map parsed_map, t_window_frame *gui)
 {
 	t_wall		*walls;
@@ -158,18 +162,8 @@ t_wall	*raycast_whole_frame(t_player_pos player, t_map parsed_map, t_window_fram
 		calculate_initial_step_and_dist(&current_ray, &player);
 		dda(&parsed_map, &current_ray, &player);
 		dist_from_hitpt_to_camera_plane(&current_ray, &player);
-
 		walls[current_column] = calculate_textures(&current_ray, gui);
-		// walls[current_column] = calculate_wall_height(&current_ray, gui->height);
-		// walls[current_column].direction = current_ray.hit_side_color;
 		current_column++;
 	}
 	return (walls);
 }
-
-// tbd:
-// adding correct side (N,E,S,W)
-// textures ?
-// collision detection
-// moving -> changing coordinates
-// https://chat.openai.com/share/d2d7e150-c68f-4007-a2a3-2c353f645987
