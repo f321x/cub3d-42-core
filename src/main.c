@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:07 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 14:04:45 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 15:58:12 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	set_player_direction(t_window_frame *gui, int x,
 
 // initializes the player position in the gui struct
 // with the parsed start coordinates from the map file
-static void	init_player(t_window_frame *gui)
+void	init_player(t_window_frame *gui)
 {
 	t_player_pos	*p;
 

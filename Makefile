@@ -6,7 +6,7 @@
 #    By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 14:27:39 by ***REMOVED***          #+#    #+#              #
-#    Updated: 2024/03/18 14:16:37 by ***REMOVED***            ###   ########.fr        #
+#    Updated: 2024/03/18 15:56:09 by ***REMOVED***            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ HEADERS := -I ./includes -I ./libs/libft_combined/includes -I $(LIBMLX)/include/
 SRCS 	:= $(SRCDIR)/main.c\
 	$(SRCDIR)/mlx_drawing/drawing_main.c\
 	$(SRCDIR)/mlx_handlers/handlers_main.c\
+	$(SRCDIR)/mlx_handlers/movement_utils.c\
 	$(SRCDIR)/mlx_handlers/key_hook_utils.c\
 	$(SRCDIR)/mlx_handlers/input_hooks.c\
 	$(SRCDIR)/map_parsing/parsing_main.c\
