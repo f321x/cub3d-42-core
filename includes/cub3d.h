@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by fbock             #+#    #+#             */
-/*   Updated: 2024/03/18 12:04:32 by fbock            ###   ########.fr       */
+/*   Updated: 2024/03/18 13:18:55 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ typedef struct s_player_pos {
 	double	camera_plane_y;
 	int		map_x;
 	int		map_y;
+	char	init_dir;
 }	t_player_pos;
 
 typedef struct s_window_frame {
