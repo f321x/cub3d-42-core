@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:16:25 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 12:57:46 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 12:58:27 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,16 +98,10 @@ void	key_handler(mlx_key_data_t keydata, void *param)
 {
 	t_window_frame	*gui;
 	gui = (t_window_frame *)param;
-	// right: 262
-	// left: 263
-	// w: 87
-	// a: 65
-	// s: 83
-	// d: 68
 	handle_movement(keydata, gui);
-	if (keydata.key == 262)  // right
+	if (keydata.key == 262)
 		rotate(gui, true);
-	else if (keydata.key == 263)  // left
+	else if (keydata.key == 263)
 		rotate(gui, false);
 	if (keydata.key == 256)
 	{
