@@ -6,21 +6,20 @@
 #    By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 14:27:39 by ***REMOVED***          #+#    #+#              #
-#    Updated: 2024/03/11 12:09:09 by ***REMOVED***            ###   ########.fr        #
+#    Updated: 2024/03/18 10:57:04 by ***REMOVED***            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= cub3d
 
 CC 		:= cc
-CFLAGS 	:= -g3 -fsanitize=address # -Wall -Wextra -Werror
-DFLAGS 	:= -g3 -fsanitize=address
-DNAME 	:= cub3d_debug
+CFLAGS 	:= -g3 -fsanitize=address -Wall -Wextra -Werror
 
 SRCDIR		:= src
 OBJDIR		:= objs
 
 LIBMLX	:= ./libs/MLX42
+MLXLIB	:= $(LIBMLX)/build/libmlx42.a
 LIB 	:= -L ./libs/libft_combined -lmylib -L $(LIBMLX)/build -ldl -lglfw -pthread -lm -lmlx42
 HEADERS := -I ./includes -I ./libs/libft_combined/includes -I $(LIBMLX)/include/MLX42
 
@@ -47,13 +46,11 @@ SRCS 	:= $(SRCDIR)/main.c\
 	$(SRCDIR)/mlx_handlers/position_manipulation.c\
 
 OBJS	:= $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SRCS))
-DOBJS   := $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.d.o,$(SRCS))
 $(shell mkdir -p $(OBJDIR) $(OBJDIR)/map_parsing $(OBJDIR)/mlx_drawing $(OBJDIR)/mlx_handlers $(OBJDIR)/raycasting $(OBJDIR)/map_parsing/parsing $(OBJDIR)/map_parsing/helper $(OBJDIR)/map_parsing/free_memory)
 
-all: libmlx $(NAME)
+all: $(MLXLIB) $(NAME)
 
-# we need to fix relinking of this function
-libmlx:
+$(MLXLIB):
 	@if [ ! -d "$(LIBMLX)" ]; then \
 		mkdir -p libs && \
 		git clone --depth 1 --branch v2.3.2 https://github.com/codam-coding-college/MLX42 $(LIBMLX) && \
@@ -64,94 +61,19 @@ libmlx:
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
 
-$(OBJDIR)/%.d.o: $(SRCDIR)/%.c
-	$(CC) $(CFLAGS) $(DFLAGS) $(HEADERS) -c $< -o $@
-
 $(NAME): $(OBJS)
 	make -C libs/libft_combined
 	$(CC) $(CFLAGS) $(LIB) $(HEADERS) $(OBJS) -o $(NAME)
 
-debug: $(DOBJS)
-	make -C libs/libft_combined
-	# make -C libs/libft debug
-	$(CC) $(CFLAGS) $(DFLAGS) $(LIB_DEBUG) $(HEADERS) $(DOBJS) -o $(DNAME)
-
 clean:
-	rm -rf $(LIBMLX)/build
 	make -C libs/libft_combined clean
 	rm -rf $(OBJDIR)
 
 fclean: clean
 	rm -rf $(LIBMLX)
 	make -C libs/libft_combined fclean
-	rm -rf $(NAME) $(DNAME)
+	rm -rf $(NAME)
 
 re: fclean all
 
-.PHONY: all, clean, fclean, re, debug
-
-# ________________________________________________________________
-
-# SRCS = main.c\
-# 	parsing_main.c\
-# 	parse_type_ids_1.c\
-# 	parse_type_ids_2.c\
-# 	print_error_message.c\
-# 	free.c\
-# 	atoi.c\
-# 	get_config_file_members.c\
-# 	parse_colors.c\
-# 	trim.c\
-# 	type_id_info.c\
-# 	open_config_file.c\
-
-# VPATH = ./src\
-# 	./src/map_parsing\
-# 	./src/map_parsing/free_memory\
-# 	./src/map_parsing/helper\
-# 	./src/map_parsing/parsing
-
-# OBJS_PATH = ./objs
-# OBJS = $(addprefix $(OBJS_PATH)/, $(SRCS:.c=.o))
-
-# CC = cc
-# CFLAGS = -c -MMD -g -Wall -Werror -Wextra
-# INCLUDE = -I./includes\
-# 	-I./libs/mylib/libft\
-# 	-I./libs/mylib/get_next_line
-
-# NAME = cub3D
-# DEPENDENCIES = $(OBJS:.o=.d)
-# MYLIB_PATH = ./libs/mylib
-# MYLIB = $(MYLIB_PATH)/libmylib.a
-
-# all: $(NAME)
-
-# $(NAME): $(OBJS) Makefile $(MYLIB)
-# 	$(CC) $(OBJS) -L$(MYLIB_PATH) -lmylib -o $(NAME)
-
-# $(OBJS_PATH)/%.o: %.c
-# 	mkdir -p $(OBJS_PATH)
-# 	$(CC) $(CFLAGS) $(INCLUDE) $< -o $@
-
-# $(MYLIB):
-# 	cd $(MYLIB_PATH) && make
-
-# clean:
-# 	rm -f $(OBJS)
-# 	rm -f $(DEPENDENCIES)
-# 	rm -rf $(OBJS_PATH)
-
-# fclean: clean
-# 	rm -f $(NAME)
-# 	cd $(MYLIB_PATH) && make fclean
-
-# re: fclean all
-
-# .PHONEY: all clean fclean re
-
-# -include $(DEPENDENCIES)
-
-
-
-
+.PHONY: all, clean, fclean, re
