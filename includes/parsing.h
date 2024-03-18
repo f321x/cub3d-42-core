@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:35:08 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/03/18 16:00:08 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 16:11:36 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include "cub3d.h"
 
 typedef struct s_map	t_map;
-typedef char (*map_ptr)[MAX_ROW_NUM][MAX_COLUMN_NUM];
+typedef char (*map_ptr)[1000][1000];
 
 typedef enum e_type_id
 {
