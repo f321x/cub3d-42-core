@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_hooks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:16:25 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 15:56:29 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 16:44:06 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,9 @@ static void	move_left_right(t_window_frame *gui, double *new_x, double *new_y,
 	double	perpendicular_x;
 	double	perpendicular_y;
 
-	if (gui->player.init_dir == 'N' || gui->player.init_dir == 'E')
-	{
-		perpendicular_x = gui->player.player_dir_y;
-		perpendicular_y = -gui->player.player_dir_x;
-	}
-	else
-	{
-		perpendicular_x = -gui->player.player_dir_y;
-		perpendicular_y = gui->player.player_dir_x;
-	}
+	perpendicular_x = gui->player.player_dir_y;
+	perpendicular_y = -gui->player.player_dir_x;
+	
 	if (keydata.key == MLX_KEY_A)
 	{
 		*new_x -= perpendicular_x * SPEED;
@@ -108,17 +101,11 @@ void	key_handler(mlx_key_data_t keydata, void *param)
 
 	gui = (t_window_frame *)param;
 	handle_movement(keydata, gui);
-	if (keydata.key == 262 && (gui->player.init_dir == 'N'
-			|| gui->player.init_dir == 'E'))
+	if (keydata.key == 262)
 		rotate(gui, true);
-	else if (keydata.key == 263
-		&& (gui->player.init_dir == 'N' || gui->player.init_dir == 'E'))
-		rotate(gui, false);
-	else if (keydata.key == 262
-		&& (gui->player.init_dir == 'S' || gui->player.init_dir == 'W'))
-		rotate(gui, false);
 	else if (keydata.key == 263)
-		rotate(gui, true);
+		rotate(gui, false);
+	
 	else if (keydata.key == 256)
 		handle_escape(gui);
 	else if (keydata.key == 81)
