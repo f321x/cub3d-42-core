@@ -1,47 +1,9 @@
-- Key Handlers, window resizing, hooks ...
+- Fix Makefile
 
-- Map Parsing
+- Verify correct orientation (e.g. correct texture on North/South...)
 
-- Calculating the image (Raycasting)
--> how and if to split further?
+- norminette
 
-- Drawing the image (pixel/or other result of calculation to window)
+- check subject again / verify implementation is according to subject
 
-
-
-
-Your raycasting algorithm implementation in C shows a good structure and approach for generating a 3D perspective from a 2D map using raycasting techniques, similar to what was used in classic games like Wolfenstein 3D. However, there are several issues and potential improvements to consider:
-
-Typo in Function Declaration:
-
-The raycast_whole_frame function declaration mistakenly uses frame_width twice instead of using frame_height for one of the parameters. It should be corrected to include both frame_width and frame_height.
-Incorrect Ray Direction Calculation:
-
-The calculation of ray_dir_x and ray_dir_y seems incorrect. You're adding the player's position to the direction, which doesn't make sense for ray direction calculation. It should be based on the player's direction and the camera plane to calculate the ray's direction correctly. For example:
-c
-Copy code
-current_ray.ray_dir_x = p.player_dir_x + p.player_plane_x * current_ray.camera_x_point;
-current_ray.ray_dir_y = p.player_dir_y + p.player_plane_y * current_ray.camera_x_point;
-This assumes you have a player_plane_x and player_plane_y for the camera plane, which is perpendicular to the player's direction and determines the field of view.
-Uninitialized Variables and Potential Segmentation Fault:
-
-In raycast_whole_frame, if malloc fails, you attempt to return (NULL), but the function's return type is void. This will cause a compilation error. If you intend to return the walls array, you should change the function's return type to t_wall*.
-You must ensure that parsed_map.map_plan is properly initialized and filled with data to prevent segmentation faults when accessing map->map_plan[pl->map_x][pl->map_y].
-Logic Errors in DDA Algorithm:
-
-In your DDA function (dda), you increment init_dist_x and init_dist_y by pl->delta_dist_x and pl->delta_dist_y, which do not exist in the t_player_pos structure. You should be using ray->delta_dist_x and ray->delta_dist_y instead.
-The hit_side flag is set to 0 or 1 but is used as hit_side_bin and hit_side_color in different places, which is confusing. Make sure your variable usage is consistent and clear.
-Syntax Errors:
-
-In the dda function, you're missing semicolons (;) at the end of the lines where you assign values to ray->hit_side_color.
-Memory Management:
-
-Ensure that you free the allocated memory for walls in raycast_whole_frame to avoid memory leaks. This is not shown in your code snippet.
-Improvement Suggestions:
-
-Consider adding error handling for scenarios like memory allocation failure or out-of-bounds access in the map array.
-It might be beneficial to modularize your code further, breaking down the raycast_whole_frame function if it grows too complex, in line with your constraints on function length and complexity.
-Variable hit_side Declaration Missing:
-
-The variable hit_side is used but not declared in the t_ray struct. You should add this to your struct definition.
-In summary, while the structure of your raycasting implementation is on the right track, it requires several corrections and improvements for accuracy, efficiency, and to avoid potential runtime errors.
+- go trough eval sheet
