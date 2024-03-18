@@ -6,12 +6,14 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:07:09 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/11 15:07:53 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/18 09:50:46 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+// returns the correct texture depending on which
+// side of the wall has been hit by the ray
 static t_tex*	fetch_fitting_texture(t_ray *ray, t_window_frame *gui)
 {
 	t_field	side;
@@ -30,7 +32,7 @@ static t_tex*	fetch_fitting_texture(t_ray *ray, t_window_frame *gui)
 	return (NULL);
 }
 
-
+// Calculates the exact hit point on a wall where a ray intersects it
 static double	calc_exact_wall_hitpoint(t_ray *ray, t_window_frame *gui)
 {
 	double	exact_wall_hp;
