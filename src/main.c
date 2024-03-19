@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:07 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 16:33:59 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/19 10:32:24 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static void	set_player_south_west(t_window_frame *gui, int x,
 	{
 		p->player_dir_x = 1;
 		p->player_dir_y = 0;
-        p->camera_plane_x = 0;
-        p->camera_plane_y = -0.66;
+		p->camera_plane_x = 0;
+		p->camera_plane_y = -0.66;
 		p->init_dir = 'S';
 	}
 	else if (gui->config_file.map->map_plan[x][y] == 'W')
@@ -34,7 +34,7 @@ static void	set_player_south_west(t_window_frame *gui, int x,
 		p->player_dir_x = 0;
 		p->player_dir_y = -1;
 		p->camera_plane_x = -0.66;
-        p->camera_plane_y = 0;
+		p->camera_plane_y = 0;
 		p->init_dir = 'W';
 	}
 }
