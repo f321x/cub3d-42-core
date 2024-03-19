@@ -6,21 +6,21 @@
 #    By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 14:27:39 by ***REMOVED***          #+#    #+#              #
-#    Updated: 2024/03/19 10:59:09 by ***REMOVED***            ###   ########.fr        #
+#    Updated: 2024/03/19 12:15:30 by ***REMOVED***            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= cub3d
 
 CC 		:= cc
-CFLAGS 	:= -g3 -fsanitize=address -Wall -Wextra -Werror
+CFLAGS 	:= -Wall -Wextra -Werror
 
 SRCDIR		:= src
 OBJDIR		:= objs
 
 LIBMLX	:= ./libs/MLX42
 MLXLIB	:= $(LIBMLX)/build/libmlx42.a
-LIB 	:= -L ./libs/libft_combined -lmylib -L $(LIBMLX)/build -ldl -lglfw -pthread -lm -lmlx42
+LIB 	:= -L ./libs/libft_combined -lmylib -L $(LIBMLX)/build -ldl -lglfw -lm -lmlx42 -pthread
 HEADERS := -I ./includes -I ./libs/libft_combined/includes -I $(LIBMLX)/include/MLX42
 
 SRCS 	:= $(SRCDIR)/main.c\
@@ -56,8 +56,8 @@ all: $(MLXLIB) $(OBJDIR) $(NAME)
 $(MLXLIB):
 	@if [ ! -d "$(LIBMLX)" ]; then \
 		mkdir -p libs && \
-		git clone --depth 1 --branch v2.3.2 https://github.com/codam-coding-college/MLX42 $(LIBMLX) && \
-		cmake -DDEBUG=1 -S $(LIBMLX) -B $(LIBMLX)/build && \
+		git clone --depth 1 --branch v2.3.3 https://github.com/codam-coding-college/MLX42 $(LIBMLX) && \
+		cmake -S $(LIBMLX) -B $(LIBMLX)/build && \
 		make -C $(LIBMLX)/build -j4; \
 	fi
 

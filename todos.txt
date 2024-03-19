@@ -1,8 +1,0 @@
-- mirroring static int32_t	*determine_wall_pixels(double exact_wall_hp,
-										t_tex *tex, int wall_height)
-
-
-- check memory leaks / free memory
-
-- go trough eval sheet
-
