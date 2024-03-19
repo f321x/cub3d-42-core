@@ -1,9 +1,11 @@
+F 245,245,220
+C 255,223,0
+
 NO ./assets/textures/cat1.png
 SO ./assets/textures/cat2.png
 WE ./assets/textures/cat3.png
 EA ./assets/textures/cat4.png
-F 245,245,220
-C 255,223,0
+
 1111111111111111111111111
 1000000000110000000000001
 1011000001110000000000001
