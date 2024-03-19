@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:16:25 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 16:44:06 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/03/18 16:48:34 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static void	move_left_right(t_window_frame *gui, double *new_x, double *new_y,
 
 	perpendicular_x = gui->player.player_dir_y;
 	perpendicular_y = -gui->player.player_dir_x;
-	
 	if (keydata.key == MLX_KEY_A)
 	{
 		*new_x -= perpendicular_x * SPEED;
@@ -105,7 +104,6 @@ void	key_handler(mlx_key_data_t keydata, void *param)
 		rotate(gui, true);
 	else if (keydata.key == 263)
 		rotate(gui, false);
-	
 	else if (keydata.key == 256)
 		handle_escape(gui);
 	else if (keydata.key == 81)
