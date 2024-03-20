@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbock <fbock@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: fahmadia <fahmadia@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:35:08 by fahmadia          #+#    #+#             */
-/*   Updated: 2024/03/18 16:11:36 by fbock            ###   ########.fr       */
+/*   Updated: 2024/03/19 12:42:36 by fahmadia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef enum e_error
 	WRONG_CONFIG_FILE_TYPE_ID,
 	INAVLID_CONFIG_FILE_EXTENSION,
 	NOT_ALL_TYPE_IDS_FOUND,
+	INVALID_TEXTURE_DIR,
+	INVALID_TEXTURE_EXTENSION,
 	INVALID_MAP_CHAR,
 	MAP_TOO_BIG,
 	NO_PLAYER,

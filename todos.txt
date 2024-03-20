@@ -1,13 +1,8 @@
 - mirroring static int32_t	*determine_wall_pixels(double exact_wall_hp,
 										t_tex *tex, int wall_height)
 
-- norminette
 
 - check memory leaks / free memory
 
-- check subject again / verify implementation is according to subject
-
 - go trough eval sheet
 
-- 	texture.width = mlx_tex->width;  // pixels should be freed somewhere
-static t_tex	convert_texture(mlx_texture_t *mlx_tex)
