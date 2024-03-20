@@ -6,17 +6,11 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:07 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/20 10:48:52 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/03/20 10:53:57 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static void	end_program(t_conf_file *conf_file, t_window_frame *gui)
-{
-	mlx_terminate(gui->window);
-	free_config_file_members(conf_file);
-}
 
 static void	set_player_south_west(t_window_frame *gui, int x,
 									int y, t_player_pos *p)
@@ -165,12 +159,11 @@ int	main(int argc, char **argv)
 		free_config_file_members(&(gui.config_file));
 		return (gui.config_file.error);
 	}
-
 	init_player(&gui);
 	init_gui(&gui);
 	init_hooks(&gui);
 	mlx_loop(gui.window);
-	end_program(&(gui.config_file), &gui);
+	cleanup_without_error(&gui);
 	free_config_file_members(&(gui.config_file));
 	return (0);
 }
