@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:41:39 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/19 11:50:51 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/20 10:52:22 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,44 +97,4 @@ void	init_gui(t_window_frame *gui)
 		cleanup(gui);
 	gui->frame = gui->buffer;
 	gui->buffer = NULL;
-}
-
-// cleanup function to be called on error
-// to free up memory and exit with error
-void	cleanup(t_window_frame *gui)
-{
-	if (gui->frame)
-		mlx_delete_image(gui->window, gui->frame);
-	if (gui->buffer)
-		mlx_delete_image(gui->window, gui->buffer);
-	if (gui->window)
-		mlx_terminate(gui->window);
-	if (gui->textures.north.pixels)
-		free(gui->textures.north.pixels);
-	if (gui->textures.east.pixels)
-		free(gui->textures.east.pixels);
-	if (gui->textures.west.pixels)
-		free(gui->textures.west.pixels);
-	if (gui->textures.south.pixels)
-		free(gui->textures.south.pixels);
-	exit(EXIT_FAILURE);
-}
-
-void	cleanup_without_error(t_window_frame *gui)
-{
-	if (gui->frame)
-		mlx_delete_image(gui->window, gui->frame);
-	if (gui->buffer)
-		mlx_delete_image(gui->window, gui->buffer);
-	if (gui->window)
-		mlx_terminate(gui->window);
-	if (gui->textures.north.pixels)
-		free(gui->textures.north.pixels);
-	if (gui->textures.east.pixels)
-		free(gui->textures.east.pixels);
-	if (gui->textures.west.pixels)
-		free(gui->textures.west.pixels);
-	if (gui->textures.south.pixels)
-		free(gui->textures.south.pixels);
-	free_config_file_members(&(gui->config_file));
 }
