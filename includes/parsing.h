@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:35:08 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/03/19 12:42:36 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/03/20 11:03:40 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 typedef struct s_map	t_map;
 typedef char (*map_ptr)[1000][1000];
+typedef struct s_window_frame t_window_frame;
 
 typedef enum e_type_id
 {
@@ -143,3 +144,7 @@ void	print_test(t_conf_file config_file);
 
 // open_config_file.c
 bool	open_config_file(t_conf_file *config_file);
+
+// check_textures.c
+bool	textures_extension_valid(t_window_frame gui);
+bool	textures_dirs_are_valid(t_window_frame gui);
