@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:41:39 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 12:25:45 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/19 11:50:51 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,4 +118,23 @@ void	cleanup(t_window_frame *gui)
 	if (gui->textures.south.pixels)
 		free(gui->textures.south.pixels);
 	exit(EXIT_FAILURE);
+}
+
+void	cleanup_without_error(t_window_frame *gui)
+{
+	if (gui->frame)
+		mlx_delete_image(gui->window, gui->frame);
+	if (gui->buffer)
+		mlx_delete_image(gui->window, gui->buffer);
+	if (gui->window)
+		mlx_terminate(gui->window);
+	if (gui->textures.north.pixels)
+		free(gui->textures.north.pixels);
+	if (gui->textures.east.pixels)
+		free(gui->textures.east.pixels);
+	if (gui->textures.west.pixels)
+		free(gui->textures.west.pixels);
+	if (gui->textures.south.pixels)
+		free(gui->textures.south.pixels);
+	free_config_file_members(&(gui->config_file));
 }
