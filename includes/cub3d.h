@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:38:21 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/19 12:13:50 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/20 10:52:59 by ***REMOVED***            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,8 @@ void	init_player(t_window_frame *gui);
 // mlx_handlers/handlers_main.c
 void	init_hooks(t_window_frame *gui);
 void	init_gui(t_window_frame *gui);
+
+// mlx_handlers/cleanup_utils.c
 void	cleanup(t_window_frame *gui);
 void	cleanup_without_error(t_window_frame *gui);
 

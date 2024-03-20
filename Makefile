@@ -6,7 +6,7 @@
 #    By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 14:27:39 by ***REMOVED***          #+#    #+#              #
-#    Updated: 2024/03/19 12:15:30 by ***REMOVED***            ###   ########.fr        #
+#    Updated: 2024/03/20 10:53:16 by ***REMOVED***            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS 	:= $(SRCDIR)/main.c\
 	$(SRCDIR)/mlx_handlers/handlers_main.c\
 	$(SRCDIR)/mlx_handlers/movement_utils.c\
 	$(SRCDIR)/mlx_handlers/key_hook_utils.c\
+	$(SRCDIR)/mlx_handlers/cleanup_utils.c\
 	$(SRCDIR)/mlx_handlers/input_hooks.c\
 	$(SRCDIR)/map_parsing/parsing_main.c\
 	$(SRCDIR)/map_parsing/parsing/parse_type_ids_1.c\
