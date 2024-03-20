@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+         #
+#    By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 14:27:39 by ***REMOVED***          #+#    #+#              #
-#    Updated: 2024/03/20 10:53:16 by ***REMOVED***            ###   ########.fr        #
+#    Updated: 2024/03/20 11:01:15 by ***REMOVED***         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRCS 	:= $(SRCDIR)/main.c\
 	$(SRCDIR)/map_parsing/parsing/copy_map_2.c\
 	$(SRCDIR)/map_parsing/parsing/parse_map.c\
 	$(SRCDIR)/map_parsing/parsing/parse_map_2.c\
+	$(SRCDIR)/map_parsing/parsing/check_textures.c\
 	$(SRCDIR)/raycasting/raycasting_main.c\
 	$(SRCDIR)/raycasting/textures.c\
 	$(SRCDIR)/raycasting/raycasting_dda.c\
