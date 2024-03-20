@@ -6,7 +6,7 @@
 /*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:41:29 by ***REMOVED***          #+#    #+#             */
-/*   Updated: 2024/02/11 14:54:24 by ***REMOVED***         ###   ########.fr       */
+/*   Updated: 2024/03/19 10:43:36 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	print_err_msg(char *message1, char *message2, char *message3)
 	char	*error_message;
 	char	*temp;
 
-	error_message = ft_strjoin("Error: ", message1);
+	error_message = ft_strjoin("Error\n", message1);
 	temp = error_message;
 	error_message = ft_strjoin(error_message, message2);
 	free(temp);

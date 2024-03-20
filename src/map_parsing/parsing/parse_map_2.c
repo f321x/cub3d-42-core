@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.de>       +#+  +:+       +#+        */
+/*   By: ***REMOVED*** <***REMOVED***@student.***REMOVED***.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 13:25:11 by ***REMOVED***             #+#    #+#             */
-/*   Updated: 2024/03/18 13:46:59 by ***REMOVED***            ###   ########.fr       */
+/*   Updated: 2024/03/19 10:57:06 by ***REMOVED***         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ bool	is_char_valid(t_conf_file *conf_file, size_t i, size_t j)
 		&& cur_char != SOUTH && cur_char != WEST && cur_char != EAST)
 	{
 		conf_file->error = INVALID_MAP_CHAR;
-		print_err_msg("Invalid character in map", "", "");
+		print_err_msg("Invalid character in map or invalid type id", "", "");
 		return (false);
 	}
 	return (true);
