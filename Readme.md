@@ -8,6 +8,6 @@ To conclude cub3D is a remarkable playground to explore the playful practical ap
 With the help of the numerous documents available on the internet, you will use
 mathematics as a tool to create elegant and efficient algorithms.
 
-Coded by ***REMOVED*** and ***REMOVED***.
+Coded by @farshadahmadian and me.
 
 ![ezgif-4-0ecf6ab0be](https://github.com/f321x/cub3d-42-core/assets/51097237/41daf969-5433-4491-81d1-79848bcbd1d9)
